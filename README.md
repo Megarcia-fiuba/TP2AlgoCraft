@@ -32,6 +32,7 @@ se debe hacer un  `git pull` para bajar algun cambio que haya en el repositorio 
 
 si hay algun conflicto deben resolverlo.
 
-luego de realizar los cambios y agregar los archivos se debe realizar el commit localmente de la siguiente forma `git commit -m '<Comentario sobre el commit>' ` 
+luego de realizar los cambios y agregar los archivos se debe realizar el commit localmente de la siguiente forma 
+`git commit -m '<Comentario sobre el commit>' ` 
 
 ahora se pueden subir los cambios con el comando `git push`
