@@ -1,5 +1,7 @@
 package algocraft.herramientas;
 
+import algocraft.materiales.Materializable;
+
 public class PicoFino implements Herramienta {
     private int durabilidad;
     private int fuerza;
@@ -23,5 +25,5 @@ public class PicoFino implements Herramienta {
     public void usar(Materializable materializable) {
         durabilidad -= materializable.desgastar(this)/10;
         materializable.recibirGolpe(this);
-    }
+    }s
 }

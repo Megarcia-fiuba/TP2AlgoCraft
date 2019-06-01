@@ -1,5 +1,9 @@
 package algocraft.materiales;
 
+import algocraft.herramientas.Hacha;
+import algocraft.herramientas.Pico;
+import algocraft.herramientas.PicoFino;
+
 public class Metal implements Materializable {
     private int durabilidad;
 

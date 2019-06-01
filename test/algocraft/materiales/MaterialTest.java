@@ -1,6 +1,9 @@
-package Tests;
+package algocraft.materiales;
 
-import Clases.*;
+import algocraft.herramientas.Hacha;
+import algocraft.materiales.Madera;
+import algocraft.materiales.Materializable;
+import algocraft.materiales.propiedades.DurabilidadMadera;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,4 +1,6 @@
-package Clases;
+package algocraft.herramientas;
+
+import algocraft.materiales.Materializable;
 
 public interface Herramienta {
     int getDurabilidad();

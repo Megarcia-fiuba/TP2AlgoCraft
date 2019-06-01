@@ -1,5 +1,9 @@
 package algocraft.materiales.propiedades;
 
+import algocraft.herramientas.Hacha;
+import algocraft.herramientas.Pico;
+import algocraft.materiales.Metal;
+
 public interface Durabilidad{
 
     int getValor();

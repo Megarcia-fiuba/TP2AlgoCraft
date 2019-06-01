@@ -1,6 +1,8 @@
 package algocraft.herramientas;
 
-public class Hacha implements Herramienta{
+import algocraft.materiales.Materializable;
+
+public class Hacha implements Herramienta {
 
     private Durabilidad durabilidad;
     private int fuerza;
@@ -21,5 +23,8 @@ public class Hacha implements Herramienta{
     public void usar(Materializable materializable) {
         durabilidad.desgastar(this);
         materializable.recibirGolpe(this);
+    }
+
+    private class Durabilidad {
     }
 }

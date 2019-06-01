@@ -1,5 +1,9 @@
 package algocraft.materiales.propiedades;
 
+import algocraft.herramientas.Hacha;
+import algocraft.herramientas.Pico;
+import algocraft.materiales.Metal;
+
 public class DurabilidadMetal implements Durabilidad {
     private int valor;
     private int usos;
@@ -20,7 +24,7 @@ public class DurabilidadMetal implements Durabilidad {
     }
 
     @Override
-    public int getFuerza(Pico pico) {
+    public int getFuerza(Pisco pico) {
         return 12;
     }
 

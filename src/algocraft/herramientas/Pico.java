@@ -1,5 +1,9 @@
 package algocraft.herramientas;
 
+import algocraft.materiales.Materializable;
+import algocraft.materiales.Metal;
+import algocraft.materiales.propiedades.Durabilidad;
+
 public class Pico implements Herramienta{
     private int fuerza;
     private Durabilidad durabilidad;
