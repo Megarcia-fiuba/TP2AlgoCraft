@@ -1,6 +1,7 @@
 package algocraft.herramientas;
 
 import algocraft.materiales.Materializable;
+import algocraft.materiales.propiedades.Durabilidad;
 
 public class Hacha implements Herramienta {
 
@@ -25,6 +26,4 @@ public class Hacha implements Herramienta {
         materializable.recibirGolpe(this);
     }
 
-    private class Durabilidad {
-    }
 }

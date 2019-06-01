@@ -24,7 +24,7 @@ public class DurabilidadMetal implements Durabilidad {
     }
 
     @Override
-    public int getFuerza(Pisco pico) {
+    public int getFuerza(Pico pico) {
         return 12;
     }
 

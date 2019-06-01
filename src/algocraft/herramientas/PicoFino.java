@@ -25,5 +25,5 @@ public class PicoFino implements Herramienta {
     public void usar(Materializable materializable) {
         durabilidad -= materializable.desgastar(this)/10;
         materializable.recibirGolpe(this);
-    }s
+    }
 }
