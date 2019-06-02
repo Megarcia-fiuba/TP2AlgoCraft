@@ -1,8 +1,17 @@
 package algocraft.juego;
 
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class JugadorTests {
 
-    Jugador jugador = Jugador.getJugador();
 
+
+    @Test
+    public void obtenerJugador(){
+        Jugador jugador = Jugador.getJugador();
+
+        Assert.assertNotNull(jugador);
+    }
 }
