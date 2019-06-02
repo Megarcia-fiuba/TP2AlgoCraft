@@ -39,4 +39,26 @@ public class DurabilidadMadera implements Durabilidad{
     public boolean romperMaterial(Metal metal) {
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + valor;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        DurabilidadMadera other = (DurabilidadMadera) obj;
+        if (this.valor != other.valor)
+            return false;
+        return true;
+    }
 }
