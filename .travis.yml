@@ -1,2 +1,8 @@
 language: java
 install: ant test
+notifications:
+  email:
+    recipients:
+      - megarcia@fi.uba.ar 
+    on_success: never # default: change
+    on_failure: always # default: always
