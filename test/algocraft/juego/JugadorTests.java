@@ -1,6 +1,8 @@
 package algocraft.juego;
 
 
+import algocraft.herramientas.Hacha;
+import algocraft.materiales.propiedades.DurabilidadMadera;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -34,6 +36,14 @@ public class JugadorTests {
         Jugador jugador = Jugador.getInstance();
 
         Assert.assertEquals(0, jugador.getMaterialesRecolectados().size());
+    }
+
+    @Test
+    public void test05JugadorSeInicializaConUnHachaDeMadera() {
+        Jugador jugador = Jugador.getInstance();
+        Hacha hachaEsperada = new Hacha(new DurabilidadMadera());
+
+        Assert.assertEquals(hachaEsperada, jugador.getHerramientas().get(0));
     }
 
 }
