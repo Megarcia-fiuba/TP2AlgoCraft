@@ -7,7 +7,14 @@ import org.junit.Test;
 public class JugadorTests {
 
     @Test
-    public void test01JugadorSeInicializaConHerramientaHachaDeMaderaEnInventario() {
+    public void test01JugadorSeInicializaConSoloUnaHerramienta() {
+        Jugador jugador = Jugador.getInstance();
+
+        Assert.assertEquals(1, jugador.getHerramientas().size());
+    }
+
+    @Test
+    public void test02JugadorSeInicializaConHerramientaHachaDeMaderaEnInventario() {
         Jugador jugador = Jugador.getInstance();
 
         Assert.assertEquals(2, jugador.getHerramientas().get(0).getFuerza());
@@ -15,11 +22,18 @@ public class JugadorTests {
     }
 
     @Test
-    public void test02JugadorSeInicializaEnPosicionDeCoordenadaNulas() {
+    public void test03JugadorSeInicializaEnPosicionDeCoordenadaNulas() {
         Jugador jugador = Jugador.getInstance();
 
         Assert.assertEquals(0, jugador.getPosicion().getCoordenadaX());
         Assert.assertEquals(0, jugador.getPosicion().getCoordenadaY());
+    }
+
+    @Test
+    public void test04JugadorNoTieneMaterialesAlInicializarse() {
+        Jugador jugador = Jugador.getInstance();
+
+        Assert.assertEquals(0, jugador.getMaterialesRecolectados().size());
     }
 
 }
