@@ -4,7 +4,7 @@ import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;
 import algocraft.materiales.Metal;
 
-public class DurabilidadMadera implements Durabilidad{
+public class DurabilidadMadera implements DurabilidadHachaInicializable,Durabilidad{
     private int valor;
 
     public DurabilidadMadera(){

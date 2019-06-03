@@ -1,27 +1,34 @@
 package algocraft.juego;
 
-import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Herramienta;
-import algocraft.materiales.propiedades.DurabilidadMadera;
+import algocraft.herramientas.HerramientaInicializable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Jugador {
 
-    private static final Jugador JUGADOR = new Jugador();
+    private static Jugador JUGADOR = null;
     private List<Herramienta> herramientas;
     private Posicion posicion;
     
-    private Jugador(){
+    private Jugador(HerramientaInicializable herramienta){
         herramientas = new ArrayList<>();
         posicion = new Posicion(0,0);
-        herramientas.add(new Hacha(new DurabilidadMadera()));
+        herramientas.add(herramienta);
     }
 
-    public static Jugador getInstance() { return JUGADOR; }
+    public static Jugador getInstance(HerramientaInicializable herramienta) { 
+    	if(JUGADOR == null) {
+    		JUGADOR = new Jugador(herramienta);
+    	}
+    	return JUGADOR; }
 
     public List<Herramienta> getHerramientas() { return herramientas; }
 
     public Posicion getPosicion() { return posicion; }
+    
+    public static void eliminarJugador() {
+    	JUGADOR = null; 
+    }
 }
