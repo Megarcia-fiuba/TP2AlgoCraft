@@ -18,7 +18,7 @@ public class Piedra implements Materializable {
 
     @Override
     public void recibirGolpe(Hacha hacha) {
-
+    	System.out.println("No es posible usar un Hacha para romper una Piedra");
     }
 
     @Override
