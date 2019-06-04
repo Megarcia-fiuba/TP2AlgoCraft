@@ -150,7 +150,7 @@ public class HerramientaTest {
         Herramienta picoFino = new PicoFino();
 
         picoFino.usar(diamante);
-        Assert.assertEquals(picoFino.getDurabilidad(), 1000 - picoFino.getFuerza() / 10);
+        Assert.assertEquals(picoFino.getDurabilidad(), 900);
     }
     @Test
     public void test09UsarPicoFinoContraOtrosMaterialesNoReduceDurabilidad() {

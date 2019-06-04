@@ -2,6 +2,7 @@ package algocraft.materiales.propiedades;
 
 import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;
+import algocraft.materiales.Diamante;
 import algocraft.materiales.Metal;
 
 public class DurabilidadPiedra implements Durabilidad {
@@ -40,5 +41,10 @@ public class DurabilidadPiedra implements Durabilidad {
     public boolean romperMaterial(Metal metal) {
 
         return true;
+    }
+
+    @Override
+    public boolean romperMaterial(Diamante diamante) {
+        return false;
     }
 }

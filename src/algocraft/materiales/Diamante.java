@@ -12,6 +12,7 @@ public class Diamante implements Materializable {
     }
     @Override
     public int desgastar(PicoFino picoFino) {
+        picoFino.desgastar(this);
         return picoFino.getFuerza();
     }
 

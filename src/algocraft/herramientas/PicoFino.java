@@ -1,29 +1,33 @@
 package algocraft.herramientas;
 
+import algocraft.herramientas.durabilidad.DurabilidadPico;
+import algocraft.materiales.Diamante;
 import algocraft.materiales.Materializable;
 
-public class PicoFino implements Herramienta {
-    private int durabilidad;
-    private int fuerza;
+public class PicoFino extends Herramienta {
 
     public PicoFino() {
         this.fuerza = 20;
-        durabilidad = 1000;
+        this.durabilidad=new DurabilidadPico();
     }
 
     @Override
     public int getDurabilidad() {
-        return durabilidad;
+        return durabilidad.getValor();
     }
 
-    @Override
-    public int getFuerza() {
-        return fuerza;
-    }
 
     @Override
     public void usar(Materializable materializable) {
-        durabilidad -= materializable.desgastar(this)/10;
+        materializable.desgastar(this);
         materializable.recibirGolpe(this);
+    }
+
+    public void desgastar(Materializable material){
+
+    }
+
+    public void desgastar(Diamante diamante){
+        durabilidad.romperMaterial(diamante);
     }
 }

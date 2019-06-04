@@ -3,21 +3,12 @@ package algocraft.herramientas;
 import algocraft.materiales.Materializable;
 import algocraft.materiales.propiedades.Durabilidad;
 
-public class Hacha implements Herramienta {
-
-    private Durabilidad durabilidad;
-    private int fuerza;
+public class Hacha extends Herramienta {
 
     public Hacha(Durabilidad durabilidad){
         this.durabilidad = durabilidad;
-        fuerza = durabilidad.getFuerza(this);
-    }
-    public int getDurabilidad() {
-        return durabilidad.getValor();
-    }
-
-    public int getFuerza() {
-        return fuerza;
+        int fue =durabilidad.getFuerza(this);
+        this.fuerza = durabilidad.getFuerza(this);
     }
 
     @Override

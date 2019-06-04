@@ -1,16 +1,21 @@
-package algocraft.materiales.propiedades;
+package algocraft.herramientas.durabilidad;
 
 import algocraft.herramientas.Hacha;
+import algocraft.herramientas.Herramienta;
 import algocraft.herramientas.Pico;
 import algocraft.materiales.Diamante;
+import algocraft.materiales.Materializable;
 import algocraft.materiales.Metal;
+import algocraft.materiales.propiedades.Durabilidad;
 
-public class DurabilidadMadera implements Durabilidad{
+public class DurabilidadPico implements Durabilidad {
+
     private int valor;
 
-    public DurabilidadMadera(){
-        valor = 100;
+    public DurabilidadPico(){
+        this.valor=1000;
     }
+
     @Override
     public int getValor() {
         return valor;
@@ -18,22 +23,22 @@ public class DurabilidadMadera implements Durabilidad{
 
     @Override
     public int getFuerza(Hacha hacha) {
-        return 2;
+        return 0;
     }
 
     @Override
     public int getFuerza(Pico pico) {
-        return 2;
+        return 0;
     }
 
     @Override
     public void desgastar(Hacha hacha) {
-        valor -= 2;
+
     }
 
     @Override
     public void desgastar(Pico pico) {
-        valor -= 2;
+
     }
 
     @Override
@@ -41,8 +46,10 @@ public class DurabilidadMadera implements Durabilidad{
         return false;
     }
 
-    @Override
-    public boolean romperMaterial(Diamante diamante) {
-        return false;
+    public boolean romperMaterial(Diamante diamante){
+
+        valor-=(valor*0.1);
+
+        return true;
     }
 }
