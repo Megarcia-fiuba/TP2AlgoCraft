@@ -1,4 +1,4 @@
-package algocraft.materiales.propiedades;
+package algocraft.herramientas.durabilidad;
 
 import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;

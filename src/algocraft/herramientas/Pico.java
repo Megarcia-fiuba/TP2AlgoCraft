@@ -2,7 +2,7 @@ package algocraft.herramientas;
 
 import algocraft.materiales.Materializable;
 import algocraft.materiales.Metal;
-import algocraft.materiales.propiedades.Durabilidad;
+import algocraft.herramientas.durabilidad.Durabilidad;
 
 public class Pico extends Herramienta{
 

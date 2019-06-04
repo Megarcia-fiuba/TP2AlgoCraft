@@ -1,7 +1,7 @@
 package algocraft.herramientas;
 
 import algocraft.materiales.Materializable;
-import algocraft.materiales.propiedades.Durabilidad;
+import algocraft.herramientas.durabilidad.Durabilidad;
 
 public class Hacha extends Herramienta {
 
