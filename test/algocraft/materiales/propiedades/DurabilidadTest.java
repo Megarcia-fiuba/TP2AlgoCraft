@@ -2,6 +2,10 @@ package algocraft.materiales.propiedades;
 
 import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;
+import algocraft.herramientas.durabilidad.Durabilidad;
+import algocraft.herramientas.durabilidad.DurabilidadMadera;
+import algocraft.herramientas.durabilidad.DurabilidadMetal;
+import algocraft.herramientas.durabilidad.DurabilidadPiedra;
 import algocraft.materiales.Metal;
 import org.junit.Assert;
 import org.junit.Test;

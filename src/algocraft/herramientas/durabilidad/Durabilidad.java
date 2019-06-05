@@ -1,7 +1,8 @@
-package algocraft.materiales.propiedades;
+package algocraft.herramientas.durabilidad;
 
 import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;
+import algocraft.materiales.Diamante;
 import algocraft.materiales.Metal;
 
 public interface Durabilidad{
@@ -17,4 +18,6 @@ public interface Durabilidad{
     void desgastar(Pico pico);
 
     boolean romperMaterial(Metal metal);
+
+    boolean romperMaterial(Diamante diamante);
 }

@@ -1,9 +1,9 @@
 package algocraft.herramientas;
 
 import algocraft.materiales.*;
-import algocraft.materiales.propiedades.DurabilidadMadera;
-import algocraft.materiales.propiedades.DurabilidadMetal;
-import algocraft.materiales.propiedades.DurabilidadPiedra;
+import algocraft.herramientas.durabilidad.DurabilidadMadera;
+import algocraft.herramientas.durabilidad.DurabilidadMetal;
+import algocraft.herramientas.durabilidad.DurabilidadPiedra;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -300,9 +300,10 @@ public class HerramientaTest {
 
         Materializable diamante = new Diamante();
         Herramienta picoFino = new PicoFino();
+        int valorInicial = picoFino.getDurabilidad();
 
         picoFino.usar(diamante);
-        Assert.assertEquals(1000 - picoFino.getFuerza() / 10, picoFino.getDurabilidad());
+        Assert.assertEquals(picoFino.getDurabilidad(), valorInicial - (int) ( valorInicial * 0.1 ));
     }
 
     @Test
