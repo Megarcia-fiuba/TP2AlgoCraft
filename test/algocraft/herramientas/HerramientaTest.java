@@ -337,8 +337,10 @@ public class HerramientaTest {
         Materializable madera = new Madera();
         Herramienta pico = new Pico(new DurabilidadMetal());
 
-        for(int i=0; i<10; i++){ pico.usar(madera); }
+        for(int i=0; i<9; i++){ pico.usar(madera); }
+        Assert.assertEquals(400, pico.getDurabilidad());
 
+        pico.usar(madera);
         Assert.assertEquals(0, pico.getDurabilidad());
     }
 }

@@ -112,4 +112,60 @@ public class DurabilidadTest {
        Assert.assertTrue(durabilidadPiedra.romperMaterial(metal));
    }
 
+   @Test
+    public void test13DurabilidadMetalSeInicializaConValorCorrespondiente() {
+        Durabilidad durabilidadMetal = new DurabilidadMetal();
+
+        Assert.assertEquals(400, durabilidadMetal.getValor());
+   }
+
+   @Test
+    public void test14DurabilidadMetalDevuelveFuerzaCorrespondienteAHacha() {
+       Durabilidad durabilidadMetal = new DurabilidadMetal();
+       Hacha hacha = new Hacha(new DurabilidadMadera());
+
+       Assert.assertEquals(10, durabilidadMetal.getFuerza(hacha));
+   }
+
+   @Test
+    public void test15DurabilidadMetalDevuelveFuerzaCorrespondienteAPico() {
+       Durabilidad durabilidadMetal = new DurabilidadMetal();
+       Pico pico = new Pico(new DurabilidadPiedra());
+
+       Assert.assertEquals(12, durabilidadMetal.getFuerza(pico));
+   }
+
+   @Test
+    public void test17DurabilidadMetalSeDesgastaConHacha() {
+       Durabilidad durabilidadMetal = new DurabilidadMetal();
+       Hacha hacha = new Hacha(new DurabilidadMetal());
+       int valorInicial = durabilidadMetal.getValor();
+
+       durabilidadMetal.desgastar(hacha);
+       Assert.assertEquals(valorInicial - 5, durabilidadMetal.getValor());
+   }
+
+   @Test
+    public void test18DurabilidadMetalSeDesgastaConPico() {
+       Durabilidad durabilidadMetal = new DurabilidadMetal();
+       Pico pico = new Pico(new DurabilidadPiedra());
+       int valorInicial = durabilidadMetal.getValor();
+
+       for(int i=0;i<9;i++){
+           durabilidadMetal.desgastar(pico);
+       }
+       Assert.assertEquals(400, durabilidadMetal.getValor());
+
+       durabilidadMetal.desgastar(pico);
+       Assert.assertEquals(0, durabilidadMetal.getValor());
+   }
+
+   @Test
+    public void test19DurabilidadMetalNoRompeMaterial() {
+       Durabilidad durabilidadMetal = new DurabilidadMetal();
+       Metal metal = new Metal();
+
+       Assert.assertFalse(durabilidadMetal.romperMaterial(metal));
+   }
+
 }
