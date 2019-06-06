@@ -33,6 +33,6 @@ public class Metal implements Materializable {
 
     @Override
     public int getDurabilidad() {
-        return 0;
+        return durabilidad;
     }
 }
