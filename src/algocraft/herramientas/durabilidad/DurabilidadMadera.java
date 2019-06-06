@@ -1,18 +1,19 @@
 package algocraft.herramientas.durabilidad;
 
+import algocraft.excepciones.DurabilidadTerminadaException;
 import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;
 import algocraft.materiales.Diamante;
 import algocraft.materiales.Metal;
 
 public class DurabilidadMadera implements Durabilidad{
-    private int valor;
+    private double valor;
 
     public DurabilidadMadera(){
-        valor = 100;
+        valor = 100.0;
     }
     @Override
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
@@ -28,11 +29,19 @@ public class DurabilidadMadera implements Durabilidad{
 
     @Override
     public void desgastar(Hacha hacha) {
+        if( valor - 2 < 0 ){
+            valor = 0;
+            throw new DurabilidadTerminadaException();
+        }
         valor -= 2;
     }
 
     @Override
     public void desgastar(Pico pico) {
+        if( valor - 2 < 0){
+            valor = 0;
+            throw new DurabilidadTerminadaException();
+        }
         valor -= 2;
     }
 

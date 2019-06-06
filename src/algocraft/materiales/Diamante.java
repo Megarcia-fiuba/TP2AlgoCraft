@@ -32,7 +32,7 @@ public class Diamante implements Materializable {
     }
 
     @Override
-    public int getDurabilidad() {
+    public double getDurabilidad() {
         return durabilidad;
     }
 
