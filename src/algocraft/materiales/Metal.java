@@ -35,4 +35,7 @@ public class Metal implements Materializable {
     public int getDurabilidad() {
         return 0;
     }
+
+    @Override
+    public boolean estaRoto() { return (durabilidad == 0); }
 }

@@ -5,9 +5,10 @@ import algocraft.materiales.Metal;
 import algocraft.materiales.propiedades.Durabilidad;
 
 public class Pico implements Herramienta{
+	
     private int fuerza;
     private Durabilidad durabilidad;
-
+    
     public Pico(Durabilidad durabilidad) {
         this.durabilidad = durabilidad;
         fuerza = durabilidad.getFuerza(this);

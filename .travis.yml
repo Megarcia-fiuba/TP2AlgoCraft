@@ -1,0 +1,11 @@
+language: java
+install: ant test
+notifications:
+  email:
+    recipients:
+      - megarcia@fi.uba.ar 
+      - fullonejose@hotmail.com
+      - jesusvaivads@gmail.com
+      - daniela.carrero75@gmail.com
+    on_success: never 
+    on_failure: always
