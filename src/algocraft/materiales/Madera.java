@@ -32,7 +32,7 @@ public class Madera implements Materializable {
     }
 
     @Override
-    public int getDurabilidad() {
+    public double getDurabilidad() {
         return durabilidad;
     }
 

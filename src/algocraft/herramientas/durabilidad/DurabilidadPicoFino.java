@@ -7,14 +7,14 @@ import algocraft.materiales.Metal;
 
 public class DurabilidadPicoFino implements Durabilidad {
 
-    private int valor;
+    private double valor;
 
     public DurabilidadPicoFino(){
         this.valor=1000;
     }
 
     @Override
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
@@ -45,7 +45,7 @@ public class DurabilidadPicoFino implements Durabilidad {
 
     public boolean romperMaterial(Diamante diamante){
 
-        valor-=(valor*0.1);
+        valor -= (valor*0.1);
 
         return true;
     }

@@ -6,16 +6,16 @@ import algocraft.materiales.Diamante;
 import algocraft.materiales.Metal;
 
 public class DurabilidadMetal implements Durabilidad {
-    private int valor;
+    private double valor;
     private int usos;
 
     public DurabilidadMetal() {
-        valor = 400;
+        valor = 400.0;
         usos = 10;
     }
 
     @Override
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
@@ -31,14 +31,14 @@ public class DurabilidadMetal implements Durabilidad {
 
     @Override
     public void desgastar(Hacha hacha) {
-        valor -=  5;
+        valor -=  5.0;
     }
 
     @Override
     public void desgastar(Pico pico) {
         usos--;
         if(usos <= 0){
-            valor = 0;
+            valor = 0.0;
         }
     }
 

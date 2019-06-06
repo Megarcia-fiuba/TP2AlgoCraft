@@ -18,7 +18,7 @@ public class Piedra implements Materializable {
 
     @Override
     public void recibirGolpe(Hacha hacha) {
-        
+
     }
 
     @Override
@@ -32,7 +32,7 @@ public class Piedra implements Materializable {
     }
 
     @Override
-    public int getDurabilidad() {
+    public double getDurabilidad() {
         return durabilidad;
     }
 

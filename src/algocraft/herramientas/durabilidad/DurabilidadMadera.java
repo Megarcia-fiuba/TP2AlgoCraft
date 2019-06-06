@@ -6,13 +6,13 @@ import algocraft.materiales.Diamante;
 import algocraft.materiales.Metal;
 
 public class DurabilidadMadera implements Durabilidad{
-    private int valor;
+    private double valor;
 
     public DurabilidadMadera(){
-        valor = 100;
+        valor = 100.0;
     }
     @Override
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 

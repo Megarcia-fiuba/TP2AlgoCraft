@@ -12,7 +12,7 @@ public class PicoFino extends Herramienta {
     }
 
     @Override
-    public int getDurabilidad() {
+    public double getDurabilidad() {
         return durabilidad.getValor();
     }
 

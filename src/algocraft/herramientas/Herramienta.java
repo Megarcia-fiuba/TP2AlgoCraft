@@ -9,7 +9,7 @@ public abstract class Herramienta {
 
     protected int fuerza;
 
-    public int getDurabilidad(){
+    public double getDurabilidad(){
         return durabilidad.getValor();
     }
     public int getFuerza(){

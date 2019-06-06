@@ -5,10 +5,10 @@ import algocraft.herramientas.Pico;
 import algocraft.herramientas.PicoFino;
 
 public class Metal implements Materializable {
-    private int durabilidad;
+    private double durabilidad;
 
     public Metal(){
-        durabilidad = 50;
+        durabilidad = 50.0;
     }
 
     @Override
@@ -32,10 +32,10 @@ public class Metal implements Materializable {
     }
 
     @Override
-    public int getDurabilidad() {
+    public double getDurabilidad() {
         return durabilidad;
     }
 
     @Override
-    public boolean estaRoto() { return (durabilidad == 0); }
+    public boolean estaRoto() { return (durabilidad == 0.0); }
 }

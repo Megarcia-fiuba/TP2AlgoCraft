@@ -27,7 +27,7 @@ public class JugadorTests {
         Jugador jugador = Jugador.getJugador();
 
         Assert.assertEquals(2, jugador.getHerramientaEnUso().getFuerza());
-        Assert.assertEquals(100, jugador.getHerramientaEnUso().getDurabilidad());
+        Assert.assertEquals(100, jugador.getHerramientaEnUso().getDurabilidad(), 0);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class JugadorTests {
 
         jugador.usarHacha(piedra);
 
-        Assert.assertEquals(30, piedra.getDurabilidad());
+        Assert.assertEquals(30, piedra.getDurabilidad(),0);
 
         for(int i=0;i<6;i++) {
             jugador.usarHacha(madera);

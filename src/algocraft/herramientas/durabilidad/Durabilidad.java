@@ -7,7 +7,7 @@ import algocraft.materiales.Metal;
 
 public interface Durabilidad{
 
-    int getValor();
+    double getValor();
 
     int getFuerza(Hacha hacha);
 
