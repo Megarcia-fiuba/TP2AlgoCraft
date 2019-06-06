@@ -303,7 +303,7 @@ public class HerramientaTest {
         int valorInicial = picoFino.getDurabilidad();
 
         picoFino.usar(diamante);
-        Assert.assertEquals(picoFino.getDurabilidad(), valorInicial - (int) ( valorInicial * 0.1 ));
+        Assert.assertEquals(valorInicial - (int) ( valorInicial * 0.1 ), picoFino.getDurabilidad());
     }
 
     @Test

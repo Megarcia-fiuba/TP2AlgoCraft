@@ -8,7 +8,7 @@ public class PicoFino extends Herramienta {
 
     public PicoFino() {
         this.fuerza = 20;
-        this.durabilidad=new DurabilidadPicoFino();
+        this.durabilidad = new DurabilidadPicoFino();
     }
 
     @Override

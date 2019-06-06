@@ -35,4 +35,7 @@ public class Diamante implements Materializable {
     public int getDurabilidad() {
         return durabilidad;
     }
+
+    @Override
+    public boolean estaRoto() { return (durabilidad == 0); }
 }

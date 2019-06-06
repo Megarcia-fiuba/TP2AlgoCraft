@@ -7,7 +7,6 @@ public class Hacha extends Herramienta {
 
     public Hacha(Durabilidad durabilidad){
         this.durabilidad = durabilidad;
-        int fue =durabilidad.getFuerza(this);
         this.fuerza = durabilidad.getFuerza(this);
     }
 

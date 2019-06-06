@@ -14,4 +14,6 @@ public interface Materializable {
     void recibirGolpe(PicoFino picoFino);
 
     int getDurabilidad();
+
+    boolean estaRoto();
 }
