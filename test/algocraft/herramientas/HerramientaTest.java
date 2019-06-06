@@ -60,109 +60,288 @@ public class HerramientaTest {
     }
 
     @Test
-    public void test06UsarHachaContraMaterialesYReduceDurabilidadCorrespondienteAlMaterialDelHacha() {
-
+    public void test06UsarHachaConDurabilidadMaderaContraMaderaYReduceDurabilidadRestandoLaFuerza() {
         Materializable madera = new Madera();
-        Materializable piedra = new Piedra();
-        Materializable metal = new Metal();
-        Materializable diamante = new Diamante();
         Herramienta hachaMadera = new Hacha(new DurabilidadMadera());
-        Herramienta hachaPiedra = new Hacha(new DurabilidadPiedra());
-        Herramienta hachaMetal = new Hacha(new DurabilidadMetal());
+        int durabilidadInicial = hachaMadera.getDurabilidad();
 
         hachaMadera.usar(madera);
-        hachaPiedra.usar(madera);
-        hachaMetal.usar(madera);
-        Assert.assertEquals(hachaMadera.getDurabilidad(), 100 - hachaMadera.getFuerza());
-        Assert.assertEquals(hachaPiedra.getDurabilidad(), 200 - hachaPiedra.getFuerza());
-        Assert.assertEquals(hachaMetal.getDurabilidad(), 400 - hachaMetal.getFuerza() / 2);
+        Assert.assertEquals(durabilidadInicial - hachaMadera.getFuerza(), hachaMadera.getDurabilidad());
+    }
+
+    @Test
+    public void test07UsarHachaConDurabilidadMaderaContraPiedraYReduceDurabilidadoRestandoLaFuerza() {
+        Materializable piedra = new Piedra();
+        Herramienta hachaMadera = new Hacha(new DurabilidadMadera());
+        int durabilidadInicial = hachaMadera.getDurabilidad();
 
         hachaMadera.usar(piedra);
-        hachaPiedra.usar(piedra);
-        hachaMetal.usar(piedra);
-        Assert.assertEquals(hachaMadera.getDurabilidad(), 100 - 2 * hachaMadera.getFuerza());
-        Assert.assertEquals(hachaPiedra.getDurabilidad(), 200 - 2 * hachaPiedra.getFuerza());
-        Assert.assertEquals(hachaMetal.getDurabilidad(), 400 - 2 * hachaMetal.getFuerza() / 2);
+        Assert.assertEquals(durabilidadInicial - hachaMadera.getFuerza(), hachaMadera.getDurabilidad());
+    }
+
+    @Test public void test08UsarHachaConDurabilidadMaderaContraMetalYReduceDurabilidadRestandoLaFuerza(){
+        Materializable metal = new Metal();
+        Herramienta hachaMadera = new Hacha(new DurabilidadMadera());
+        int durabilidadInicial = hachaMadera.getDurabilidad();
 
         hachaMadera.usar(metal);
-        hachaPiedra.usar(metal);
-        hachaMetal.usar(metal);
-        Assert.assertEquals(hachaMadera.getDurabilidad(), 100 - 3 * hachaMadera.getFuerza());
-        Assert.assertEquals(hachaPiedra.getDurabilidad(), 200 - 3 * hachaPiedra.getFuerza());
-        Assert.assertEquals(hachaMetal.getDurabilidad(), 400 - 3 * hachaMetal.getFuerza() / 2);
+        Assert.assertEquals(durabilidadInicial - hachaMadera.getFuerza(), hachaMadera.getDurabilidad());
+    }
+
+    @Test public void test09UsarHachaConDurabilidadMaderaContraDiamanteYReduceDurabilidadRestandoLaFuerza(){
+        Materializable diamante = new Diamante();
+        Herramienta hachaMadera = new Hacha(new DurabilidadMadera());
+        int durabilidadInicial = hachaMadera.getDurabilidad();
 
         hachaMadera.usar(diamante);
-        hachaPiedra.usar(diamante);
-        hachaMetal.usar(diamante);
-        Assert.assertEquals(hachaMadera.getDurabilidad(), 100 - 4 * hachaMadera.getFuerza());
-        Assert.assertEquals(hachaPiedra.getDurabilidad(), 200 - 4 * hachaPiedra.getFuerza());
-        Assert.assertEquals(hachaMetal.getDurabilidad(), 400 - 4 * hachaMetal.getFuerza() / 2);
+        Assert.assertEquals(durabilidadInicial - hachaMadera.getFuerza(), hachaMadera.getDurabilidad());
     }
 
     @Test
-    public void test07UsarPicoContraMaterialesYReduceDurabilidadCorrespondienteAlMaterialDelPico() {
-
+    public void test10UsarHachaConDurabilidadPiedraContraMaderaYReduceDurabilidadRestandoLaFuerza() {
         Materializable madera = new Madera();
+        Herramienta hachaPiedra = new Hacha(new DurabilidadPiedra());
+        int durabilidadInicial = hachaPiedra.getDurabilidad();
+
+        hachaPiedra.usar(madera);
+        Assert.assertEquals(durabilidadInicial - hachaPiedra.getFuerza(), hachaPiedra.getDurabilidad());
+    }
+
+    @Test
+    public void test11UsarHachaConDurabilidadPiedraContraPiedraYReduceDurabilidadRestandoLaFuerza() {
         Materializable piedra = new Piedra();
+        Herramienta hachaPiedra = new Hacha(new DurabilidadPiedra());
+        int durabilidadInicial = hachaPiedra.getDurabilidad();
+
+        hachaPiedra.usar(piedra);
+        Assert.assertEquals(durabilidadInicial - hachaPiedra.getFuerza(), hachaPiedra.getDurabilidad());
+    }
+
+    @Test
+    public void test12UsarHachaConDurabilidadPiedraContraMetalYReduceDurabilidadRestandoLaFuerza() {
         Materializable metal = new Metal();
+        Herramienta hachaPiedra = new Hacha(new DurabilidadPiedra());
+        int durabilidadInicial = hachaPiedra.getDurabilidad();
+
+        hachaPiedra.usar(metal);
+        Assert.assertEquals(durabilidadInicial - hachaPiedra.getFuerza(), hachaPiedra.getDurabilidad());
+    }
+
+    @Test
+    public void test13UsarHachaConDurabilidadPiedraContraDiamanteYReduceDurabilidadRestandoLaFuerza() {
         Materializable diamante = new Diamante();
+        Herramienta hachaPiedra = new Hacha(new DurabilidadPiedra());
+        int durabilidadInicial = hachaPiedra.getDurabilidad();
+
+        hachaPiedra.usar(diamante);
+        Assert.assertEquals(durabilidadInicial - hachaPiedra.getFuerza(), hachaPiedra.getDurabilidad());
+    }
+
+    @Test
+    public void test14UsarHachaConDurabilidadMetalContraMaderaYReduceDurabilidadRestandoLaMitadDeLaFuerza() {
+        Materializable madera = new Madera();
+        Herramienta hachaMetal = new Hacha(new DurabilidadMetal());
+        int durabilidadInicial = hachaMetal.getDurabilidad();
+
+        hachaMetal.usar(madera);
+        Assert.assertEquals(durabilidadInicial - hachaMetal.getFuerza() / 2, hachaMetal.getDurabilidad());
+    }
+
+    @Test
+    public void test15UsarHachaConDurabilidadMetalContraPiedraYReduceDurabilidadRestandoLaMitadDeLaFuerza() {
+        Materializable piedra = new Piedra();
+        Herramienta hachaMetal = new Hacha(new DurabilidadMetal());
+        int durabilidadInicial = hachaMetal.getDurabilidad();
+
+        hachaMetal.usar(piedra);
+        Assert.assertEquals(durabilidadInicial - hachaMetal.getFuerza() / 2, hachaMetal.getDurabilidad());
+    }
+
+    @Test
+    public void test16UsarHachaConDurabilidadMetalContraMetalYReduceDurabilidadRestandoLaMitadDeLaFuerza() {
+        Materializable metal = new Metal();
+        Herramienta hachaMetal = new Hacha(new DurabilidadMetal());
+        int durabilidadInicial = hachaMetal.getDurabilidad();
+
+        hachaMetal.usar(metal);
+        Assert.assertEquals(durabilidadInicial - hachaMetal.getFuerza() / 2, hachaMetal.getDurabilidad());
+    }
+
+    @Test
+    public void test17UsarHachaConDurabilidadMetalContraDiamanteYReduceDurabilidadRestandoLaMitadDeLaFuerza() {
+        Materializable diamante = new Diamante();
+        Herramienta hachaMetal = new Hacha(new DurabilidadMetal());
+        int durabilidadInicial = hachaMetal.getDurabilidad();
+
+        hachaMetal.usar(diamante);
+        Assert.assertEquals(durabilidadInicial - hachaMetal.getFuerza() / 2, hachaMetal.getDurabilidad());
+    }
+
+    @Test
+    public void test18UsarPicoConDurabilidadMaderaContraMaderaYReduceDurabilidadRestandoLaFuerza() {
+        Materializable madera = new Madera();
         Herramienta picoMadera = new Pico(new DurabilidadMadera());
-        Herramienta picoPiedra = new Pico(new DurabilidadPiedra());
-        Herramienta picoMetal = new Pico(new DurabilidadMetal());
+        int durabilidadInicial = picoMadera.getDurabilidad();
 
         picoMadera.usar(madera);
-        picoPiedra.usar(madera);
-        picoMetal.usar(madera);
-        Assert.assertEquals(picoMadera.getDurabilidad(), 100 - picoMadera.getFuerza());
-        Assert.assertEquals(picoPiedra.getDurabilidad(), 200 - (int) (picoPiedra.getFuerza() / 1.5));
-        Assert.assertEquals(picoMetal.getDurabilidad(), 400);
-
-        picoMadera.usar(piedra);
-        picoPiedra.usar(piedra);
-        picoMetal.usar(piedra);
-        Assert.assertEquals(picoMadera.getDurabilidad(), 100 - 2 * picoMadera.getFuerza());
-        Assert.assertEquals(picoPiedra.getDurabilidad(), 200 - 2 * (int) (picoPiedra.getFuerza() / 1.5));
-        Assert.assertEquals(picoMetal.getDurabilidad(), 400);
-
-        picoMadera.usar(metal);
-        picoPiedra.usar(metal);
-        picoMetal.usar(metal);
-        Assert.assertEquals(picoMadera.getDurabilidad(), 100 - 3 * picoMadera.getFuerza());
-        Assert.assertEquals(picoPiedra.getDurabilidad(), 200 - 3 * (int) (picoPiedra.getFuerza() / 1.5));
-        Assert.assertEquals(picoMetal.getDurabilidad(), 400);
-
-        picoMadera.usar(diamante);
-        picoPiedra.usar(diamante);
-        picoMetal.usar(diamante);
-        Assert.assertEquals(picoMadera.getDurabilidad(), 100 - 4 * picoMadera.getFuerza());
-        Assert.assertEquals(picoPiedra.getDurabilidad(), 200 - 4 * (int) (picoPiedra.getFuerza() / 1.5));
-        Assert.assertEquals(picoMetal.getDurabilidad(), 400);
+        Assert.assertEquals(durabilidadInicial - picoMadera.getFuerza(), picoMadera.getDurabilidad());
     }
 
     @Test
-    public void test08UsarPicoFinoContraDiamanteReduceDurabilidadCorrespondiente() {
+    public void test19UsarPicoConDurabilidadMaderaContraPiedraYReduceDurabilidadoRestandoLaFuerza() {
+        Materializable piedra = new Piedra();
+        Herramienta picoMadera = new Pico(new DurabilidadMadera());
+        int durabilidadInicial = picoMadera.getDurabilidad();
+
+        picoMadera.usar(piedra);
+        Assert.assertEquals(durabilidadInicial - picoMadera.getFuerza(), picoMadera.getDurabilidad());
+    }
+
+    @Test public void test20UsarHachaConDurabilidadMaderaContraMetalYReduceDurabilidadRestandoLaFuerza(){
+        Materializable metal = new Metal();
+        Herramienta picoMadera = new Pico(new DurabilidadMadera());
+        int durabilidadInicial = picoMadera.getDurabilidad();
+
+        picoMadera.usar(metal);
+        Assert.assertEquals(durabilidadInicial - picoMadera.getFuerza(), picoMadera.getDurabilidad());
+    }
+
+    @Test public void test21UsarPicoConDurabilidadMaderaContraDiamanteYReduceDurabilidadRestandoLaFuerza(){
+        Materializable diamante = new Diamante();
+        Herramienta picoMadera = new Pico(new DurabilidadMadera());
+        int durabilidadInicial = picoMadera.getDurabilidad();
+
+        picoMadera.usar(diamante);
+        Assert.assertEquals(durabilidadInicial - picoMadera.getFuerza(), picoMadera.getDurabilidad());
+    }
+
+    @Test
+    public void test22UsarPicoConDurabilidadPiedraContraMaderaYReduceDurabilidadRestandoLaFuerzaEntre1_5() {
+        Materializable madera = new Madera();
+        Herramienta picoPiedra = new Pico(new DurabilidadPiedra());
+        int durabilidadInicial = picoPiedra.getDurabilidad();
+
+        picoPiedra.usar(madera);
+        Assert.assertEquals(durabilidadInicial - (int) (picoPiedra.getFuerza() / 1.5), picoPiedra.getDurabilidad());
+    }
+
+    @Test
+    public void test23UsarPicoConDurabilidadPiedraContraPiedraYReduceDurabilidadRestandoLaFuerzaEntre1_5() {
+        Materializable piedra = new Piedra();
+        Herramienta picoPiedra = new Pico(new DurabilidadPiedra());
+        int durabilidadInicial = picoPiedra.getDurabilidad();
+
+        picoPiedra.usar(piedra);
+        Assert.assertEquals(durabilidadInicial - (int) (picoPiedra.getFuerza() / 1.5), picoPiedra.getDurabilidad());
+    }
+
+    @Test
+    public void test24UsarPicoConDurabilidadPiedraContraMetalYReduceDurabilidadRestandoLaFuerza() {
+        Materializable metal = new Metal();
+        Herramienta picoPiedra = new Pico(new DurabilidadPiedra());
+        int durabilidadInicial = picoPiedra.getDurabilidad();
+
+        picoPiedra.usar(metal);
+        Assert.assertEquals(durabilidadInicial - (int) (picoPiedra.getFuerza() / 1.5), picoPiedra.getDurabilidad());
+    }
+
+    @Test
+    public void test25UsarPicoConDurabilidadPiedraContraDiamanteYReduceDurabilidadRestandoLaFuerza() {
+        Materializable diamante = new Diamante();
+        Herramienta picoPiedra = new Pico(new DurabilidadPiedra());
+        int durabilidadInicial = picoPiedra.getDurabilidad();
+
+        picoPiedra.usar(diamante);
+        Assert.assertEquals(durabilidadInicial - (int) (picoPiedra.getFuerza() / 1.5), picoPiedra.getDurabilidad());
+    }
+
+    @Test
+    public void test26UsarPicoConDurabilidadMetalContraMaderaYNoReduceDurabilidad() {
+        Materializable madera = new Madera();
+        Herramienta picoMetal = new Pico(new DurabilidadMetal());
+        int durabilidadInicial = picoMetal.getDurabilidad();
+
+        picoMetal.usar(madera);
+        Assert.assertEquals(durabilidadInicial, picoMetal.getDurabilidad());
+    }
+
+    @Test
+    public void test27UsarPicoConDurabilidadMetalContraPiedraYNoReduceDurabilidad() {
+        Materializable piedra = new Piedra();
+        Herramienta picoMetal = new Pico(new DurabilidadMetal());
+        int durabilidadInicial = picoMetal.getDurabilidad();
+
+        picoMetal.usar(piedra);
+        Assert.assertEquals(durabilidadInicial, picoMetal.getDurabilidad());
+    }
+
+    @Test
+    public void test28UsarPicoConDurabilidadMetalContraMetalYNoReduceDurabilidad() {
+        Materializable metal = new Metal();
+        Herramienta picoMetal = new Pico(new DurabilidadMetal());
+        int durabilidadInicial = picoMetal.getDurabilidad();
+
+        picoMetal.usar(metal);
+        Assert.assertEquals(durabilidadInicial, picoMetal.getDurabilidad());
+    }
+
+    @Test
+    public void test29UsarPicoConDurabilidadMetalContraDiamanteYNoReduceDurabilidad() {
+        Materializable diamante = new Diamante();
+        Herramienta picoMetal = new Pico(new DurabilidadMetal());
+        int durabilidadInicial = picoMetal.getDurabilidad();
+
+        picoMetal.usar(diamante);
+        Assert.assertEquals(durabilidadInicial, picoMetal.getDurabilidad());
+    }
+
+    @Test
+    public void test30UsarPicoFinoContraDiamanteReduceDurabilidadRestandoLaFuerzaEntre10() {
 
         Materializable diamante = new Diamante();
         Herramienta picoFino = new PicoFino();
+        int valorInicial = picoFino.getDurabilidad();
 
         picoFino.usar(diamante);
-        Assert.assertEquals(picoFino.getDurabilidad(), 900);
+        Assert.assertEquals(picoFino.getDurabilidad(), valorInicial - (int) ( valorInicial * 0.1 ));
     }
-    @Test
-    public void test09UsarPicoFinoContraOtrosMaterialesNoReduceDurabilidad() {
 
+    @Test
+    public void test31UsarPicoFinoContraMaderaNoReduceDurabilidad() {
         Materializable madera = new Madera();
-        Materializable piedra = new Piedra();
-        Materializable metal = new Metal();
         Herramienta picoFino = new PicoFino();
 
         picoFino.usar(madera);
-        Assert.assertEquals(picoFino.getDurabilidad(), 1000);
+        Assert.assertEquals(1000, picoFino.getDurabilidad());
+    }
+
+    @Test
+    public void test32UsarPicoFinoContraPiedraNoReduceDurabilidad() {
+        Materializable piedra = new Piedra();
+        Herramienta picoFino = new PicoFino();
 
         picoFino.usar(piedra);
-        Assert.assertEquals(picoFino.getDurabilidad(), 1000);
+        Assert.assertEquals(1000, picoFino.getDurabilidad());
+    }
+
+    @Test
+    public void test33UsarPicoFinoContraMetalNoReduceDurabilidad() {
+        Materializable metal = new Metal();
+        Herramienta picoFino = new PicoFino();
 
         picoFino.usar(metal);
-        Assert.assertEquals(picoFino.getDurabilidad(), 1000);
+        Assert.assertEquals(1000, picoFino.getDurabilidad());
+    }
+
+    @Test
+    public void test34PicoDurabilidadMetalSeRompeAlDecimoGolpe(){
+        Materializable madera = new Madera();
+        Herramienta pico = new Pico(new DurabilidadMetal());
+
+        for(int i=0; i<9; i++){ pico.usar(madera); }
+        Assert.assertEquals(400, pico.getDurabilidad());
+
+        pico.usar(madera);
+        Assert.assertEquals(0, pico.getDurabilidad());
     }
 }
