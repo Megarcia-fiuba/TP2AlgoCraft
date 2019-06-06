@@ -13,7 +13,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JugadorTests {
 
-    /******** Tests de inicialización sin modificar atributos de Jugador ********/
+    /******** Tests de inicializacion sin modificar atributos de Jugador ********/
 
     @Test
     public void test01JugadorSeInicializaConSoloUnaHerramienta() {

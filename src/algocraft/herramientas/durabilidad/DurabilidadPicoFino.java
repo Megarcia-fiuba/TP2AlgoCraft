@@ -1,5 +1,6 @@
 package algocraft.herramientas.durabilidad;
 
+import algocraft.excepciones.DurabilidadTerminadaException;
 import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;
 import algocraft.materiales.Diamante;
@@ -10,7 +11,7 @@ public class DurabilidadPicoFino implements Durabilidad {
     private double valor;
 
     public DurabilidadPicoFino(){
-        this.valor=1000;
+        this.valor = 1000;
     }
 
     @Override
@@ -44,8 +45,11 @@ public class DurabilidadPicoFino implements Durabilidad {
     }
 
     public boolean romperMaterial(Diamante diamante){
-
-        valor -= (valor*0.1);
+        if(valor - valor * 0.1 < 1){
+            valor = 0;
+            throw new DurabilidadTerminadaException();
+        }
+        valor -= ( valor * 0.1 );
 
         return true;
     }

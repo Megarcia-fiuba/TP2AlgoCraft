@@ -1,5 +1,6 @@
 package algocraft.herramientas.durabilidad;
 
+import algocraft.excepciones.DurabilidadTerminadaException;
 import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Herramienta;
 import algocraft.herramientas.Pico;
@@ -259,4 +260,99 @@ public class DurabilidadTest {
        Assert.assertEquals((int) (valorInicial - valorInicial * 0.1), durabilidadPicoFino.getValor(), 0);
    }
 
+   @Test(expected = DurabilidadTerminadaException.class)
+    public void test30DurabilidadMaderaLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroYSeVuelveAUsarPorHacha(){
+        Durabilidad durabilidadMadera = new DurabilidadMadera();
+        Hacha hacha = new Hacha(new DurabilidadMadera());
+
+        for ( int i = 0; i < 50; i++ ){
+            durabilidadMadera.desgastar(hacha);
+        }
+
+       Assert.assertEquals(0, durabilidadMadera.getValor(), 0);
+
+       durabilidadMadera.desgastar(hacha);
+   }
+
+    @Test(expected = DurabilidadTerminadaException.class)
+    public void test31DurabilidadMaderaLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroYSeVuelveAUsarPorPico(){
+        Durabilidad durabilidadMadera = new DurabilidadMadera();
+        Pico pico = new Pico(new DurabilidadMadera());
+
+        for ( int i = 0; i < 50; i++ ){
+            durabilidadMadera.desgastar(pico);
+        }
+
+        Assert.assertEquals(0, durabilidadMadera.getValor(), 0);
+
+        durabilidadMadera.desgastar(pico);
+    }
+
+    @Test(expected = DurabilidadTerminadaException.class)
+    public void test32DurabilidadPiedraLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroYSeVuelveAUsarPorHacha(){
+        Durabilidad durabilidadPiedra = new DurabilidadPiedra();
+        Hacha hacha = new Hacha(new DurabilidadPiedra());
+
+        for ( int i = 0; i < 40; i++ ){
+            durabilidadPiedra.desgastar(hacha);
+        }
+
+        Assert.assertEquals(0, durabilidadPiedra.getValor(), 0);
+
+        durabilidadPiedra.desgastar(hacha);
+    }
+
+    @Test(expected = DurabilidadTerminadaException.class)
+    public void test33DurabilidadPiedraLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroYSeVuelveAUsarPorPico(){
+        Durabilidad durabilidadPiedra = new DurabilidadPiedra();
+        Pico pico = new Pico(new DurabilidadPiedra());
+
+        for ( int i = 0; i < 75; i++ ){
+            durabilidadPiedra.desgastar(pico);
+        }
+
+        Assert.assertEquals(0, durabilidadPiedra.getValor(), 0.1);
+
+        durabilidadPiedra.desgastar(pico);
+    }
+
+    @Test(expected = DurabilidadTerminadaException.class)
+    public void test34DurabilidadMetalLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroYSeVuelveAUsarPorHacha(){
+        Durabilidad durabilidadMetal = new DurabilidadMetal();
+        Hacha hacha = new Hacha(new DurabilidadPiedra());
+
+        for ( int i = 0; i < 80; i++ ){
+            durabilidadMetal.desgastar(hacha);
+        }
+
+        Assert.assertEquals(0, durabilidadMetal.getValor(), 0);
+
+        durabilidadMetal.desgastar(hacha);
+    }
+
+    @Test(expected = DurabilidadTerminadaException.class)
+    public void test35DurabilidadMetalLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroYSeVuelveAUsarPorPico(){
+        Durabilidad durabilidadMetal = new DurabilidadMetal();
+        Pico pico = new Pico(new DurabilidadPiedra());
+
+        for ( int i = 0; i < 10; i++ ){
+            durabilidadMetal.desgastar(pico);
+        }
+
+        Assert.assertEquals(0, durabilidadMetal.getValor(), 0);
+
+        durabilidadMetal.desgastar(pico);
+    }
+
+    @Test(expected = DurabilidadTerminadaException.class)
+    public void test36DurabilidadPicoFinoLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroRompiendoDiamante(){
+        Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
+        Diamante diamante = new Diamante();
+
+        for(int i = 0; i < 66; i++){
+            durabilidadPicoFino.romperMaterial(diamante);
+        }
+
+        Assert.assertEquals(0, durabilidadPicoFino.getValor(), 5);
+    }
 }
