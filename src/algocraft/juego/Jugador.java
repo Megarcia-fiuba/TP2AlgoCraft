@@ -2,8 +2,8 @@ package algocraft.juego;
 
 import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Herramienta;
+import algocraft.herramientas.durabilidad.DurabilidadMadera;
 import algocraft.materiales.Materializable;
-import algocraft.materiales.propiedades.DurabilidadMadera;
 
 import java.util.ArrayList;
 import java.util.List;

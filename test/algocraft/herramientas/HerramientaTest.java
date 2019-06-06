@@ -1,13 +1,9 @@
 package algocraft.herramientas;
 
-import algocraft.herramientas.Hacha;
-import algocraft.herramientas.Herramienta;
-import algocraft.herramientas.Pico;
-import algocraft.herramientas.PicoFino;
 import algocraft.materiales.*;
-import algocraft.materiales.propiedades.DurabilidadMadera;
-import algocraft.materiales.propiedades.DurabilidadMetal;
-import algocraft.materiales.propiedades.DurabilidadPiedra;
+import algocraft.herramientas.durabilidad.DurabilidadMadera;
+import algocraft.herramientas.durabilidad.DurabilidadMetal;
+import algocraft.herramientas.durabilidad.DurabilidadPiedra;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -150,7 +146,7 @@ public class HerramientaTest {
         Herramienta picoFino = new PicoFino();
 
         picoFino.usar(diamante);
-        Assert.assertEquals(picoFino.getDurabilidad(), 1000 - picoFino.getFuerza() / 10);
+        Assert.assertEquals(900 ,picoFino.getDurabilidad());
     }
     @Test
     public void test09UsarPicoFinoContraOtrosMaterialesNoReduceDurabilidad() {

@@ -2,24 +2,13 @@ package algocraft.herramientas;
 
 import algocraft.materiales.Materializable;
 import algocraft.materiales.Metal;
-import algocraft.materiales.propiedades.Durabilidad;
+import algocraft.herramientas.durabilidad.Durabilidad;
 
-public class Pico implements Herramienta{
-	
-    private int fuerza;
-    private Durabilidad durabilidad;
-    
+public class Pico extends Herramienta{
+
     public Pico(Durabilidad durabilidad) {
         this.durabilidad = durabilidad;
-        fuerza = durabilidad.getFuerza(this);
-    }
-
-    public int getDurabilidad() {
-        return durabilidad.getValor();
-    }
-
-    public int getFuerza() {
-        return fuerza;
+        this.fuerza = durabilidad.getFuerza(this);
     }
 
     @Override
