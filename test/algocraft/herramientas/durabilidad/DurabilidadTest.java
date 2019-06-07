@@ -167,99 +167,7 @@ public class DurabilidadTest {
        Assert.assertEquals(0, durabilidadMetal.getValor(), 0);
    }
 
-   @Test
-    public void test19DurabilidadMetalNoRompeMaterialMetal() {
-       Durabilidad durabilidadMetal = new DurabilidadMetal();
-       Metal metal = new Metal();
-
-       Assert.assertFalse(durabilidadMetal.romperMaterial(metal));
-   }
-
-   @Test
-    public void test20DurabilidadMaderaNoRompeMaterialDiamante() {
-        Durabilidad durabilidadMadera = new DurabilidadMadera();
-        Diamante diamante = new Diamante();
-
-        Assert.assertFalse(durabilidadMadera.romperMaterial(diamante));
-   }
-
-   @Test
-    public void test21DurabilidadPiedraNoRompeMaterialPiedra() {
-        Durabilidad durabilidadPiedra = new DurabilidadPiedra();
-        Diamante diamante = new Diamante();
-
-        Assert.assertFalse(durabilidadPiedra.romperMaterial(diamante));
-   }
-
-   @Test
-    public void test22DurabilidadMetalNoRompeMaterialDiamante() {
-        Durabilidad durabilidadMetal = new DurabilidadMetal();
-       Diamante diamante = new Diamante();
-
-       Assert.assertFalse(durabilidadMetal.romperMaterial(diamante));
-   }
-
-   @Test
-    public void test23DurabilidadPicoFinoSeInicializaConValorCorrespondiente() {
-        Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
-
-        Assert.assertEquals(1000, durabilidadPicoFino.getValor(), 0);
-   }
-
-   @Test
-    public void test24DurabilidadPicoFinoDevuelveFuerzaCorrespondienteAHacha() {
-       Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
-       Hacha hacha = new Hacha(new DurabilidadMadera());
-
-       Assert.assertEquals(0, durabilidadPicoFino.getFuerza(hacha));
-   }
-
-   @Test
-    public void test25DurabilidadPicoFinoDevuelveFuerzaCorrespondienteAPico() {
-       Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
-       Pico pico = new Pico(new DurabilidadMadera());
-
-       Assert.assertEquals(0, durabilidadPicoFino.getFuerza(pico));
-   }
-
-   @Test
-    public void test26PicoFinoNoSeDesgastaConElHacha() {
-       Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
-       Hacha hacha = new Hacha(new DurabilidadMadera());
-       double valorInicial = durabilidadPicoFino.getValor();
-
-       durabilidadPicoFino.desgastar(hacha);
-       Assert.assertEquals(valorInicial, durabilidadPicoFino.getValor(), 0);
-   }
-
-   @Test
-    public void test27PicoFinoNoSeDesgastaConElPico() {
-       Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
-       Pico pico = new Pico(new DurabilidadMetal());
-       double valorInicial = durabilidadPicoFino.getValor();
-
-       durabilidadPicoFino.desgastar(pico);
-       Assert.assertEquals(valorInicial, durabilidadPicoFino.getValor(), 0);
-   }
-
-   @Test
-    public void test28PDurabilidadPicoFinoNoRompeMaterialMetal() {
-       Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
-       Metal metal = new Metal();
-
-       Assert.assertFalse(durabilidadPicoFino.romperMaterial(metal));
-   }
-
-   @Test
-    public void test29DurabilidadPicoFinoRompeMaterialDiamanteYDisminuyeSuValor() {
-       Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
-       Diamante diamante = new Diamante();
-       double valorInicial = durabilidadPicoFino.getValor();
-
-       Assert.assertTrue(durabilidadPicoFino.romperMaterial(diamante));
-       Assert.assertEquals((int) (valorInicial - valorInicial * 0.1), durabilidadPicoFino.getValor(), 0);
-   }
-
+   
    @Test(expected = DurabilidadTerminadaException.class)
     public void test30DurabilidadMaderaLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroYSeVuelveAUsarPorHacha(){
         Durabilidad durabilidadMadera = new DurabilidadMadera();
@@ -343,16 +251,4 @@ public class DurabilidadTest {
 
         durabilidadMetal.desgastar(pico);
     }
-
-    @Test(expected = DurabilidadTerminadaException.class)
-    public void test36DurabilidadPicoFinoLanzaDurabilidadTerminadaExceptionCuandoSuValorEsCeroRompiendoDiamante(){
-        Durabilidad durabilidadPicoFino = new DurabilidadPicoFino();
-        Diamante diamante = new Diamante();
-
-        for(int i = 0; i < 66; i++){
-            durabilidadPicoFino.romperMaterial(diamante);
-        }
-
-        Assert.assertEquals(0, durabilidadPicoFino.getValor(), 5);
-    }
-}
+   }

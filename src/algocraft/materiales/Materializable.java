@@ -4,16 +4,31 @@ import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;
 import algocraft.herramientas.PicoFino;
 
-public interface Materializable {
-    int desgastar(PicoFino picoFino);
+public abstract class Materializable {
+    
+	protected int durabilidad;
+	
+	public void desgastar(PicoFino picoFino) {
+		
+	}
 
-    void recibirGolpe(Hacha hacha);
+    public void recibirGolpe(Hacha hacha) {
+    	
+    }
 
-    void recibirGolpe(Pico pico);
+    public void recibirGolpe(Pico pico) {
+    	
+    }
 
-    void recibirGolpe(PicoFino picoFino);
+    public void recibirGolpe(PicoFino picoFino) {
+    	
+    }
 
-    double getDurabilidad();
+    public double getDurabilidad() {
+    	return durabilidad;
+    }
 
-    boolean estaRoto();
+    public boolean estaRoto() {
+    	return (durabilidad==0);
+    }
 }

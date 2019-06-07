@@ -4,7 +4,7 @@ import algocraft.materiales.Materializable;
 import algocraft.materiales.Metal;
 import algocraft.herramientas.durabilidad.Durabilidad;
 
-public class Pico extends Herramienta{
+public class Pico extends HerramientaConMaterial{
 
     public Pico(Durabilidad durabilidad) {
         this.durabilidad = durabilidad;
