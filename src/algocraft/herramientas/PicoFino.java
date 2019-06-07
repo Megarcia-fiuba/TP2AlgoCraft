@@ -20,7 +20,6 @@ public class PicoFino extends Herramienta {
     
     @Override
     public void usar(Materializable materializable) {
-        materializable.desgastar(this);
         materializable.recibirGolpe(this);
     }
     //Consulta: si envio el metodo desgastar con un diamante por parametro siempre va a elegir la segunda  firma y no la primera?(A pesar de que el diamante es un Materializable)

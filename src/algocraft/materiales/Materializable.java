@@ -8,10 +8,6 @@ public abstract class Materializable {
     
 	protected int durabilidad;
 	
-	public void desgastar(PicoFino picoFino) {
-		
-	}
-
     public void recibirGolpe(Hacha hacha) {
     	
     }
