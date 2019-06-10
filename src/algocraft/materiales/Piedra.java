@@ -1,24 +1,13 @@
 package algocraft.materiales;
 
-import algocraft.herramientas.Hacha;
 import algocraft.herramientas.Pico;
-import algocraft.herramientas.PicoFino;
+import algocraft.herramientas.durabilidad.Durabilidad;
+import algocraft.herramientas.durabilidad.DurabilidadPiedra;
 
-public class Piedra implements Materializable {
-    private int durabilidad;
+public class Piedra extends Materializable implements PiezaDeConstruccionHerramientas{
 
     public Piedra(){
         durabilidad = 30;
-    }
-
-    @Override
-    public int desgastar(PicoFino picoFino) {
-        return 0;
-    }
-
-    @Override
-    public void recibirGolpe(Hacha hacha) {
-
     }
 
     @Override
@@ -27,15 +16,37 @@ public class Piedra implements Materializable {
     }
 
     @Override
-    public void recibirGolpe(PicoFino picoFino) {
-
+    public boolean sirveParaMango() {
+        return false;
     }
 
     @Override
-    public double getDurabilidad() {
-        return durabilidad;
+    public boolean mismoMaterial(PiezaDeConstruccionHerramientas otraPieza) {
+        return otraPieza.piezaIgual(this);
     }
 
     @Override
-    public boolean estaRoto() { return (durabilidad == 0); }
+    public boolean piezaIgual(Madera madera) {
+        return false;
+    }
+
+    @Override
+    public boolean esVacia() {
+        return false;
+    }
+
+    @Override
+    public Durabilidad obtenerTipoDurabilidad() {
+        return new DurabilidadPiedra();
+    }
+
+    @Override
+    public boolean piezaIgual(Piedra piedra) {
+        return true;
+    }
+
+    @Override
+    public boolean piezaIgual(Metal metal) {
+        return false;
+    }
 }

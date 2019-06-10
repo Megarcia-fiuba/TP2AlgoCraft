@@ -1,28 +1,16 @@
 package algocraft.materiales;
 
-import algocraft.herramientas.Pico;
 import algocraft.herramientas.durabilidad.Durabilidad;
-import algocraft.herramientas.durabilidad.DurabilidadMetal;
 
-public class Metal extends Materializable implements PiezaDeConstruccionHerramientas{
-	
-    public Metal(){
-        durabilidad = 50;
-    }
-
-    @Override
-    public void recibirGolpe(Pico pico) {
-        durabilidad -= pico.romperMaterial(this);
-    }
-
+public class PiezaVacia implements PiezaDeConstruccionHerramientas {
     @Override
     public boolean sirveParaMango() {
         return false;
     }
 
     @Override
-    public boolean mismoMaterial(PiezaDeConstruccionHerramientas otraPieza) {
-        return otraPieza.piezaIgual(this);
+    public boolean mismoMaterial(PiezaDeConstruccionHerramientas otraParteSuperior) {
+        return false;
     }
 
     @Override
@@ -32,12 +20,12 @@ public class Metal extends Materializable implements PiezaDeConstruccionHerramie
 
     @Override
     public boolean esVacia() {
-        return false;
+        return true;
     }
-
+//viola principio de segregacion de interfaces
     @Override
     public Durabilidad obtenerTipoDurabilidad() {
-        return new DurabilidadMetal();
+        return null;
     }
 
     @Override
@@ -47,6 +35,6 @@ public class Metal extends Materializable implements PiezaDeConstruccionHerramie
 
     @Override
     public boolean piezaIgual(Metal metal) {
-        return true;
+        return false;
     }
 }

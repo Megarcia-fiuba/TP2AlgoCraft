@@ -1,41 +1,16 @@
 package algocraft.materiales;
 
-import algocraft.herramientas.Hacha;
-import algocraft.herramientas.Pico;
 import algocraft.herramientas.PicoFino;
 
-public class Diamante implements Materializable {
-    private int durabilidad;
+public class Diamante extends Materializable {
 
     public Diamante(){
         durabilidad = 100;
-    }
-    @Override
-    public int desgastar(PicoFino picoFino) {
-        picoFino.desgastar(this);
-        return picoFino.getFuerza();
-    }
-
-    @Override
-    public void recibirGolpe(Hacha hacha) {
-
-    }
-
-    @Override
-    public void recibirGolpe(Pico pico) {
-
     }
 
     @Override
     public void recibirGolpe(PicoFino picoFino) {
         durabilidad -= picoFino.getFuerza();
+        picoFino.desgastar(this);
     }
-
-    @Override
-    public double getDurabilidad() {
-        return durabilidad;
-    }
-
-    @Override
-    public boolean estaRoto() { return (durabilidad == 0); }
 }

@@ -3,7 +3,7 @@ package algocraft.herramientas;
 import algocraft.materiales.Materializable;
 import algocraft.herramientas.durabilidad.Durabilidad;
 
-public class Hacha extends Herramienta {
+public class Hacha extends HerramientaConMaterial {
 
     public Hacha(Durabilidad durabilidad){
         this.durabilidad = durabilidad;
@@ -15,5 +15,4 @@ public class Hacha extends Herramienta {
         durabilidad.desgastar(this);
         materializable.recibirGolpe(this);
     }
-
 }

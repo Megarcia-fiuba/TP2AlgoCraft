@@ -5,19 +5,24 @@ import algocraft.herramientas.Pico;
 import algocraft.materiales.Diamante;
 import algocraft.materiales.Metal;
 
-public interface Durabilidad{
+public abstract class Durabilidad{
 
-    double getValor();
+    protected double valor;
 
-    int getFuerza(Hacha hacha);
+	public double getValor() {
+    	return valor;
+    }
 
-    int getFuerza(Pico pico);
+    public abstract int getFuerza(Hacha hacha);
 
-    void desgastar(Hacha hacha);
+    public abstract int getFuerza(Pico pico);
 
-    void desgastar(Pico pico);
+    public abstract void desgastar(Hacha hacha);
 
-    boolean romperMaterial(Metal metal);
+    public abstract void desgastar(Pico pico);
 
-    boolean romperMaterial(Diamante diamante);
+    public boolean romperMaterial(Metal metal) {
+    	return false;
+    }
+
 }
