@@ -8,7 +8,7 @@ import algocraft.materiales.Materializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jugador {
+public class Jugador{
 
     private static final Jugador JUGADOR = new Jugador();
     private Herramienta herramientaEnUso;
@@ -42,5 +42,15 @@ public class Jugador {
 		}
 	}
 
+	public void moverArriba(Mapa mapa){
+        Posicion nuevaPosicion = mapa.obtenerPosicionSuperior(this.getPosicion());
+        nuevaPosicion.intercambioDeEstado();
+        posicion = nuevaPosicion;
+    }
 
+    public void moverDerecha(Mapa mapa) {
+        Posicion nuevaPosicion = mapa.obtenerPosicionDerecha(this.getPosicion());
+        nuevaPosicion.intercambioDeEstado();
+        posicion = nuevaPosicion;
+    }
 }
