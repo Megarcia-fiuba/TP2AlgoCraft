@@ -34,8 +34,7 @@ public class JugadorTests {
     public void test03JugadorSeInicializaEnPosicionDeCoordenadaNulas() {
         Jugador jugador = Jugador.getJugador();
 
-        Assert.assertEquals(0, jugador.getPosicion().getCoordenadaX());
-        Assert.assertEquals(0, jugador.getPosicion().getCoordenadaY());
+        Assert.assertEquals(new Posicion(0,0), jugador.getPosicion());
     }
 
     @Test

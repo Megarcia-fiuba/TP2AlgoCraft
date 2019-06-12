@@ -42,5 +42,8 @@ public class Jugador {
 		}
 	}
 
-
+    public void moverseEnMapa(Mapa mapa, Posicion posicion) {
+        mapa.ocuparPosicion(posicion);
+        this.posicion = posicion;
+    }
 }
