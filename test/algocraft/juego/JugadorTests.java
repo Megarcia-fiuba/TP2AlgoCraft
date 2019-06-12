@@ -71,7 +71,60 @@ public class JugadorTests {
 
         Assert.assertEquals(1, jugador.getMaterialesRecolectados().size());
     }
+    @Test
+    public void test06SeInicializaElJugadorEnElMapaEnLaCorrespondientePosicion(){
+        Mapa mapa = new Mapa();
+        Jugador jugador = Jugador.getJugador();
 
+        Assert.assertFalse(mapa.posicionOcupada(jugador.getPosicion()));
+        jugador.iniciarEnMapa(mapa);
 
+        Assert.assertTrue(mapa.posicionOcupada(jugador.getPosicion()));
+    }
+    @Test
+    public void test07ElJugadorPuedeMoverseHaciaArribaEnPosicionVacia(){
+        Mapa mapa = new Mapa();
+        Jugador jugador = Jugador.getJugador();
+        jugador.iniciarEnMapa(mapa);
+        Posicion posicionSuperior = new Posicion(0,1);
+
+        jugador.moverArriba(mapa);
+        Assert.assertEquals(posicionSuperior,jugador.getPosicion());
+    }
+//de la prueba anterior el jugador se inicializa en el mapa enla posicion (0,1)
+    @Test
+    public void test08ElJugadorPuedeMoverseHaciaAbajoEnPosicionVacia(){
+        Mapa mapa = new Mapa();
+        Jugador jugador = Jugador.getJugador();
+        jugador.iniciarEnMapa(mapa);
+        Posicion posicionInferior = new Posicion(0,0);
+
+        jugador.moverAbajo(mapa);
+        Assert.assertEquals(posicionInferior,jugador.getPosicion());
+    }
+    //de la prueba anterior el jugador se inicializa en el mapa enla posicion (0,0)
+
+    @Test
+    public void test09ElJugadorPuedeMoverseHaciaLaDerechaEnPosicionVacia(){
+        Mapa mapa = new Mapa();
+        Jugador jugador = Jugador.getJugador();
+        jugador.iniciarEnMapa(mapa);
+        Posicion posicionDerecha = new Posicion(1,0);
+
+        jugador.moverDerecha(mapa);
+        Assert.assertEquals(posicionDerecha,jugador.getPosicion());
+    }
+    //de la prueba anterior el jugador se inicializa en el mapa enla posicion (1,0)
+
+    @Test
+    public void test10ElJugadorPuedeMoverseHaciaLaIzquierdaEnPosicionVacia(){
+        Mapa mapa = new Mapa();
+        Jugador jugador = Jugador.getJugador();
+        jugador.iniciarEnMapa(mapa);
+        Posicion posicionIzquierda = new Posicion(0,0);
+
+        jugador.moverIzquierda(mapa);
+        Assert.assertEquals(posicionIzquierda,jugador.getPosicion());
+    }
 
 }

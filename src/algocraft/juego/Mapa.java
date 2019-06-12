@@ -42,4 +42,8 @@ public class Mapa {
         }
         return true;
     }
+
+    public void desocuparPosicion(Posicion posicion) {
+        posicionesOcupadas.remove(posicion);
+    }
 }
