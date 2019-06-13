@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import algocraft.juego.Mapa;
 
 //Los tests se corren en orden por ser singleton,
 //primero deben estar los tests que no modifican los atributos de jugador.
