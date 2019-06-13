@@ -42,5 +42,31 @@ public class Jugador {
 		}
 	}
 
+    public void moverseEnMapa(Mapa mapa, Posicion posicion) {
+        mapa.ocuparPosicion(posicion);
+        mapa.desocuparPosicion(this.posicion);
+        this.posicion = posicion;
+    }
 
+    public void iniciarEnMapa(Mapa mapa) {
+        mapa.ocuparPosicion(this.posicion);
+    }
+
+    public void moverArriba(Mapa mapa) {
+        this.moverseEnMapa(mapa,new Posicion(this.posicion.getCoordenadaX(),this.posicion.getCoordenadaY()+1));
+    }
+
+    public void moverAbajo(Mapa mapa) {
+        this.moverseEnMapa(mapa,new Posicion(this.posicion.getCoordenadaX(),this.posicion.getCoordenadaY()-1));
+    }
+
+    public void moverDerecha(Mapa mapa) {
+        this.moverseEnMapa(mapa,new Posicion(this.posicion.getCoordenadaX()+1,this.posicion.getCoordenadaY()));
+
+    }
+
+    public void moverIzquierda(Mapa mapa) {
+        this.moverseEnMapa(mapa,new Posicion(this.posicion.getCoordenadaX()-1,this.posicion.getCoordenadaY()));
+
+    }
 }
