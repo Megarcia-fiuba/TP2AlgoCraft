@@ -4,7 +4,7 @@ import algocraft.herramientas.Pico;
 import algocraft.herramientas.durabilidad.Durabilidad;
 import algocraft.herramientas.durabilidad.DurabilidadPiedra;
 
-public class Piedra extends Materializable implements PiezaDeConstruccionHerramientas{
+public class Piedra extends Materializable{
 
     public Piedra(){
         durabilidad = 30;
@@ -16,28 +16,8 @@ public class Piedra extends Materializable implements PiezaDeConstruccionHerrami
     }
 
     @Override
-    public boolean sirveParaMango() {
-        return false;
-    }
-
-    @Override
-    public boolean mismoMaterial(PiezaDeConstruccionHerramientas otraPieza) {
+    public boolean mismoMaterial(Materializable otraPieza) {
         return otraPieza.piezaIgual(this);
-    }
-
-    @Override
-    public boolean piezaIgual(Madera madera) {
-        return false;
-    }
-
-    @Override
-    public boolean esVacia() {
-        return false;
-    }
-
-    @Override
-    public Durabilidad obtenerTipoDurabilidad() {
-        return new DurabilidadPiedra();
     }
 
     @Override
@@ -46,7 +26,7 @@ public class Piedra extends Materializable implements PiezaDeConstruccionHerrami
     }
 
     @Override
-    public boolean piezaIgual(Metal metal) {
-        return false;
+    public boolean equals(Object obj) {
+        return this.mismoMaterial((Materializable) obj);
     }
 }

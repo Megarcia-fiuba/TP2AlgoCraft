@@ -27,4 +27,24 @@ public abstract class Materializable {
     public boolean estaRoto() {
     	return (durabilidad==0);
     }
+
+
+    abstract boolean mismoMaterial(Materializable otraPieza);
+
+    boolean piezaIgual(Madera madera){
+        return false;
+    }
+
+
+    boolean piezaIgual(Piedra piedra){
+        return false;
+    }
+
+    boolean piezaIgual(Metal metal){
+        return false;
+    }
+
+    boolean piezaIgual(Diamante diamante){
+        return false;
+    }
 }

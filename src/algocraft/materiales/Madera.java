@@ -6,7 +6,7 @@ import algocraft.herramientas.PicoFino;
 import algocraft.herramientas.durabilidad.Durabilidad;
 import algocraft.herramientas.durabilidad.DurabilidadMadera;
 
-public class Madera extends Materializable implements PiezaDeConstruccionHerramientas {
+public class Madera extends Materializable{
 
     public Madera(){
         durabilidad = 10;
@@ -17,13 +17,9 @@ public class Madera extends Materializable implements PiezaDeConstruccionHerrami
         durabilidad -= hacha.getFuerza();
     }
 
-    @Override
-    public boolean sirveParaMango() {
-        return true;
-    }
 
     @Override
-    public boolean mismoMaterial(PiezaDeConstruccionHerramientas otraPieza) {
+    public boolean mismoMaterial(Materializable otraPieza) {
         return otraPieza.piezaIgual(this);
     }
 
@@ -33,22 +29,7 @@ public class Madera extends Materializable implements PiezaDeConstruccionHerrami
     }
 
     @Override
-    public boolean esVacia() {
-        return false;
-    }
-
-    @Override
-    public Durabilidad obtenerTipoDurabilidad() {
-        return new DurabilidadMadera();
-    }
-
-    @Override
-    public boolean piezaIgual(Piedra piedra) {
-        return false;
-    }
-
-    @Override
-    public boolean piezaIgual(Metal metal) {
-        return false;
+    public boolean equals(Object obj) {
+        return this.mismoMaterial((Materializable) obj);
     }
 }

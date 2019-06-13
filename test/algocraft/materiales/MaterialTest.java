@@ -6,6 +6,7 @@ import algocraft.herramientas.PicoFino;
 import algocraft.herramientas.durabilidad.DurabilidadMadera;
 import algocraft.herramientas.durabilidad.DurabilidadMetal;
 import algocraft.herramientas.durabilidad.DurabilidadPiedra;
+import algocraft.utils.MatrizDefinida;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -333,5 +334,22 @@ public class MaterialTest {
 
     }
 
+    @Test
+    public void testIgualdadMateriales(){
+        Materializable piedra= new Piedra();
+        Materializable piedraB= new Piedra();
+        Materializable madera= new Madera();
+        Materializable maderaB= new Madera();
+        Materializable metal= new Metal();
+        Materializable metalB= new Metal();
+
+        Assert.assertEquals(madera,maderaB);
+        Assert.assertEquals(piedra,piedraB);
+        Assert.assertEquals(metal,metalB);
+        Assert.assertNotEquals(madera,piedra);
+        Assert.assertNotEquals(madera,metal);
+        Assert.assertNotEquals(metal,piedra);
+
+    }
 
 }

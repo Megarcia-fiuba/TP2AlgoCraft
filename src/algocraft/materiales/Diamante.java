@@ -13,4 +13,19 @@ public class Diamante extends Materializable {
         durabilidad -= picoFino.getFuerza();
         picoFino.desgastar(this);
     }
+
+    @Override
+    boolean mismoMaterial(Materializable otraPieza) {
+        return otraPieza.piezaIgual(this);
+    }
+
+    @Override
+    boolean piezaIgual(Diamante diamante) {
+        return true;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.mismoMaterial((Materializable)obj);
+    }
 }

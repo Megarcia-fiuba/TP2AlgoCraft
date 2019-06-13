@@ -1,10 +1,25 @@
 package algocraft.herramientas;
 
 import algocraft.excepciones.DurabilidadTerminadaException;
-import algocraft.materiales.Diamante;
-import algocraft.materiales.Materializable;
+import algocraft.materiales.*;
+import algocraft.utils.MatrizDefinida;
 
 public class PicoFino extends Herramienta {
+
+    /**
+     * Matriz que representa la forma de un PicoFino
+     */
+    public static final MatrizDefinida<Materializable> FORMACOMPLETA;
+
+    static{
+        FORMACOMPLETA= new MatrizDefinida<>(3,3);
+        FORMACOMPLETA.putValor(0,2,new Metal());
+        FORMACOMPLETA.putValor(1,2,new Metal());
+        FORMACOMPLETA.putValor(2,2,new Metal());
+        FORMACOMPLETA.putValor(0,1,new Piedra());
+        FORMACOMPLETA.putValor(1,1,new Madera());
+        FORMACOMPLETA.putValor(1,0,new Madera());
+    }
 
     private double durabilidad;
 
