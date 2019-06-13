@@ -21,6 +21,7 @@ public class ConstructorHerramientaTest {
 		mesa.putMaterial(1,2,new Madera());
 
 		Herramienta hacha= mesa.construir();
+		//hay que cambiar la forma de validacion
 
 		Assert.assertNotNull(hacha);
 		Assert.assertEquals(100,hacha.getDurabilidad(),0);
@@ -37,7 +38,7 @@ public class ConstructorHerramientaTest {
 		mesa.putMaterial(1,2,new Piedra());
 
 		Herramienta hacha= mesa.construir();
-
+		//hay que cambiar la forma de validacion
 		Assert.assertNotNull(hacha);
 		Assert.assertEquals(200,hacha.getDurabilidad(),0);
 
@@ -53,7 +54,7 @@ public class ConstructorHerramientaTest {
 		mesa.putMaterial(1,2,new Metal());
 
 		Herramienta hacha= mesa.construir();
-
+		//hay que cambiar la forma de validacion
 		Assert.assertNotNull(hacha);
 		Assert.assertEquals(400,hacha.getDurabilidad(),0);
 
@@ -70,7 +71,7 @@ public class ConstructorHerramientaTest {
 		mesa.putMaterial(1,0,new Madera());
 
 		Herramienta pico= mesa.construir();
-
+//hay que cambiar la forma de validacion
 		Assert.assertEquals(100,pico.getDurabilidad(),0);
 
 	}
@@ -86,7 +87,7 @@ public class ConstructorHerramientaTest {
 		mesa.putMaterial(1,0,new Madera());
 
 		Herramienta pico= mesa.construir();
-
+//hay que cambiar la forma de validacion
 		Assert.assertEquals(200,pico.getDurabilidad(),0);
 
 	}
@@ -101,7 +102,7 @@ public class ConstructorHerramientaTest {
 		mesa.putMaterial(1,0,new Madera());
 
 		Herramienta pico= mesa.construir();
-
+//hay que cambiar la forma de validacion
 		Assert.assertEquals(400,pico.getDurabilidad(),0);
 
 	}
@@ -117,7 +118,7 @@ public class ConstructorHerramientaTest {
 		mesa.putMaterial(0,1,new Piedra());
 
 		Herramienta picoFino= mesa.construir();
-
+//hay que cambiar la forma de validacion
 		Assert.assertEquals(1000,picoFino.getDurabilidad(),0);
 
 	}
