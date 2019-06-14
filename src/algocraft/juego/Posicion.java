@@ -38,4 +38,20 @@ public class Posicion {
             return false;
         return true;
     }
+
+    public Posicion getPosicionSuperior() {
+        return new Posicion(this.getCoordenadaX(),this.getCoordenadaY()+1);
+    }
+
+    public Posicion getPosicionInferior() {
+        return new Posicion(this.getCoordenadaX(),this.getCoordenadaY()-1);
+    }
+
+    public Posicion getPosicionDerecha() {
+        return new Posicion(this.getCoordenadaX()+1,this.getCoordenadaY());
+    }
+
+    public Posicion getPosicionIzquierda() {
+        return new Posicion(this.getCoordenadaX()-1,this.getCoordenadaY());
+    }
 }

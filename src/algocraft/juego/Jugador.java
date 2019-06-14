@@ -53,20 +53,19 @@ public class Jugador {
     }
 
     public void moverArriba(Mapa mapa) {
-        this.moverseEnMapa(mapa,new Posicion(this.posicion.getCoordenadaX(),this.posicion.getCoordenadaY()+1));
+        this.moverseEnMapa(mapa,this.posicion.getPosicionSuperior());
     }
 
     public void moverAbajo(Mapa mapa) {
-        this.moverseEnMapa(mapa,new Posicion(this.posicion.getCoordenadaX(),this.posicion.getCoordenadaY()-1));
+        this.moverseEnMapa(mapa,this.posicion.getPosicionInferior());
     }
 
     public void moverDerecha(Mapa mapa) {
-        this.moverseEnMapa(mapa,new Posicion(this.posicion.getCoordenadaX()+1,this.posicion.getCoordenadaY()));
-
+        this.moverseEnMapa(mapa,this.posicion.getPosicionDerecha());
     }
 
     public void moverIzquierda(Mapa mapa) {
-        this.moverseEnMapa(mapa,new Posicion(this.posicion.getCoordenadaX()-1,this.posicion.getCoordenadaY()));
+        this.moverseEnMapa(mapa,this.posicion.getPosicionIzquierda());
 
     }
 }
