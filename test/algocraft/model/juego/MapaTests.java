@@ -40,7 +40,7 @@ public class MapaTests {
     public void test04SePuedeOcuparPosicionPorJugador() {
         Mapa mapa = new Mapa();
         Posicion posicionAOcupar = new Posicion(1,2);
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
 
         Assert.assertFalse(mapa.posicionOcupada(posicionAOcupar));
         jugador.moverseEnMapa(mapa, posicionAOcupar);

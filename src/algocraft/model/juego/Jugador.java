@@ -10,21 +10,18 @@ import java.util.List;
 
 public class Jugador {
 
-    private static final Jugador JUGADOR = new Jugador();
     private Herramienta herramientaEnUso;
     private List<Herramienta> herramientas;
     private List<Materializable> materialesRecolectados;
     private Posicion posicion;
     
-    private Jugador(){
+    public Jugador(){
         materialesRecolectados = new ArrayList<>();
         posicion = new Posicion(0,0);
         herramientas = new ArrayList<>();
         herramientaEnUso = new Hacha(new DurabilidadMadera());
         herramientas.add(herramientaEnUso);
     }
-
-    public static Jugador getJugador() { return JUGADOR; }
 
     public List<Herramienta> getHerramientas() { return herramientas; }
 

@@ -4,28 +4,21 @@ import algocraft.model.materiales.Madera;
 import algocraft.model.materiales.Materializable;
 import algocraft.model.materiales.Piedra;
 import org.junit.Assert;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
-import algocraft.model.juego.Mapa;
 
-//Los tests se corren en orden por ser singleton,
-//primero deben estar los tests que no modifican los atributos de jugador.
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
 public class JugadorTests {
-
-    /******** Tests de inicializacion sin modificar atributos de Jugador ********/
 
     @Test
     public void test01JugadorSeInicializaConSoloUnaHerramienta() {
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
 
         Assert.assertEquals(1, jugador.getHerramientas().size());
     }
 
     @Test
     public void test02JugadorSeInicializaConHerramientaHachaDeMaderaEnInventario() {
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
 
         Assert.assertEquals(2, jugador.getHerramientaEnUso().getFuerza());
         Assert.assertEquals(100, jugador.getHerramientaEnUso().getDurabilidad(), 0);
@@ -33,19 +26,17 @@ public class JugadorTests {
 
     @Test
     public void test03JugadorSeInicializaEnPosicionDeCoordenadaNulas() {
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
 
         Assert.assertEquals(new Posicion(0,0), jugador.getPosicion());
     }
 
     @Test
     public void test04JugadorNoTieneMaterialesAlInicializarse() {
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
 
         Assert.assertEquals(0, jugador.getMaterialesRecolectados().size());
     }
-
-    /************************************************************************/
 
     @Test
     public void test05JugadorSeInicializaConHerramientaHachaDeMaderaEnInventario() {
@@ -55,7 +46,7 @@ public class JugadorTests {
         // enunciado, por lo tanto, solo el Hacha de Madera puede utilizarse contra el material Madera. Si el jugador obtiene
         // el material Madera luego de golpearla con su herramienta, entonces efectivamente la herramienta es un Hacha de Madera.
 
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
         Materializable madera = new Madera();
         Materializable piedra = new Piedra();
 
@@ -75,7 +66,7 @@ public class JugadorTests {
     @Test
     public void test06SeInicializaElJugadorEnElMapaEnLaCorrespondientePosicion(){
         Mapa mapa = new Mapa();
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
 
         Assert.assertFalse(mapa.posicionOcupada(jugador.getPosicion()));
         jugador.iniciarEnMapa(mapa);
@@ -85,45 +76,46 @@ public class JugadorTests {
     @Test
     public void test07ElJugadorPuedeMoverseHaciaArribaEnPosicionVacia(){
         Mapa mapa = new Mapa();
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
         jugador.iniciarEnMapa(mapa);
         Posicion posicionSuperior = new Posicion(0,1);
 
         jugador.moverArriba(mapa);
         Assert.assertEquals(posicionSuperior,jugador.getPosicion());
     }
-//de la prueba anterior el jugador se inicializa en el mapa enla posicion (0,1)
+
     @Test
     public void test08ElJugadorPuedeMoverseHaciaAbajoEnPosicionVacia(){
         Mapa mapa = new Mapa();
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
         jugador.iniciarEnMapa(mapa);
         Posicion posicionInferior = new Posicion(0,0);
 
+        jugador.moverArriba(mapa);
         jugador.moverAbajo(mapa);
+
         Assert.assertEquals(posicionInferior,jugador.getPosicion());
     }
-    //de la prueba anterior el jugador se inicializa en el mapa enla posicion (0,0)
 
     @Test
     public void test09ElJugadorPuedeMoverseHaciaLaDerechaEnPosicionVacia(){
         Mapa mapa = new Mapa();
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
         jugador.iniciarEnMapa(mapa);
         Posicion posicionDerecha = new Posicion(1,0);
 
         jugador.moverDerecha(mapa);
         Assert.assertEquals(posicionDerecha,jugador.getPosicion());
     }
-    //de la prueba anterior el jugador se inicializa en el mapa enla posicion (1,0)
 
     @Test
     public void test10ElJugadorPuedeMoverseHaciaLaIzquierdaEnPosicionVacia(){
         Mapa mapa = new Mapa();
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
         jugador.iniciarEnMapa(mapa);
         Posicion posicionIzquierda = new Posicion(0,0);
 
+        jugador.moverDerecha(mapa);
         jugador.moverIzquierda(mapa);
         Assert.assertEquals(posicionIzquierda,jugador.getPosicion());
     }

@@ -7,7 +7,7 @@ public class JuegoTests {
 
     @Test
     public void  test01ElJuegoInicializaConElJugadorUbicadoEnlaPosicionCorrespondiente(){
-        Jugador jugador = Jugador.getJugador();
+        Jugador jugador = new Jugador();
         Mapa mapa = new Mapa();
 
         Assert.assertFalse(mapa.posicionOcupada(jugador.getPosicion()));

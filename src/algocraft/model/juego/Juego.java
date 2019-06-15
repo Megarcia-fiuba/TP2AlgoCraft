@@ -9,7 +9,8 @@ import algocraft.model.materiales.Piedra;
 public class Juego {
 
     public Juego(Mapa mapa) {
-        Jugador.getJugador().iniciarEnMapa(mapa);
+        Jugador jugador = new Jugador();
+        jugador.iniciarEnMapa(mapa);
         for(int i = 0; i < 5; i++){
             new Madera().ocuparPosicionEnMapa(mapa,new Posicion(i,5));
             new Piedra().ocuparPosicionEnMapa(mapa,new Posicion(5,i));
