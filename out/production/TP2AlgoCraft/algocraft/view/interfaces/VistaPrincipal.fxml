@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="principalView" prefHeight="332.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaPrincipalController">
+   <children>
+      <ImageView fitHeight="349.0" fitWidth="600.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/fondo.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#fcfcfc" layoutX="95.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALGOCRAFT" textAlignment="CENTER" wrappingWidth="410.2060546875">
+         <font>
+            <Font name="Courier Bold" size="71.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Text>
+      <Button id="startButton" defaultButton="true" layoutX="271.0" layoutY="235.0" mnemonicParsing="false" text="START" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Courier" size="13.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>
