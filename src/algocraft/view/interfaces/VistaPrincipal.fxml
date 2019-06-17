@@ -9,8 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="principalView" prefHeight="332.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaPrincipalController">
+<AnchorPane id="principalView" fx:id="root" prefHeight="332.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaPrincipalController">
    <children>
       <ImageView fitHeight="349.0" fitWidth="600.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -25,7 +24,7 @@
             <DropShadow />
          </effect>
       </Text>
-      <Button id="startButton" defaultButton="true" layoutX="271.0" layoutY="235.0" mnemonicParsing="false" text="START" textOverrun="CENTER_ELLIPSIS">
+      <Button id="botonComenzar" fx:id="botonComenzar" defaultButton="true" layoutX="260.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleAccionBotonComenzar" text="COMENZAR" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Courier" size="13.0" />
          </font>
