@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaConstructorController">
+    <children>
+        <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="700.0">
+            <center>
+                <FlowPane fx:id="flowPaneCenter" prefHeight="500.0" prefWidth="400.0" alignment="CENTER">
+                    <GridPane fx:id="grillaConstructor" gridLinesVisible="true" prefHeight="300.0" prefWidth="300.0" >
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                    </GridPane>
+                </FlowPane>
+            </center>
+            <left>
+                <FlowPane fx:id="flowPaneLeft" prefHeight="500.0" prefWidth="300.0" alignment="CENTER">
+                    <GridPane fx:id="grillaMateriales" gridLinesVisible="true" prefHeight="400.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                    </GridPane>
+                </FlowPane>
+            </left>
+            <top>
+                <MenuBar prefHeight="34.0" prefWidth="790.0" BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Archivo">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Salir" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Ayuda">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Acerca de..." />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </top>
+            <bottom>
+                <VBox prefHeight="34.0" prefWidth="790.0" BorderPane.alignment="BOTTOM_LEFT" alignment="CENTER">
+                    <children>
+                        <Button id= "botonRegresar" fx:id="botonRegresar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonRegresar" text="Regresar" textAlignment="CENTER" textOverrun="CLIP" />
+                        <Button id= "botonConstruir" fx:id="botonConstruir" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonRegresar" text="Construir" textAlignment="CENTER" textOverrun="CLIP" />
+                    </children>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                    <BorderPane.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </BorderPane.margin>
+                </VBox>
+            </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>

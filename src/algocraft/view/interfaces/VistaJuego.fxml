@@ -60,6 +60,8 @@
             <VBox prefHeight="381.0" prefWidth="152.0" BorderPane.alignment="BOTTOM_LEFT">
                <children>
                   <Button fx:id="botonReiniciar" contentDisplay="CENTER" mnemonicParsing="false" text="Reiniciar" textAlignment="CENTER" textOverrun="CLIP" />
+                   <Button id= "botonHerramientas" fx:id="botonHerramientas" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonHerramientas" text="Herramientas" textAlignment="CENTER" textOverrun="CLIP" />
+                   <Button id= "constructorMateriales" fx:id="botonConstructor" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonConstructorHerramientas" text="Constructor" textAlignment="CENTER" textOverrun="CLIP" />
                </children>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />

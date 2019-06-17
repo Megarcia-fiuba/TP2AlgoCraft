@@ -19,9 +19,9 @@ public class VistaPrincipalController {
     @FXML
     public void handleAccionBotonComenzar(ActionEvent evento) throws IOException {
         Stage stage = (Stage) botonComenzar.getScene().getWindow();
-        Parent root = FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaJuego.fxml").toURL());
+//        Parent root = FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaJuego.fxml").toURL());
 
-        stage.setScene(new Scene(root));
+        stage.setScene(ProveedorEscena.getEscenaJuego());
         stage.show();
     }
 
