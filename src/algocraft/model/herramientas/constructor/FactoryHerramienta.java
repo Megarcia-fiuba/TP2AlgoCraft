@@ -8,16 +8,19 @@ import algocraft.model.herramientas.PicoFino;
 import algocraft.model.materiales.Materializable;
 import algocraft.model.utils.MatrizDefinida;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class FactoryHerramienta {
 
 
     public static Herramienta construirHerramienta(MatrizDefinida<Materializable> forma){
-        if(forma.equalShape(Hacha.FORMA)){
-            return new Hacha(FactoryDurabilidad.construirDurabilidadHacha(forma));
-        }else if(forma.equalShape(Pico.FORMA)){
-            return new Pico(FactoryDurabilidad.construirDurabilidadPico(forma));
-        }else if(forma.equal(PicoFino.FORMACOMPLETA)){
-            return new PicoFino();
+        List<ConstructorHerramienta> constructores= Arrays.asList(new ConstructorHacha(),
+                new ConstructorPico(), new ConstructorPicoFino());
+        for(ConstructorHerramienta constructor: constructores){
+            if(constructor.herramientaEsDeForma(forma)){
+                return constructor.construir(forma);
+            }
         }
         throw new FormaInvalidaException();
     }
