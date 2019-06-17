@@ -4,28 +4,38 @@ import algocraft.model.excepciones.PosicionInvalidaException;
 import algocraft.model.excepciones.PosicionOcupadaException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Mapa {
 
     private static final int MINIMA_POSICION_COORDENADA_X = 0;
     private static final int MINIMA_POSICION_COORDENADA_Y = 0;
-    private static final int MAXIMA_POSICION_COORDENADA_X = 10;
-    private static final int MAXIMA_POSICION_COORDENADA_Y = 10;
+    private static final int MAXIMA_POSICION_COORDENADA_X = 9;
+    private static final int MAXIMA_POSICION_COORDENADA_Y = 9;
 
-    private List<Posicion> posicionesOcupadas;
+    private Map<Posicion, Posicionable> posicionesOcupadas;
 
     public Mapa() {
-        posicionesOcupadas = new ArrayList<>();
+        posicionesOcupadas = new HashMap<>();
+    }
+
+    public Map<Posicion, Posicionable> getPosicionesOcupadas() {
+        return posicionesOcupadas;
     }
 
     public boolean posicionOcupada(Posicion posicion) {
-        return posicionesOcupadas.contains(posicion);
+        return posicionesOcupadas.containsKey(posicion);
     }
 
-    public void ocuparPosicion(Posicion posicion) {
+    public void ocuparPosicion(Posicion posicion, Posicionable posicionable) {
         validarPosicion(posicion);
-        posicionesOcupadas.add(posicion);
+        posicionesOcupadas.put(posicion, posicionable);
+    }
+
+    public void desocuparPosicion(Posicion posicion) {
+        posicionesOcupadas.remove(posicion);
     }
 
     private boolean validarPosicion(Posicion posicion) {
@@ -41,9 +51,5 @@ public class Mapa {
             throw new PosicionOcupadaException();
         }
         return true;
-    }
-
-    public void desocuparPosicion(Posicion posicion) {
-        posicionesOcupadas.remove(posicion);
     }
 }

@@ -4,18 +4,19 @@ import algocraft.model.herramientas.Hacha;
 import algocraft.model.herramientas.Herramienta;
 import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
 import algocraft.model.materiales.Materializable;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jugador {
+public class Jugador extends Posicionable {
 
     private Herramienta herramientaEnUso;
     private List<Herramienta> herramientas;
     private List<Materializable> materialesRecolectados;
-    private Posicion posicion;
+    private String iconoPath = "../view/imagenes/jugador.png";
     
-    public Jugador(){
+    public Jugador() {
         materialesRecolectados = new ArrayList<>();
         posicion = new Posicion(0,0);
         herramientas = new ArrayList<>();
@@ -27,11 +28,12 @@ public class Jugador {
 
     public Herramienta getHerramientaEnUso() { return herramientaEnUso; }
 
-    public Posicion getPosicion() { return posicion; }
-
     public List<Materializable> getMaterialesRecolectados() { return materialesRecolectados; }
 
-	public void usarHacha(Materializable material) {
+    @Override
+    public String getIconoPath() { return this.iconoPath; }
+
+    public void usarHacha(Materializable material) {
 		if(material.estaRoto()) {
 			materialesRecolectados.add(material);
 		} else {
@@ -40,13 +42,13 @@ public class Jugador {
 	}
 
     public void moverseEnMapa(Mapa mapa, Posicion posicion) {
-        mapa.ocuparPosicion(posicion);
+        mapa.ocuparPosicion(posicion, this);
         mapa.desocuparPosicion(this.posicion);
         this.posicion = posicion;
     }
 
     public void iniciarEnMapa(Mapa mapa) {
-        mapa.ocuparPosicion(this.posicion);
+        mapa.ocuparPosicion(this.posicion, this);
     }
 
     public void moverArriba(Mapa mapa) {
@@ -62,7 +64,6 @@ public class Jugador {
     }
 
     public void moverIzquierda(Mapa mapa) {
-        this.moverseEnMapa(mapa,this.posicion.getPosicionIzquierda());
-
+        this.moverseEnMapa(mapa, this.posicion.getPosicionIzquierda());
     }
 }

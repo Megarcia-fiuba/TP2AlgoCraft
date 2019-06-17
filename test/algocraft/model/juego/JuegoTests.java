@@ -14,7 +14,6 @@ public class JuegoTests {
 
         Juego juego = new Juego(mapa);
         Assert.assertTrue(mapa.posicionOcupada(jugador.getPosicion()));
-
     }
     @Test
     //posicion central es aquella que al menos una de sus coordenadas es 5.
@@ -26,7 +25,7 @@ public class JuegoTests {
         }
         Juego juego = new Juego(mapa);
 
-        for(int i = 0; i <= 10; i++){
+        for(int i = 0; i <= 9; i++){
             Assert.assertTrue(mapa.posicionOcupada(new Posicion(5,i)));
             Assert.assertTrue(mapa.posicionOcupada(new Posicion(i,5)));
         }

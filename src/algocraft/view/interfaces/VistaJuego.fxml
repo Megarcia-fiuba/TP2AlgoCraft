@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaJuegoController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="800.0">
+      <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="800.0">
          <center>
             <GridPane fx:id="grillaMapa" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
               <columnConstraints>

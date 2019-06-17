@@ -1,15 +1,15 @@
 package algocraft.model.materiales;
 
+import algocraft.model.juego.Posicionable;
 import algocraft.model.herramientas.Hacha;
 import algocraft.model.herramientas.Pico;
 import algocraft.model.herramientas.PicoFino;
 import algocraft.model.juego.Mapa;
 import algocraft.model.juego.Posicion;
 
-public abstract class Materializable {
+public abstract class Materializable extends Posicionable {
     
 	protected int durabilidad;
-	protected Posicion posicion;
 
     public void recibirGolpe(Hacha hacha) {
     	
@@ -32,27 +32,26 @@ public abstract class Materializable {
     }
 
 
-    abstract boolean mismoMaterial(Materializable otraPieza);
+    public abstract boolean mismoMaterial(Materializable otraPieza);
 
-    boolean piezaIgual(Madera madera){
+    public boolean piezaIgual(Madera madera){
         return false;
     }
 
-
-    boolean piezaIgual(Piedra piedra){
+    public boolean piezaIgual(Piedra piedra){
         return false;
     }
 
-    boolean piezaIgual(Metal metal){
+    public boolean piezaIgual(Metal metal){
         return false;
     }
 
-    boolean piezaIgual(Diamante diamante){
+    public boolean piezaIgual(Diamante diamante){
         return false;
     }
 
     public void ocuparPosicionEnMapa(Mapa mapa, Posicion posicion) {
-        mapa.ocuparPosicion(posicion);
+        mapa.ocuparPosicion(posicion, this);
         this.posicion = posicion;
     }
 }

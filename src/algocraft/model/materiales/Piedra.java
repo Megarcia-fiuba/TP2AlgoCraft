@@ -4,6 +4,8 @@ import algocraft.model.herramientas.Pico;
 
 public class Piedra extends Materializable{
 
+    private String iconoPath = "../view/imagenes/piedra.png";
+
     public Piedra(){
         durabilidad = 30;
     }
@@ -26,5 +28,10 @@ public class Piedra extends Materializable{
     @Override
     public boolean equals(Object obj) {
         return this.mismoMaterial((Materializable) obj);
+    }
+
+    @Override
+    public String getIconoPath() {
+        return this.iconoPath;
     }
 }

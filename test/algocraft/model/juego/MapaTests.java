@@ -15,25 +15,26 @@ public class MapaTests {
         Posicion posicionAOcupar = new Posicion(5,5);
         Assert.assertFalse(mapa.posicionOcupada(posicionAOcupar));
 
-        mapa.ocuparPosicion(posicionAOcupar);
+        mapa.ocuparPosicion(posicionAOcupar, new Jugador());
         Assert.assertTrue(mapa.posicionOcupada(posicionAOcupar));
     }
 
     @Test(expected = PosicionOcupadaException.class)
     public void test02NoSePuedeOcuparPosicionOcupada() {
         Mapa mapa = new Mapa();
+        Posicionable jugador = new Jugador();
         Posicion posicionAOcupar = new Posicion(5,5);
         Assert.assertFalse(mapa.posicionOcupada(posicionAOcupar));
 
-        mapa.ocuparPosicion(posicionAOcupar);
-        mapa.ocuparPosicion(posicionAOcupar);
+        mapa.ocuparPosicion(posicionAOcupar, jugador);
+        mapa.ocuparPosicion(posicionAOcupar, jugador);
     }
 
     @Test(expected = PosicionInvalidaException.class)
     public void test03NoSePuedeOcuparPosicionesInexistentesEnMapa() {
         Mapa mapa = new Mapa();
 
-        mapa.ocuparPosicion(new Posicion(11,11));
+        mapa.ocuparPosicion(new Posicion(11,11), new Jugador());
     }
 
     @Test

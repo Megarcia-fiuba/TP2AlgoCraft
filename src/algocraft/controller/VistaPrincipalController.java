@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -17,11 +18,8 @@ public class VistaPrincipalController {
 
     @FXML
     public void handleAccionBotonComenzar(ActionEvent evento) throws IOException {
-        Stage stage;
-        Parent root;
-
-        stage = (Stage) botonComenzar.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("../view/interfaces/VistaJuego.fxml"));
+        Stage stage = (Stage) botonComenzar.getScene().getWindow();
+        Parent root = FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaJuego.fxml").toURL());
 
         stage.setScene(new Scene(root));
         stage.show();
