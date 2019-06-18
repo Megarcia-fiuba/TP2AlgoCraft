@@ -69,4 +69,14 @@ public class DurabilidadPiedra extends Durabilidad {
     public boolean romperMaterial(Metal metal) {
         return true;
     }
+
+    @Override
+    public String getIconoPath(Hacha hacha) {
+        return "../view/imagenes/hachaPiedra.jpg";
+    }
+
+    @Override
+    public String getIconoPath(Pico pico) {
+        return "../view/imagenes/picoPiedra.png";
+    }
 }

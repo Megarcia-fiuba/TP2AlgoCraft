@@ -33,6 +33,11 @@ public class Pico extends HerramientaConMaterial{
         materializable.recibirGolpe(this);
     }
 
+    @Override
+    public String getIconoPath() {
+        return durabilidad.getIconoPath(this);
+    }
+
     public int romperMaterial(Metal metal) {
         if(durabilidad.romperMaterial(metal)){
             return this.getFuerza();

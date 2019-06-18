@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaJuegoController">
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaJuegoController">
    <children>
       <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="800.0">
          <center>
@@ -57,11 +61,11 @@
             </MenuBar>
          </top>
          <left>
-            <VBox prefHeight="381.0" prefWidth="152.0" BorderPane.alignment="BOTTOM_LEFT">
+            <VBox alignment="CENTER" prefHeight="381.0" prefWidth="152.0" spacing="30.0" BorderPane.alignment="BOTTOM_LEFT">
                <children>
                   <Button fx:id="botonReiniciar" contentDisplay="CENTER" mnemonicParsing="false" text="Reiniciar" textAlignment="CENTER" textOverrun="CLIP" />
-                   <Button id= "botonHerramientas" fx:id="botonHerramientas" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonHerramientas" text="Herramientas" textAlignment="CENTER" textOverrun="CLIP" />
-                   <Button id= "constructorMateriales" fx:id="botonConstructor" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonConstructorHerramientas" text="Constructor" textAlignment="CENTER" textOverrun="CLIP" />
+                   <Button id="botonHerramientas" fx:id="botonHerramientas" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonHerramientas" text="Herramientas" textAlignment="CENTER" textOverrun="CLIP" />
+                   <Button id="constructorMateriales" fx:id="botonConstructor" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonConstructorHerramientas" text="Constructor" textAlignment="CENTER" textOverrun="CLIP" />
                </children>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />

@@ -37,13 +37,11 @@ public class VistaConstructorController implements Initializable {
 
     private void cargarMateriales() {
         List<Materializable> materiales = VistaJuegoController.getJuego().getJugador().getMaterialesRecolectados();
-        materiales.forEach(material -> {
-            ImageView icono = new ImageView(getClass().getResource(material.getIconoPath()).toString());
+        for(int i = 0; i < materiales.size(); i++){
+            ImageView icono = new ImageView(getClass().getResource(materiales.get(i).getIconoPath()).toString());
             icono.setFitHeight(50);
             icono.setFitWidth(50);
-            //Esto no funciona porque indexOf() devuelve la misma posicion cuando encuentra un material de la misma clase que "material"
-            int posicion = materiales.indexOf(material);
-            grillaMateriales.add(icono,posicion %2,(posicion-posicion%2)/2);
-        });
+            grillaMateriales.add(icono,i %2,(i-i%2)/2);
+        }
     }
 }

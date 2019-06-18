@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaConstructorController">
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaConstructorController">
     <children>
         <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="700.0">
             <center>
-                <FlowPane fx:id="flowPaneCenter" prefHeight="500.0" prefWidth="400.0" alignment="CENTER">
-                    <GridPane fx:id="grillaConstructor" gridLinesVisible="true" prefHeight="300.0" prefWidth="300.0" >
+                <FlowPane fx:id="flowPaneCenter" alignment="CENTER" prefHeight="500.0" prefWidth="400.0">
+               <Label text="CONSTRUCTOR DE HERRAMIENTAS">
+                  <padding>
+                     <Insets bottom="10.0" />
+                  </padding>
+               </Label>
+                    <GridPane fx:id="grillaConstructor" gridLinesVisible="true" prefHeight="300.0" prefWidth="300.0">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,7 +40,18 @@
                 </FlowPane>
             </center>
             <left>
-                <FlowPane fx:id="flowPaneLeft" prefHeight="500.0" prefWidth="300.0" alignment="CENTER">
+                <FlowPane fx:id="flowPaneLeft" alignment="CENTER" orientation="VERTICAL" prefHeight="500.0" prefWidth="300.0">
+               <Label alignment="CENTER" contentDisplay="CENTER" text="MATERIALES">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <padding>
+                     <Insets bottom="10.0" />
+                  </padding>
+                  <FlowPane.margin>
+                     <Insets left="40.0" />
+                  </FlowPane.margin>
+               </Label>
                     <GridPane fx:id="grillaMateriales" gridLinesVisible="true" prefHeight="400.0" prefWidth="150.0" BorderPane.alignment="CENTER">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -63,10 +86,13 @@
                 </MenuBar>
             </top>
             <bottom>
-                <VBox prefHeight="34.0" prefWidth="790.0" BorderPane.alignment="BOTTOM_LEFT" alignment="CENTER">
+                <FlowPane alignment="CENTER" hgap="30.0" prefHeight="34.0" prefWidth="790.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button id= "botonRegresar" fx:id="botonRegresar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonRegresar" text="Regresar" textAlignment="CENTER" textOverrun="CLIP" />
-                        <Button id= "botonConstruir" fx:id="botonConstruir" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonRegresar" text="Construir" textAlignment="CENTER" textOverrun="CLIP" />
+                        <Button id="botonRegresar" fx:id="botonRegresar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonRegresar" text="Regresar" textAlignment="CENTER" textOverrun="CLIP" />
+                        <Button id="botonConstruir" fx:id="botonConstruir" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonRegresar" text="Construir" textAlignment="CENTER" textOverrun="CLIP">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin></Button>
                     </children>
                     <cursor>
                         <Cursor fx:constant="DEFAULT" />
@@ -74,7 +100,7 @@
                     <BorderPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                     </BorderPane.margin>
-                </VBox>
+                </FlowPane>
             </bottom>
         </BorderPane>
     </children>
