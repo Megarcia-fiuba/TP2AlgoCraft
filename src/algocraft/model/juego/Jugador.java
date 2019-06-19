@@ -15,10 +15,13 @@ public class Jugador extends Posicionable {
     private List<Herramienta> herramientas;
     private List<Materializable> materialesRecolectados;
     private String iconoPath = "../view/imagenes/jugador.png";
+    private Orientacion orientacion;
+
     
     public Jugador() {
         materialesRecolectados = new ArrayList<>();
         posicion = new Posicion(0,0);
+        orientacion= new Orientacion();
         herramientas = new ArrayList<>();
         herramientaEnUso = new Hacha(new DurabilidadMadera());
         herramientas.add(herramientaEnUso);
@@ -52,18 +55,26 @@ public class Jugador extends Posicionable {
     }
 
     public void moverArriba(Mapa mapa) {
+        this.orientacion.mirarNorte();
         this.moverseEnMapa(mapa,this.posicion.getPosicionSuperior());
     }
 
     public void moverAbajo(Mapa mapa) {
+        this.orientacion.mirarSur();
         this.moverseEnMapa(mapa,this.posicion.getPosicionInferior());
     }
 
     public void moverDerecha(Mapa mapa) {
+        this.orientacion.mirarEste();
         this.moverseEnMapa(mapa,this.posicion.getPosicionDerecha());
     }
 
     public void moverIzquierda(Mapa mapa) {
+        this.orientacion.miraroeste();
         this.moverseEnMapa(mapa, this.posicion.getPosicionIzquierda());
+    }
+
+    public void usarHerramientaContraPosicionable(Mapa mapa){
+        this.herramientaEnUso.usar((Materializable) mapa.obtenerElementoEnPosicion(this.posicion.mirandoA(this.orientacion)));
     }
 }

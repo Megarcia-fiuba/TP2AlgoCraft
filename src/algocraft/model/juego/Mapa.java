@@ -52,4 +52,8 @@ public class Mapa {
         }
         return true;
     }
+
+    public Posicionable obtenerElementoEnPosicion(Posicion posicion){
+        return posicionesOcupadas.get(posicion);
+    }
 }

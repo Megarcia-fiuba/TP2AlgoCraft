@@ -40,11 +40,11 @@ public class Posicion {
     }
 
     public Posicion getPosicionSuperior() {
-        return new Posicion(this.getCoordenadaX(),this.getCoordenadaY()+1);
+        return new Posicion(this.getCoordenadaX(),this.getCoordenadaY()-1);
     }
 
     public Posicion getPosicionInferior() {
-        return new Posicion(this.getCoordenadaX(),this.getCoordenadaY()-1);
+        return new Posicion(this.getCoordenadaX(),this.getCoordenadaY()+1);
     }
 
     public Posicion getPosicionDerecha() {
@@ -53,5 +53,9 @@ public class Posicion {
 
     public Posicion getPosicionIzquierda() {
         return new Posicion(this.getCoordenadaX()-1,this.getCoordenadaY());
+    }
+
+    public Posicion mirandoA(Orientacion orientacion){
+        return new Posicion(this.coordenadaX+orientacion.getDireccionX(),this.coordenadaY+orientacion.getDirecctionY());
     }
 }

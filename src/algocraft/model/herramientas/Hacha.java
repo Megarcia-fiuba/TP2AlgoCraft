@@ -30,6 +30,7 @@ public class Hacha extends HerramientaConMaterial {
     public void usar(Materializable materializable) {
         durabilidad.desgastar(this);
         materializable.recibirGolpe(this);
+        System.out.println("funciona");
     }
 
     @Override

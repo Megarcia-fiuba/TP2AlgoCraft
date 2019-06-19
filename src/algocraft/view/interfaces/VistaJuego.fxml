@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaJuegoController">
+<AnchorPane onKeyPressed="#handleOnKeyPress" fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="algocraft.controller.VistaJuegoController" >
    <children>
       <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="800.0">
          <center>
