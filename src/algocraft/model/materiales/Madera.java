@@ -6,6 +6,8 @@ public class Madera extends Materializable{
 
     private String iconoPath = "../view/imagenes/madera.png";
 
+    private String iconoPathMaderaRota = "../view/imagenes/maderaRota.png";
+
     public Madera(){
         durabilidad = 10;
     }
@@ -33,6 +35,6 @@ public class Madera extends Materializable{
 
     @Override
     public String getIconoPath() {
-        return this.iconoPath;
+        return(this.durabilidad<=0)? this.iconoPathMaderaRota: this.iconoPath;
     }
 }

@@ -72,23 +72,20 @@ public class VistaJuegoController implements Initializable {
 
     @FXML
     public void handleOnKeyPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN ||
-                event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT) {
-            if (event.getCode() == KeyCode.UP) {
-                juego.getJugador().moverArriba(juego.getMapa());
-            } else if (event.getCode() == KeyCode.DOWN) {
-                juego.getJugador().moverAbajo(juego.getMapa());
-            } else if (event.getCode() == KeyCode.LEFT) {
-                juego.getJugador().moverIzquierda(juego.getMapa());
-            } else if (event.getCode() == KeyCode.RIGHT) {
-                juego.getJugador().moverDerecha(juego.getMapa());
-            }
-            grillaMapa.getChildren().retainAll(grillaMapa.getChildren().get(0));
-            this.posicionarElementosEnMapa();
-            System.out.println("se mueve el jugador");
-        }else if(event.getCode()==KeyCode.C){
+
+        if (event.getCode() == KeyCode.UP) {
+            juego.getJugador().moverArriba(juego.getMapa());
+        } else if (event.getCode() == KeyCode.DOWN) {
+            juego.getJugador().moverAbajo(juego.getMapa());
+        } else if (event.getCode() == KeyCode.LEFT) {
+            juego.getJugador().moverIzquierda(juego.getMapa());
+        } else if (event.getCode() == KeyCode.RIGHT) {
+            juego.getJugador().moverDerecha(juego.getMapa());
+        } else if (event.getCode() == KeyCode.C) {
             juego.getJugador().usarHerramientaContraPosicionable(juego.getMapa());
         }
+        grillaMapa.getChildren().retainAll(grillaMapa.getChildren().get(0));
+        this.posicionarElementosEnMapa();
         event.consume();
     }
 }

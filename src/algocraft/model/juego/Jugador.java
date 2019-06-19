@@ -15,6 +15,10 @@ public class Jugador extends Posicionable {
     private List<Herramienta> herramientas;
     private List<Materializable> materialesRecolectados;
     private String iconoPath = "../view/imagenes/jugador.png";
+    private String iconoPathNorte = "../view/imagenes/jugadorNorte.png";
+    private String iconoPathSur = "../view/imagenes/jugadorSur.png";
+    private String iconoPathEste = "../view/imagenes/jugadorEste.png";
+    private String iconoPathOeste = "../view/imagenes/jugadorOeste.png";
     private Orientacion orientacion;
 
     
@@ -34,7 +38,18 @@ public class Jugador extends Posicionable {
     public List<Materializable> getMaterialesRecolectados() { return materialesRecolectados; }
 
     @Override
-    public String getIconoPath() { return this.iconoPath; }
+    public String getIconoPath() {
+        if (this.orientacion.getDirecctionY()==0 && this.orientacion.getDireccionX()==1){
+            return this.iconoPathEste;
+        }else if (this.orientacion.getDirecctionY()==0 && this.orientacion.getDireccionX()==-1){
+            return this.iconoPathOeste;
+        }else if (this.orientacion.getDirecctionY()==1 && this.orientacion.getDireccionX()==0){
+            return this.iconoPathSur;
+        }else if (this.orientacion.getDirecctionY()==-1 && this.orientacion.getDireccionX()==0){
+            return this.iconoPathNorte;
+        }
+
+        return this.iconoPathSur; }
 
     public void usarHacha(Materializable material) {
 		if(material.estaRoto()) {
