@@ -22,4 +22,9 @@ public class ProveedorEscena{
     public static Scene getEscenaConstructor() throws IOException{
         return  new Scene(FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaConstructor.fxml").toURL()));
     }
+    
+
+    public static Scene getEscenaReiniciada() throws IOException {
+        return new Scene(FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaJuego.fxml").toURL()));
+    }
 }

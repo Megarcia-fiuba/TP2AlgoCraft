@@ -10,7 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -20,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class VistaJuegoController implements Initializable {
@@ -31,6 +35,8 @@ public class VistaJuegoController implements Initializable {
     private Button botonHerramientas;
     @FXML
     private Button botonConstructor;
+    @FXML
+    private Button botonReiniciar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -87,5 +93,47 @@ public class VistaJuegoController implements Initializable {
         grillaMapa.getChildren().retainAll(grillaMapa.getChildren().get(0));
         this.posicionarElementosEnMapa();
         event.consume();
+    }
+    
+    @FXML
+    public void handleAccionBotonReiniciar(ActionEvent evento) throws IOException {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Reiniciar");
+        alert.setHeaderText(null);
+        String mensaje = "Esta seguro que desea reiniciar juego?";
+        alert.setContentText(mensaje);
+        Optional <ButtonType> action = alert.showAndWait();
+        
+        if(action.get() == ButtonType.OK) {
+        	Stage stage = (Stage) botonReiniciar.getScene().getWindow();
+            stage.setScene(ProveedorEscena.getEscenaReiniciada());
+        	stage.show();
+        }
+    }
+    
+    @FXML
+    public void handleAccionSalir(ActionEvent evento) throws IOException {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Salir");
+        alert.setHeaderText(null);
+        String mensaje = "Esta seguro que desea salir del juego?";
+        alert.setContentText(mensaje);
+        Optional <ButtonType> action = alert.showAndWait();
+        
+        if(action.get() == ButtonType.OK) {
+        	System.exit(0);
+        }        
+    }
+    
+    @FXML
+    public void handleAccionAyuda(ActionEvent evento) throws IOException {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Acerca de...");
+        alert.setHeaderText("Reglas de Juego:");
+        String mensaje = "Mueva al jugador usando las flechas del teclado\nPrecione la letra C para golpear un material\nSeleccione"
+        		+ " 'Herramientas' para visuarizar y seleccionar la herramienta deseada\nPara construir una herramienta"
+        		+ " seleccion 'Construir'";
+        alert.setContentText(mensaje);
+        alert.show();
     }
 }
