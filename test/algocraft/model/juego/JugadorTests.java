@@ -78,8 +78,9 @@ public class JugadorTests {
         Mapa mapa = new Mapa();
         Jugador jugador = new Jugador();
         jugador.iniciarEnMapa(mapa);
-        Posicion posicionSuperior = new Posicion(0,1);
+        Posicion posicionSuperior = new Posicion(0,0);
 
+        jugador.moverAbajo(mapa);
         jugador.moverArriba(mapa);
         Assert.assertEquals(posicionSuperior,jugador.getPosicion());
     }
@@ -91,8 +92,9 @@ public class JugadorTests {
         jugador.iniciarEnMapa(mapa);
         Posicion posicionInferior = new Posicion(0,0);
 
-        jugador.moverArriba(mapa);
         jugador.moverAbajo(mapa);
+        jugador.moverArriba(mapa);
+
 
         Assert.assertEquals(posicionInferior,jugador.getPosicion());
     }

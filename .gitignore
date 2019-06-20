@@ -6,6 +6,7 @@ tmp/
 .project
 .settings/
 bin/
+out/
 build.xml.old
 *.jar
 # Eclipse
