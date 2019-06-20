@@ -3,6 +3,8 @@ package algocraft.model.materiales;
 import algocraft.model.herramientas.Pico;
 
 public class Metal extends Materializable{
+
+    private String iconoPath = "../view/imagenes/metal.png";
 	
     public Metal(){
         durabilidad = 50;
@@ -26,5 +28,10 @@ public class Metal extends Materializable{
     @Override
     public boolean equals(Object obj) {
         return this.mismoMaterial((Materializable) obj);
+    }
+
+    @Override
+    public String getIconoPath() {
+        return this.iconoPath;
     }
 }

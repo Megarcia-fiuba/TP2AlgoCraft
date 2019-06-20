@@ -25,4 +25,7 @@ public abstract class Durabilidad{
     	return false;
     }
 
+    public abstract String getIconoPath(Hacha hacha);
+
+    public abstract String getIconoPath(Pico pico);
 }

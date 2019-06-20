@@ -1,10 +1,12 @@
 package algocraft.view;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Aplicacion extends Application {
 
@@ -12,17 +14,18 @@ public class Aplicacion extends Application {
         launch(args);
     }
 
-
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("TP2 AlgoCraft");
+    public void start(Stage stage) throws Exception {
+        stage.setTitle("TP2 AlgoCraft");
 
-        Button btn = new Button();
-        btn.setText("Comenzar");
+        stage.setScene(crearVentanaPrincipal(stage));
 
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 250));
-        primaryStage.show();
+        stage.show();
     }
+
+    private Scene crearVentanaPrincipal(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("interfaces/VistaPrincipal.fxml"));
+        return new Scene(root);
+    }
+
 }

@@ -47,4 +47,14 @@ public class DurabilidadMetal extends Durabilidad {
             valor = 0.0;
         }
     }
+
+    @Override
+    public String getIconoPath(Hacha hacha) {
+        return "../view/imagenes/hachaMetal.jpg";
+    }
+
+    @Override
+    public String getIconoPath(Pico pico) {
+        return "../view/imagenes/picoMetal.png";
+    }
 }
