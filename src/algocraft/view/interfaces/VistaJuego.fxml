@@ -49,10 +49,10 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Archivo">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Salir" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleAccionSalir" text="Salir" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Ayuda">
+                <Menu mnemonicParsing="false" onAction="#handleAccionAyuda" text="Ayuda">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Acerca de..." />
                   </items>
@@ -63,7 +63,7 @@
          <left>
             <VBox alignment="CENTER" prefHeight="381.0" prefWidth="152.0" spacing="30.0" BorderPane.alignment="BOTTOM_LEFT">
                <children>
-                  <Button fx:id="botonReiniciar" contentDisplay="CENTER" mnemonicParsing="false" text="Reiniciar" textAlignment="CENTER" textOverrun="CLIP" />
+                  <Button fx:id="botonReiniciar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonReiniciar" text="Reiniciar" textAlignment="CENTER" textOverrun="CLIP" />
                    <Button id="botonHerramientas" fx:id="botonHerramientas" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonHerramientas" text="Herramientas" textAlignment="CENTER" textOverrun="CLIP" />
                    <Button id="constructorMateriales" fx:id="botonConstructor" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonConstructorHerramientas" text="Constructor" textAlignment="CENTER" textOverrun="CLIP" />
                </children>
