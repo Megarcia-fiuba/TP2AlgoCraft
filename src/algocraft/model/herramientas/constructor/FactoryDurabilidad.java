@@ -8,26 +8,33 @@ import algocraft.model.herramientas.durabilidad.DurabilidadPiedra;
 import algocraft.model.materiales.Materializable;
 import algocraft.model.utils.MatrizDefinida;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class FactoryDurabilidad {
 
-    public static Durabilidad construirDurabilidadHacha(MatrizDefinida<Materializable> forma){
-        if(forma.equal(DurabilidadMadera.FORMAHACHA)){
-            return new DurabilidadMadera();
-        }else if(forma.equal(DurabilidadPiedra.FORMAHACHA)){
-            return new DurabilidadPiedra();
-        }else if(forma.equal(DurabilidadMetal.FORMAHACHA)){
-            return new DurabilidadMetal();
+    public static Durabilidad construirDurabilidadHacha(MatrizDefinida<Materializable> forma) {
+
+        List<ConstructorDurabilidad> constructores = Arrays.asList(new ConstructorDurabilidadMadera(),
+                new ConstructorDurabilidadPiedra(), new ConstructorDurabilidadMetal());
+
+        for (ConstructorDurabilidad constructor : constructores) {
+            if (constructor.esUnHachaDeEsteMaterial(forma)) {
+                return constructor.construir();
+            }
         }
         throw new FormaInvalidaException();
     }
 
-    public static Durabilidad construirDurabilidadPico(MatrizDefinida<Materializable> forma){
-        if(forma.equal(DurabilidadMadera.FORMAPICO)){
-            return new DurabilidadMadera();
-        }else if(forma.equal(DurabilidadPiedra.FORMAPICO)){
-            return new DurabilidadPiedra();
-        }else if(forma.equal(DurabilidadMetal.FORMAPICO)){
-            return new DurabilidadMetal();
+    public static Durabilidad construirDurabilidadPico(MatrizDefinida<Materializable> forma) {
+
+        List<ConstructorDurabilidad> constructores = Arrays.asList(new ConstructorDurabilidadMadera(),
+                new ConstructorDurabilidadPiedra(), new ConstructorDurabilidadMetal());
+
+        for (ConstructorDurabilidad constructor : constructores) {
+            if (constructor.esUnPicoDeEsteMaterial(forma)) {
+                return constructor.construir();
+            }
         }
         throw new FormaInvalidaException();
     }
