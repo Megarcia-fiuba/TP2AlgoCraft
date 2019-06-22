@@ -90,9 +90,13 @@ public class VistaJuegoController implements Initializable {
         } else if (event.getCode() == KeyCode.C) {
             juego.getJugador().usarHerramientaContraPosicionable(juego.getMapa());
         }
+        refresh();
+        event.consume();
+    }
+
+    private void refresh(){
         grillaMapa.getChildren().retainAll(grillaMapa.getChildren().get(0));
         this.posicionarElementosEnMapa();
-        event.consume();
     }
     
     @FXML

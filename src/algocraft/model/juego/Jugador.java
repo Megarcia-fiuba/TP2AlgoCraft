@@ -1,5 +1,6 @@
 package algocraft.model.juego;
 
+import algocraft.model.excepciones.PosicionOcupadaException;
 import algocraft.model.herramientas.Hacha;
 import algocraft.model.herramientas.Herramienta;
 import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
@@ -60,9 +61,20 @@ public class Jugador extends Posicionable {
 	}
 
     public void moverseEnMapa(Mapa mapa, Posicion posicion) {
-        mapa.ocuparPosicion(posicion, this);
-        mapa.desocuparPosicion(this.posicion);
-        this.posicion = posicion;
+        try {
+            mapa.ocuparPosicion(posicion, this);
+            mapa.desocuparPosicion(this.posicion);
+            this.posicion = posicion;
+        }catch(PosicionOcupadaException p){
+            Posicionable elemEnMapa=mapa.obtenerElementoEnPosicion(posicion);
+            elemEnMapa.chocar(mapa,this);
+        }
+    }
+
+    @Override
+    public void chocar(Mapa mapa,Materializable material) {
+        this.materialesRecolectados.add(material);
+        moverseEnMapa(mapa,material.getPosicion());
     }
 
     public void iniciarEnMapa(Mapa mapa) {
