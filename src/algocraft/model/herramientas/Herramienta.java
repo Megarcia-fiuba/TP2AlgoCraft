@@ -1,7 +1,6 @@
 package algocraft.model.herramientas;
 
-import algocraft.model.herramientas.durabilidad.Durabilidad;
-import algocraft.model.materiales.Materializable;
+import algocraft.model.juego.Posicionable;
 
 public abstract class Herramienta {
 
@@ -14,7 +13,9 @@ public abstract class Herramienta {
         return fuerza;
     }
 
-    public abstract void usar(Materializable materializable);
+    public abstract void usar(Posicionable materializable);
 
     public abstract String getIconoPath();
+
+    public abstract boolean estaRota();
 }

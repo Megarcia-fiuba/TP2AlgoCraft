@@ -1,8 +1,9 @@
 package algocraft.model.herramientas;
 
 import algocraft.model.excepciones.DurabilidadTerminadaException;
+import algocraft.model.excepciones.HerramientaRotaException;
+import algocraft.model.juego.Posicionable;
 import algocraft.model.materiales.*;
-import algocraft.model.utils.MatrizDefinida;
 
 public class PicoFino extends Herramienta {
 
@@ -18,10 +19,16 @@ public class PicoFino extends Herramienta {
     public double getDurabilidad() {
         return durabilidad;
     }
-    
+
     @Override
-    public void usar(Materializable materializable) {
-        materializable.recibirGolpe(this);
+    public boolean estaRota() {
+        return this.durabilidad<=0;
+    }
+
+    @Override
+    public void usar(Posicionable materializable) {
+        if(this.estaRota()){ throw new HerramientaRotaException();}
+	    materializable.recibirGolpe(this);
     }
 
     @Override
@@ -29,7 +36,7 @@ public class PicoFino extends Herramienta {
 	    return "../view/imagenes/picoFino.png";
     }
 
-    //Consulta: si envio el metodo desgastar con un diamante por parametro siempre va a elegir la segunda  firma y no la primera?(A pesar de que el diamante es un Materializable)
+    
     public void desgastar(Materializable material){
 
     }

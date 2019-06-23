@@ -1,14 +1,18 @@
 package algocraft.model.juego;
 
+import algocraft.model.excepciones.HerramientaRotaException;
 import algocraft.model.excepciones.PosicionOcupadaException;
+import algocraft.model.excepciones.SinEquipoException;
 import algocraft.model.herramientas.Hacha;
 import algocraft.model.herramientas.Herramienta;
 import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
-import algocraft.model.materiales.Materializable;
+import algocraft.model.materiales.*;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Jugador extends Posicionable {
 
@@ -60,6 +64,10 @@ public class Jugador extends Posicionable {
 		}
 	}
 
+	public void usarHerramienta(Posicionable elemento){
+        herramientaEnUso.usar(elemento);
+    }
+
     public void moverseEnMapa(Mapa mapa, Posicion posicion) {
         try {
             mapa.ocuparPosicion(posicion, this);
@@ -102,6 +110,16 @@ public class Jugador extends Posicionable {
     }
 
     public void usarHerramientaContraPosicionable(Mapa mapa){
-        this.herramientaEnUso.usar((Materializable) mapa.obtenerElementoEnPosicion(this.posicion.mirandoA(this.orientacion)));
+        if(this.herramientaEnUso==null){throw new SinEquipoException();}
+        try{
+            usarHerramienta( mapa.obtenerElementoEnPosicion(this.posicion.mirandoA(this.orientacion)));
+        }catch(HerramientaRotaException e){
+            this.herramientas.remove(this.herramientaEnUso);
+            this.herramientaEnUso=null;
+        }
+    }
+
+    public void cambiarHerramienta(Herramienta herramienta){
+        this.herramientaEnUso=herramienta;
     }
 }

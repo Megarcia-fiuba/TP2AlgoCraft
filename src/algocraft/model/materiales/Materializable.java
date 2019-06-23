@@ -12,18 +12,6 @@ public abstract class Materializable extends Posicionable {
     
 	protected int durabilidad;
 
-    public void recibirGolpe(Hacha hacha) {
-    	
-    }
-
-    public void recibirGolpe(Pico pico) {
-    	
-    }
-
-    public void recibirGolpe(PicoFino picoFino) {
-    	
-    }
-
     public double getDurabilidad() {
     	return durabilidad;
     }

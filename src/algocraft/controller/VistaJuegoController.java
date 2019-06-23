@@ -42,6 +42,7 @@ public class VistaJuegoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         inicializarJuego();
         posicionarElementosEnMapa();
+        actualizarInventario();
     }
 
     private void inicializarJuego() {
@@ -57,6 +58,13 @@ public class VistaJuegoController implements Initializable {
             icono.setFitWidth(50);
             grillaMapa.add(icono, posicion.getCoordenadaX(), posicion.getCoordenadaY());
         });
+    }
+
+    private void actualizarInventario(){
+        ImageView herramientaActual=new ImageView(getClass().getResource(juego.getJugador().getHerramientaEnUso().getIconoPath()).toString());
+        herramientaActual.setFitHeight(60);
+        herramientaActual.setFitWidth(60);
+        botonHerramientas.setGraphic(herramientaActual);
     }
 
     @FXML

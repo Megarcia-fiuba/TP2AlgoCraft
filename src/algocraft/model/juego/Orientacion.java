@@ -4,23 +4,30 @@ public class Orientacion {
 
     private int direccionX;
 
-    private int direcctionY;
+    private int direccionY;
+
+    /*Por defecto se inicia mirando hacia el sur
+     */
+    public Orientacion() {
+        direccionX=0;
+        direccionY=1;
+    }
 
     public void mirarNorte(){
         direccionX=0;
-        direcctionY=-1;
+        direccionY=-1;
     }
     public void mirarSur(){
         direccionX=0;
-        direcctionY=1;
+        direccionY=1;
     }
     public void mirarEste(){
         direccionX=1;
-        direcctionY=0;
+        direccionY=0;
     }
     public void miraroeste(){
         direccionX=-1;
-        direcctionY=0;
+        direccionY=0;
     }
 
     public int getDireccionX() {
@@ -28,6 +35,6 @@ public class Orientacion {
     }
 
     public int getDirecctionY() {
-        return direcctionY;
+        return direccionY;
     }
 }
