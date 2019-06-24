@@ -52,7 +52,7 @@
                      <Insets left="40.0" />
                   </FlowPane.margin>
                </Label>
-                    <GridPane fx:id="grillaMateriales" gridLinesVisible="true" prefHeight="400.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+                    <GridPane fx:id="grillaMateriales" gridLinesVisible="false" prefHeight="400.0" prefWidth="150.0" BorderPane.alignment="CENTER">
                         <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER"/>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER"/>

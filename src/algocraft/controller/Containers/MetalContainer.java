@@ -1,16 +1,15 @@
-package algocraft.controller.SubVistas;
+package algocraft.controller.Containers;
 
 import algocraft.model.materiales.Metal;
-import algocraft.model.materiales.Piedra;
 
-public class MetalView extends MaterialView{
+public class MetalContainer extends MaterialContainer {
 
-    public MetalView() {
+    public MetalContainer() {
         this.material=new Metal();
         this.init();
     }
 
-    public MetalView(Metal metal) {
+    public MetalContainer(Metal metal) {
         this.material = metal;
         this.init();
     }

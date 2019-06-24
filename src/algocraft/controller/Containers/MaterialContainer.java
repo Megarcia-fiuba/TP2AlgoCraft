@@ -1,11 +1,10 @@
-package algocraft.controller.SubVistas;
+package algocraft.controller.Containers;
 
 import algocraft.controller.VistaJuegoController;
-import algocraft.model.materiales.Madera;
 import algocraft.model.materiales.Materializable;
 import javafx.scene.image.ImageView;
 
-public abstract class MaterialView {
+public abstract class MaterialContainer {
 
     private ImageView entero;
     private ImageView roto;

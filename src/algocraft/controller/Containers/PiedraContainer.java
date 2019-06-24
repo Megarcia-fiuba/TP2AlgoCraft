@@ -1,16 +1,15 @@
-package algocraft.controller.SubVistas;
+package algocraft.controller.Containers;
 
-import algocraft.model.materiales.Madera;
 import algocraft.model.materiales.Piedra;
 
-public class PiedraView extends MaterialView{
+public class PiedraContainer extends MaterialContainer {
 
-    public PiedraView() {
+    public PiedraContainer() {
         this.material=new Piedra();
         this.init();
     }
 
-    public PiedraView(Piedra piedra) {
+    public PiedraContainer(Piedra piedra) {
         this.material = piedra;
         this.init();
     }

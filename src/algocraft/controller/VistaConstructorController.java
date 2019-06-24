@@ -1,15 +1,14 @@
 package algocraft.controller;
 
-import algocraft.controller.SubVistas.DiamanteView;
-import algocraft.controller.SubVistas.MaderaView;
-import algocraft.controller.SubVistas.MetalView;
-import algocraft.controller.SubVistas.PiedraView;
+import algocraft.controller.Containers.DiamanteContainer;
+import algocraft.controller.Containers.MaderaContainer;
+import algocraft.controller.Containers.MetalContainer;
+import algocraft.controller.Containers.PiedraContainer;
 import algocraft.model.materiales.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -40,10 +39,10 @@ public class VistaConstructorController implements Initializable {
     }
 
     private void initLista(){
-        grillaMateriales.add(new MaderaView().getImagenRota(),0,0);
-        grillaMateriales.add(new PiedraView().getImagenRota(),0,1);
-        grillaMateriales.add(new MetalView().getImagenRota(),0,2);
-        grillaMateriales.add(new DiamanteView().getImagenRota(),0,3);
+        grillaMateriales.add(new MaderaContainer().getImagenRota(),0,0);
+        grillaMateriales.add(new PiedraContainer().getImagenRota(),0,1);
+        grillaMateriales.add(new MetalContainer().getImagenRota(),0,2);
+        grillaMateriales.add(new DiamanteContainer().getImagenRota(),0,3);
     }
     private void cargarMateriales() {
         List<Materializable> materiales = VistaJuegoController.getJuego().getJugador().getMaterialesRecolectados();

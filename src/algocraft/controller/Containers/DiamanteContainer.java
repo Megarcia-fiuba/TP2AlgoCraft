@@ -1,16 +1,15 @@
-package algocraft.controller.SubVistas;
+package algocraft.controller.Containers;
 
 import algocraft.model.materiales.Diamante;
-import algocraft.model.materiales.Metal;
 
-public class DiamanteView extends MaterialView {
+public class DiamanteContainer extends MaterialContainer {
 
-    public DiamanteView() {
+    public DiamanteContainer() {
         this.material=new Diamante();
         this.init();
     }
 
-    public DiamanteView(Diamante diamante) {
+    public DiamanteContainer(Diamante diamante) {
         this.material = diamante;
         this.init();
     }

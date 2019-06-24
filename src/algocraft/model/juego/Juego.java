@@ -1,6 +1,7 @@
 package algocraft.model.juego;
 
 
+import algocraft.model.herramientas.constructor.MesaDeConstruccion;
 import algocraft.model.materiales.Diamante;
 import algocraft.model.materiales.Madera;
 import algocraft.model.materiales.Metal;
@@ -10,9 +11,11 @@ public class Juego {
 
     private Jugador jugador;
     private Mapa mapa;
+    private MesaDeConstruccion mesa;
 
     public Juego(Mapa mapa) {
         this.jugador = new Jugador();
+        this.mesa= new MesaDeConstruccion();
         this.mapa = mapa;
         jugador.iniciarEnMapa(mapa);
         for(int i = 0; i < 5; i++){
