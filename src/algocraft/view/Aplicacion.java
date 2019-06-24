@@ -6,7 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
+
+import algocraft.view.inicio.ContenedorInicio;
 
 public class Aplicacion extends Application {
 
@@ -17,15 +20,14 @@ public class Aplicacion extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("TP2 AlgoCraft");
+        
+        ContenedorInicio contenedorInicio = new ContenedorInicio(stage);
+        Scene escenaInicio = new Scene(contenedorInicio);
 
-        stage.setScene(crearVentanaPrincipal(stage));
-
-        stage.show();
+        stage.setScene(escenaInicio);
+		stage.setFullScreen(true);
+		stage.show();
     }
 
-    private Scene crearVentanaPrincipal(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("interfaces/VistaPrincipal.fxml"));
-        return new Scene(root);
-    }
 
 }
