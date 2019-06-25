@@ -1,11 +1,11 @@
-package algocraft.controller.Containers;
+package algocraft.controller.containers;
 
 import algocraft.model.materiales.Madera;
 
 public class MaderaContainer extends MaterialContainer {
 
     public MaderaContainer() {
-        this.material=new Madera();
+        this.material = new Madera();
         this.init();
     }
 

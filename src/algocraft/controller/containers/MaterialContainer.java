@@ -1,10 +1,12 @@
-package algocraft.controller.Containers;
+package algocraft.controller.containers;
 
 import algocraft.controller.VistaJuegoController;
+import algocraft.model.juego.Mapa;
+import algocraft.model.juego.Posicion;
 import algocraft.model.materiales.Materializable;
 import javafx.scene.image.ImageView;
 
-public abstract class MaterialContainer {
+public abstract class MaterialContainer extends PosicionableContainer {
 
     private ImageView entero;
     private ImageView roto;
@@ -31,5 +33,13 @@ public abstract class MaterialContainer {
     }
     public ImageView getImagenRota(){
         return roto;
+    }
+
+    public void ocuparPosicionEnMapa(Mapa mapa, Posicion posicion){
+        this.material.ocuparPosicionEnMapa(mapa, posicion);
+    };
+
+    public Posicion getPosicion(){
+        return this.material.getPosicion();
     }
 }

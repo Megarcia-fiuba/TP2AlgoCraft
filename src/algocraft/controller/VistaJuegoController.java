@@ -1,15 +1,11 @@
 package algocraft.controller;
 
+import algocraft.controller.containers.MapaContainer;
 import algocraft.model.juego.Juego;
 import algocraft.model.juego.Mapa;
-import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -17,10 +13,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -28,9 +22,7 @@ import java.util.ResourceBundle;
 
 public class VistaJuegoController implements Initializable {
     @FXML
-    private GridPane grillaMapa;
-
-    private static Juego juego;
+    private MapaContainer mapaContainer;
     @FXML
     private Button botonHerramientas;
     @FXML
@@ -38,18 +30,29 @@ public class VistaJuegoController implements Initializable {
     @FXML
     private Button botonReiniciar;
 
+    private static Juego juego;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inicializarJuego();
-        posicionarElementosEnMapa();
+        //posicionarElementosEnMapa();
         actualizarInventario();
     }
 
     private void inicializarJuego() {
-        this.juego = new Juego(new Mapa());
+        Mapa mapa = new Mapa();
+        juego = new Juego(mapa);
+
+        //this.mapaContainer = new MapaContainer(mapa);
+        this.mapaContainer.inicializar(mapa);
+        this.mapaContainer.posicionarJugador(juego.getJugador());
     }
 
-    private void posicionarElementosEnMapa() {
+    /*private void inicializarMapa() {
+        this.mapa = new MapaContainer();
+    }*/
+
+    /*private void posicionarElementosEnMapa() {
         Mapa mapa = this.juego.getMapa();
 
         mapa.getPosicionesOcupadas().forEach((posicion, posicionable) -> {
@@ -58,7 +61,7 @@ public class VistaJuegoController implements Initializable {
             icono.setFitWidth(50);
             grillaMapa.add(icono, posicion.getCoordenadaX(), posicion.getCoordenadaY());
         });
-    }
+    }*/
 
     private void actualizarInventario(){
         ImageView herramientaActual=new ImageView(getClass().getResource(juego.getJugador().getHerramientaEnUso().getIconoPath()).toString());
@@ -103,8 +106,9 @@ public class VistaJuegoController implements Initializable {
     }
 
     private void refresh(){
-        grillaMapa.getChildren().retainAll(grillaMapa.getChildren().get(0));
-        this.posicionarElementosEnMapa();
+        mapaContainer.refresh();
+        /*mapaContainer.getChildren().retainAll(mapaContainer.getChildren().get(0));
+        this.posicionarElementosEnMapa();*/
     }
     
     @FXML

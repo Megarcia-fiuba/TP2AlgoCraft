@@ -1,9 +1,9 @@
 package algocraft.controller;
 
-import algocraft.controller.Containers.DiamanteContainer;
-import algocraft.controller.Containers.MaderaContainer;
-import algocraft.controller.Containers.MetalContainer;
-import algocraft.controller.Containers.PiedraContainer;
+import algocraft.controller.containers.DiamanteContainer;
+import algocraft.controller.containers.MaderaContainer;
+import algocraft.controller.containers.MetalContainer;
+import algocraft.controller.containers.PiedraContainer;
 import algocraft.model.materiales.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

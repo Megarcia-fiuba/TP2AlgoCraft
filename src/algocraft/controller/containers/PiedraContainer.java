@@ -1,4 +1,4 @@
-package algocraft.controller.Containers;
+package algocraft.controller.containers;
 
 import algocraft.model.materiales.Piedra;
 

@@ -1,15 +1,14 @@
-package algocraft.controller.Containers;
+package algocraft.controller.containers;
 
 import algocraft.controller.VistaJuegoController;
 import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
-import algocraft.model.juego.Orientacion;
 import javafx.scene.image.ImageView;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class JugadorContainer {
+public class JugadorContainer extends PosicionableContainer {
 
     private Jugador jugador;
 
@@ -62,5 +61,9 @@ public class JugadorContainer {
     public void moverOeste(Mapa mapa){
         this.orientacionActual="Oeste";
         this.jugador.moverIzquierda(mapa);
+    }
+
+    public void ocuparPosicionEnMapa(Mapa mapa){
+        this.jugador.iniciarEnMapa(mapa);
     }
 }

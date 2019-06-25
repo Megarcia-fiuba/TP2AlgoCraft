@@ -15,10 +15,10 @@ public class Juego {
 
     public Juego(Mapa mapa) {
         this.jugador = new Jugador();
-        this.mesa= new MesaDeConstruccion();
+        this.mesa = new MesaDeConstruccion();
         this.mapa = mapa;
-        jugador.iniciarEnMapa(mapa);
-        for(int i = 0; i < 5; i++){
+        //jugador.iniciarEnMapa(mapa);
+        /*for(int i = 0; i < 5; i++){
             new Madera().ocuparPosicionEnMapa(mapa,new Posicion(i,5));
             new Piedra().ocuparPosicionEnMapa(mapa,new Posicion(5,i));
         }
@@ -26,7 +26,7 @@ public class Juego {
             new Madera().ocuparPosicionEnMapa(mapa,new Posicion(i,5));
             new Metal().ocuparPosicionEnMapa(mapa,new Posicion(5,i));
         }
-        new Diamante().ocuparPosicionEnMapa(mapa,new Posicion(5,5));
+        new Diamante().ocuparPosicionEnMapa(mapa,new Posicion(5,5));*/
     }
 
     public Jugador getJugador() {

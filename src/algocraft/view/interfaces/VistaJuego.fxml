@@ -17,11 +17,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import algocraft.controller.containers.MapaContainer?>
+
 <AnchorPane fx:id="root" onKeyPressed="#handleOnKeyPress" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="algocraft.controller.VistaJuegoController">
   <children>
     <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="800.0">
       <center>
-        <GridPane fx:id="grillaMapa" alignment="CENTER" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+        <MapaContainer fx:id="mapaContainer" alignment="CENTER" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
           <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER"/>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" halignment="CENTER"/>
@@ -46,7 +48,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" valignment="CENTER"/>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" valignment="CENTER"/>
           </rowConstraints>
-        </GridPane>
+        </MapaContainer>
       </center>
       <left>
         <VBox alignment="CENTER" prefHeight="381.0" prefWidth="152.0" spacing="30.0" BorderPane.alignment="BOTTOM_LEFT">

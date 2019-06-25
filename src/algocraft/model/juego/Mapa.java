@@ -12,8 +12,8 @@ public class Mapa {
 
     private static final int MINIMA_POSICION_COORDENADA_X = 0;
     private static final int MINIMA_POSICION_COORDENADA_Y = 0;
-    private static final int MAXIMA_POSICION_COORDENADA_X = 9;
-    private static final int MAXIMA_POSICION_COORDENADA_Y = 9;
+    private static final int MAXIMA_POSICION_COORDENADA_X = 10;
+    private static final int MAXIMA_POSICION_COORDENADA_Y = 10;
 
     private Map<Posicion, Posicionable> posicionesOcupadas;
 
