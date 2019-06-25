@@ -15,6 +15,6 @@ public class MetalContainer extends MaterialContainer {
     }
 
     private void init(){
-        this.initImages("../view/imagenes/metal.png","../view/imagenes/metalRoto.png");
+        this.initImages("algocraft/view/imagenes/metal.png","algocraft/view/imagenes/metalRoto.png");
     }
 }

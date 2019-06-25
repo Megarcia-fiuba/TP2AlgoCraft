@@ -26,14 +26,14 @@ public class JugadorContainer {
 
     private void initJugadorImagenes(){
         imagenes=new HashMap<>();
-        imagenes.put("Norte",initImage("../view/imagenes/jugadorNorte.png"));
-        imagenes.put("Sur",initImage("../view/imagenes/jugadorSur.png"));
-        imagenes.put("Este",initImage("../view/imagenes/jugadorEste.png"));
-        imagenes.put("Oeste",initImage("../view/imagenes/jugadorOeste.png"));
+        imagenes.put("Norte",initImage("algocraft/view/imagenes/jugadorNorte.png"));
+        imagenes.put("Sur",initImage("algocraft/view/imagenes/jugadorSur.png"));
+        imagenes.put("Este",initImage("algocraft/view/imagenes/jugadorEste.png"));
+        imagenes.put("Oeste",initImage("algocraft/view/imagenes/jugadorOeste.png"));
     }
 
     private ImageView initImage(String imagePath){
-        ImageView imagen=new ImageView(VistaJuegoController.class
+        ImageView imagen=new ImageView(getClass().getClassLoader()
                 .getResource(imagePath).toString());
         imagen.setFitHeight(50);
         imagen.setFitWidth(50);
