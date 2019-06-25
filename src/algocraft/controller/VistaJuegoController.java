@@ -70,7 +70,7 @@ public class VistaJuegoController implements Initializable {
     @FXML
     public void handleAccionBotonHerramientas(ActionEvent evento) throws IOException {
         Stage stage = (Stage) botonHerramientas.getScene().getWindow();
-        stage.setScene(ProveedorEscena.getEscenaHerramienta());
+        stage.setScene(ProveedorEscena.getInstancia().getEscenaHerramienta());
         stage.show();
     }
 
@@ -80,7 +80,7 @@ public class VistaJuegoController implements Initializable {
 
     public void handleAccionBotonConstructorHerramientas(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) botonConstructor.getScene().getWindow();
-        stage.setScene(ProveedorEscena.getEscenaConstructor());
+        stage.setScene(ProveedorEscena.getInstancia().getEscenaConstructor());
         stage.show();
     }
 
@@ -118,7 +118,7 @@ public class VistaJuegoController implements Initializable {
         
         if(action.get() == ButtonType.OK) {
         	Stage stage = (Stage) botonReiniciar.getScene().getWindow();
-            stage.setScene(ProveedorEscena.getEscenaReiniciada());
+            stage.setScene(ProveedorEscena.getInstancia().getEscenaReiniciada());
         	stage.show();
         }
     }

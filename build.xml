@@ -152,7 +152,17 @@
 	</target>
 
 	<target name="empaquetar" depends="compilar.paquete">
-		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes" />
+		<mkdir dir="${build}/dist/META-INF" />
+		<manifest file="${build}/dist/META-INF/MANIFEST.MF">
+			<attribute name="Main-Class" value="algocraft.view.Aplicacion"/>
+		</manifest>
+		<copy  todir="${build}/classes/algocraft/view/imagenes" >
+			<fileset dir="src/algocraft/view/imagenes" includes="*/**"/>
+		</copy>
+		<copy  todir="${build}/classes/algocraft/view/interfaces" >
+			<fileset dir="src/algocraft/view/interfaces" includes="*/**"/>
+		</copy>
+		<jar manifest="${build}/dist/META-INF/MANIFEST.MF" destfile="${build}/dist/algo3.jar" basedir="${build}/classes" />
 	</target>
 
 	<target name="integracion-continua" depends="run-pmd,coverage-report,alternate-coverage-report" description="Ejecuta todas las tareas de integracion y genera los correspondientes reportes"/>

@@ -28,7 +28,7 @@ public class VistaConstructorController implements Initializable {
 
     public void handleAccionBotonRegresar(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) botonRegresar.getScene().getWindow();
-        stage.setScene(ProveedorEscena.getEscenaJuego());
+        stage.setScene(ProveedorEscena.getInstancia().getEscenaJuego());
         stage.show();
     }
 
