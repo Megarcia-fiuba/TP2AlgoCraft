@@ -1,6 +1,8 @@
 package algocraft.model.materiales;
 
 import algocraft.model.herramientas.Hacha;
+import algocraft.model.juego.Mapa;
+import algocraft.model.juego.Posicion;
 
 public class Madera extends Materializable{
 
@@ -26,6 +28,12 @@ public class Madera extends Materializable{
     @Override
     public boolean piezaIgual(Madera madera) {
         return true;
+    }
+
+    @Override
+    public void ocuparPosicionEnMapa(Mapa mapa, Posicion posicion) {
+        mapa.ocuparPosicion(posicion, this);
+        this.posicion = posicion;
     }
 
     @Override

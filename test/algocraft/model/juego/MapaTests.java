@@ -22,7 +22,7 @@ public class MapaTests {
     @Test(expected = PosicionOcupadaException.class)
     public void test02NoSePuedeOcuparPosicionOcupada() {
         Mapa mapa = new Mapa();
-        Posicionable jugador = new Jugador();
+        Jugador jugador = new Jugador();
         Posicion posicionAOcupar = new Posicion(5,5);
         Assert.assertFalse(mapa.posicionOcupada(posicionAOcupar));
 

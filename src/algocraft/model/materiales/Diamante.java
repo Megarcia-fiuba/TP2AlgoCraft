@@ -1,6 +1,8 @@
 package algocraft.model.materiales;
 
 import algocraft.model.herramientas.PicoFino;
+import algocraft.model.juego.Mapa;
+import algocraft.model.juego.Posicion;
 
 public class Diamante extends Materializable {
 
@@ -24,6 +26,12 @@ public class Diamante extends Materializable {
     @Override
     public boolean piezaIgual(Diamante diamante) {
         return true;
+    }
+
+    @Override
+    public void ocuparPosicionEnMapa(Mapa mapa, Posicion posicion) {
+        mapa.ocuparPosicion(posicion, this);
+        this.posicion = posicion;
     }
 
     @Override

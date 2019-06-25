@@ -50,8 +50,5 @@ public abstract class Materializable extends Posicionable {
         return false;
     }
 
-    public void ocuparPosicionEnMapa(Mapa mapa, Posicion posicion) {
-        mapa.ocuparPosicion(posicion, this);
-        this.posicion = posicion;
-    }
+    public abstract void ocuparPosicionEnMapa(Mapa mapa, Posicion posicion);
 }

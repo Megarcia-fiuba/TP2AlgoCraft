@@ -2,25 +2,18 @@ package algocraft.controller;
 
 import algocraft.model.juego.Juego;
 import algocraft.model.juego.Mapa;
-import javafx.embed.swing.JFXPanel;
+import algocraft.view.VistaMapa;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -28,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class VistaJuegoController implements Initializable {
     @FXML
-    private GridPane grillaMapa;
+    private VistaMapa vistaMapa;
 
     private static Juego juego;
     @FXML
@@ -41,22 +34,12 @@ public class VistaJuegoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inicializarJuego();
-        posicionarElementosEnMapa();
+        vistaMapa.actualizar(this,this.juego.getMapa());
+
     }
 
     private void inicializarJuego() {
         this.juego = new Juego(new Mapa());
-    }
-
-    private void posicionarElementosEnMapa() {
-        Mapa mapa = this.juego.getMapa();
-
-        mapa.getPosicionesOcupadas().forEach((posicion, posicionable) -> {
-            ImageView icono = new ImageView(getClass().getResource(posicionable.getIconoPath()).toString());
-            icono.setFitHeight(50);
-            icono.setFitWidth(50);
-            grillaMapa.add(icono, posicion.getCoordenadaX(), posicion.getCoordenadaY());
-        });
     }
 
     @FXML
@@ -90,8 +73,8 @@ public class VistaJuegoController implements Initializable {
         } else if (event.getCode() == KeyCode.C) {
             juego.getJugador().usarHerramientaContraPosicionable(juego.getMapa());
         }
-        grillaMapa.getChildren().retainAll(grillaMapa.getChildren().get(0));
-        this.posicionarElementosEnMapa();
+        vistaMapa.getChildren().retainAll(vistaMapa.getChildren().get(0));
+        this.vistaMapa.actualizar(this,this.juego.getMapa());
         event.consume();
     }
     

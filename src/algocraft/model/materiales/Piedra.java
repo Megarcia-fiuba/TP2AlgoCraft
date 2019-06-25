@@ -1,6 +1,8 @@
 package algocraft.model.materiales;
 
 import algocraft.model.herramientas.Pico;
+import algocraft.model.juego.Mapa;
+import algocraft.model.juego.Posicion;
 
 public class Piedra extends Materializable{
 
@@ -23,6 +25,12 @@ public class Piedra extends Materializable{
     @Override
     public boolean piezaIgual(Piedra piedra) {
         return true;
+    }
+
+    @Override
+    public void ocuparPosicionEnMapa(Mapa mapa, Posicion posicion) {
+        mapa.ocuparPosicion(posicion, this);
+        this.posicion = posicion;
     }
 
     @Override
