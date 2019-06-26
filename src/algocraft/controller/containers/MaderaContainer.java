@@ -15,6 +15,6 @@ public class MaderaContainer extends MaterialContainer {
     }
 
     private void init(){
-        this.initImages("../view/imagenes/madera.png","../view/imagenes/maderaRota.png");
+        this.initImages("algocraft/view/imagenes/madera.png","algocraft/view/imagenes/maderaRota.png");
     }
 }

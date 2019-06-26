@@ -21,7 +21,7 @@ public class VistaPrincipalController {
         Stage stage = (Stage) botonComenzar.getScene().getWindow();
 //        Parent root = FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaJuego.fxml").toURL());
 
-        stage.setScene(ProveedorEscena.getEscenaJuego());
+        stage.setScene(ProveedorEscena.getInstancia().getEscenaJuego());
         stage.show();
     }
 

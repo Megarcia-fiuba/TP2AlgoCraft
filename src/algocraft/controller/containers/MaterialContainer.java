@@ -6,7 +6,7 @@ import algocraft.model.juego.Posicion;
 import algocraft.model.materiales.Materializable;
 import javafx.scene.image.ImageView;
 
-public abstract class MaterialContainer extends PosicionableContainer {
+public abstract class MaterialContainer {
 
     private ImageView entero;
     private ImageView roto;
@@ -14,14 +14,15 @@ public abstract class MaterialContainer extends PosicionableContainer {
     protected Materializable material;
 
     protected void initImages(String imagePath,String rotaImagePath){
-        this.entero=new ImageView(VistaJuegoController.class
+        this.entero = initImage(imagePath);
+        this.roto = initImage(rotaImagePath);
+    }
+    private ImageView initImage(String imagePath){
+        ImageView imagen = new ImageView(getClass().getClassLoader()
                 .getResource(imagePath).toString());
-        entero.setFitHeight(50);
-        entero.setFitWidth(50);
-        this.roto=new ImageView(VistaJuegoController.class
-                .getResource(rotaImagePath).toString());
-        roto.setFitHeight(50);
-        roto.setFitWidth(50);
+        imagen.setFitHeight(50);
+        imagen.setFitWidth(50);
+        return imagen;
     }
 
     public ImageView getImageView(){

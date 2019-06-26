@@ -11,8 +11,6 @@ public abstract class Posicionable {
 
     public Posicion getPosicion() { return posicion; }
 
-    public abstract String getIconoPath();
-
     public void chocar(Mapa mapa,Jugador jugador){}
 
     public void chocar(Mapa mapa,Materializable material){}

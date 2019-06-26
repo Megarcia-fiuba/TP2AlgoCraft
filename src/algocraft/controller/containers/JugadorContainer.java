@@ -1,14 +1,14 @@
 package algocraft.controller.containers;
 
-import algocraft.controller.VistaJuegoController;
 import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
+import algocraft.model.juego.Posicion;
 import javafx.scene.image.ImageView;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class JugadorContainer extends PosicionableContainer {
+public class JugadorContainer {
 
     private Jugador jugador;
 
@@ -18,21 +18,20 @@ public class JugadorContainer extends PosicionableContainer {
 
     public JugadorContainer(Jugador jugador) {
         this.jugador = jugador;
-        this.orientacionActual="Sur";
+        this.orientacionActual = "Sur";
         this.initJugadorImagenes();
     }
 
-
     private void initJugadorImagenes(){
         imagenes=new HashMap<>();
-        imagenes.put("Norte",initImage("../view/imagenes/jugadorNorte.png"));
-        imagenes.put("Sur",initImage("../view/imagenes/jugadorSur.png"));
-        imagenes.put("Este",initImage("../view/imagenes/jugadorEste.png"));
-        imagenes.put("Oeste",initImage("../view/imagenes/jugadorOeste.png"));
+        imagenes.put("Norte", initImage("algocraft/view/imagenes/jugadorNorte.png"));
+        imagenes.put("Sur", initImage("algocraft/view/imagenes/jugadorSur.png"));
+        imagenes.put("Este", initImage("algocraft/view/imagenes/jugadorEste.png"));
+        imagenes.put("Oeste", initImage("algocraft/view/imagenes/jugadorOeste.png"));
     }
 
     private ImageView initImage(String imagePath){
-        ImageView imagen=new ImageView(VistaJuegoController.class
+        ImageView imagen = new ImageView(getClass().getClassLoader()
                 .getResource(imagePath).toString());
         imagen.setFitHeight(50);
         imagen.setFitWidth(50);
@@ -44,26 +43,34 @@ public class JugadorContainer extends PosicionableContainer {
     }
 
     public void moverNorte(Mapa mapa){
-        this.orientacionActual="Norte";
+        this.orientacionActual = "Norte";
         this.jugador.moverArriba(mapa);
     }
 
     public void moverSur(Mapa mapa){
-        this.orientacionActual="Sur";
+        this.orientacionActual = "Sur";
         this.jugador.moverAbajo(mapa);
     }
 
     public void moverEste(Mapa mapa){
-        this.orientacionActual="Este";
+        this.orientacionActual = "Este";
         this.jugador.moverDerecha(mapa);
     }
 
     public void moverOeste(Mapa mapa){
-        this.orientacionActual="Oeste";
+        this.orientacionActual = "Oeste";
         this.jugador.moverIzquierda(mapa);
+    }
+
+    public void usarHerramientaContraPosicionable(MapaContainer mapaContainer){
+        this.jugador.usarHerramientaContraPosicionable(mapaContainer.getMapa());
     }
 
     public void ocuparPosicionEnMapa(Mapa mapa){
         this.jugador.iniciarEnMapa(mapa);
+    }
+
+    public Posicion getPosicion(){
+        return this.jugador.getPosicion();
     }
 }

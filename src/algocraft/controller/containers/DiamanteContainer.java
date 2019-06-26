@@ -5,7 +5,7 @@ import algocraft.model.materiales.Diamante;
 public class DiamanteContainer extends MaterialContainer {
 
     public DiamanteContainer() {
-        this.material=new Diamante();
+        this.material = new Diamante();
         this.init();
     }
 
@@ -15,6 +15,6 @@ public class DiamanteContainer extends MaterialContainer {
     }
 
     private void init(){
-        this.initImages("../view/imagenes/diamante.jpg","../view/imagenes/diamanteRoto.png");
+        this.initImages("algocraft/view/imagenes/diamante.jpg","algocraft/view/imagenes/diamanteRoto.png");
     }
 }

@@ -14,7 +14,9 @@ public class Hacha extends HerramientaConMaterial {
 
     @Override
     public void usar(Posicionable materializable) {
-        if(this.estaRota()){ throw new HerramientaRotaException();}
+        if (this.estaRota()) {
+            throw new HerramientaRotaException();
+        }
         durabilidad.desgastar(this);
         materializable.recibirGolpe(this);
     }

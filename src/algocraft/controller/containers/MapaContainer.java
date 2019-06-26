@@ -1,6 +1,5 @@
 package algocraft.controller.containers;
 
-import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
 import algocraft.model.juego.Posicion;
 import algocraft.model.materiales.Diamante;
@@ -8,8 +7,8 @@ import algocraft.model.materiales.Metal;
 import algocraft.model.materiales.Piedra;
 import javafx.scene.layout.GridPane;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapaContainer extends GridPane {
 
@@ -17,7 +16,7 @@ public class MapaContainer extends GridPane {
     private static final int TAMANIO_MAPA = 10;
 
     private Mapa mapa;
-    private List<MaterialContainer> materiales;
+    private Map<Posicion, MaterialContainer> materiales;
     private JugadorContainer jugador;
 
     public MapaContainer(){
@@ -35,19 +34,24 @@ public class MapaContainer extends GridPane {
 
     public void refresh() {
         this.getChildren().retainAll(this.getChildren().get(0));
-        this.materiales.forEach(material -> {
-            this.add(material.getImageView(), material.getPosicion().getCoordenadaX(), material.getPosicion().getCoordenadaY());
+        this.materiales.forEach((posicion, material) -> {
+            if(this.mapa.getPosicionesOcupadas().containsKey(posicion)){
+                this.add(material.getImageView(), posicion.getCoordenadaX(), posicion.getCoordenadaY());
+            } else {
+                this.materiales.remove(posicion);
+            }
         });
+        this.add(this.jugador.getImageView(), this.jugador.getPosicion().getCoordenadaX(), this.jugador.getPosicion().getCoordenadaY());
     }
 
-    public void posicionarJugador(Jugador jugador) {
-        this.jugador = new JugadorContainer(jugador);
+    public void posicionarJugador(JugadorContainer jugador) {
+        this.jugador = jugador;
         this.jugador.ocuparPosicionEnMapa(this.mapa);
         this.add(this.jugador.getImageView(), jugador.getPosicion().getCoordenadaX(), jugador.getPosicion().getCoordenadaY());
     }
 
     private void inicializarElementos() {
-        this.materiales = new ArrayList<>();
+        this.materiales = new HashMap<>();
 
         for (int posicion = 0; posicion < CENTRO_MAPA; posicion++ ) {
             posicionarNuevaMadera(new Posicion(posicion, CENTRO_MAPA));
@@ -66,28 +70,28 @@ public class MapaContainer extends GridPane {
     private void posicionarNuevaMadera(Posicion posicion) {
         MaderaContainer madera = new MaderaContainer();
         madera.ocuparPosicionEnMapa(mapa, posicion);
-        this.materiales.add(madera);
+        this.materiales.put(posicion, madera);
         this.add(madera.getImageView(), posicion.getCoordenadaX(), posicion.getCoordenadaY());
     }
 
     private void posicionarNuevaPiedra(Posicion posicion) {
         PiedraContainer piedra = new algocraft.controller.containers.PiedraContainer(new Piedra());
         piedra.ocuparPosicionEnMapa(mapa, posicion);
-        this.materiales.add(piedra);
+        this.materiales.put(posicion, piedra);
         this.add(piedra.getImageView(), posicion.getCoordenadaX(), posicion.getCoordenadaY());
     }
 
     private void posicionarNuevoMetal(Posicion posicion) {
         MetalContainer metal = new MetalContainer(new Metal());
         metal.ocuparPosicionEnMapa(mapa, posicion);
-        this.materiales.add(metal);
+        this.materiales.put(posicion, metal);
         this.add(metal.getImageView(), posicion.getCoordenadaX(), posicion.getCoordenadaY());
     }
 
     private void posicionarNuevoDiamante(Posicion posicion) {
         DiamanteContainer diamante = new DiamanteContainer(new Diamante());
         diamante.ocuparPosicionEnMapa(mapa, posicion);
-        this.materiales.add(diamante);
+        this.materiales.put(posicion, diamante);
         this.add(diamante.getImageView(), posicion.getCoordenadaX(), posicion.getCoordenadaY());
     }
 }

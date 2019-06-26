@@ -15,7 +15,7 @@ public class PiedraContainer extends MaterialContainer {
     }
 
     private void init(){
-        this.initImages("../view/imagenes/piedra.png","../view/imagenes/piedraRota.png");
+        this.initImages("algocraft/view/imagenes/piedra.png","algocraft/view/imagenes/piedraRota.png");
     }
 
 }

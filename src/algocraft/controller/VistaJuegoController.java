@@ -1,5 +1,6 @@
 package algocraft.controller;
 
+import algocraft.controller.containers.JugadorContainer;
 import algocraft.controller.containers.MapaContainer;
 import algocraft.model.juego.Juego;
 import algocraft.model.juego.Mapa;
@@ -31,37 +32,22 @@ public class VistaJuegoController implements Initializable {
     private Button botonReiniciar;
 
     private static Juego juego;
+    private JugadorContainer jugador;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inicializarJuego();
-        //posicionarElementosEnMapa();
         actualizarInventario();
     }
 
     private void inicializarJuego() {
         Mapa mapa = new Mapa();
         juego = new Juego(mapa);
+        this.jugador = new JugadorContainer(juego.getJugador());
 
-        //this.mapaContainer = new MapaContainer(mapa);
         this.mapaContainer.inicializar(mapa);
-        this.mapaContainer.posicionarJugador(juego.getJugador());
+        this.mapaContainer.posicionarJugador(jugador);
     }
-
-    /*private void inicializarMapa() {
-        this.mapa = new MapaContainer();
-    }*/
-
-    /*private void posicionarElementosEnMapa() {
-        Mapa mapa = this.juego.getMapa();
-
-        mapa.getPosicionesOcupadas().forEach((posicion, posicionable) -> {
-            ImageView icono = new ImageView(getClass().getResource(posicionable.getIconoPath()).toString());
-            icono.setFitHeight(50);
-            icono.setFitWidth(50);
-            grillaMapa.add(icono, posicion.getCoordenadaX(), posicion.getCoordenadaY());
-        });
-    }*/
 
     private void actualizarInventario(){
         ImageView herramientaActual=new ImageView(getClass().getResource(juego.getJugador().getHerramientaEnUso().getIconoPath()).toString());
@@ -73,7 +59,7 @@ public class VistaJuegoController implements Initializable {
     @FXML
     public void handleAccionBotonHerramientas(ActionEvent evento) throws IOException {
         Stage stage = (Stage) botonHerramientas.getScene().getWindow();
-        stage.setScene(ProveedorEscena.getEscenaHerramienta());
+        stage.setScene(ProveedorEscena.getInstancia().getEscenaHerramienta());
         stage.show();
     }
 
@@ -83,7 +69,7 @@ public class VistaJuegoController implements Initializable {
 
     public void handleAccionBotonConstructorHerramientas(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) botonConstructor.getScene().getWindow();
-        stage.setScene(ProveedorEscena.getEscenaConstructor());
+        stage.setScene(ProveedorEscena.getInstancia().getEscenaConstructor());
         stage.show();
     }
 
@@ -91,15 +77,15 @@ public class VistaJuegoController implements Initializable {
     public void handleOnKeyPress(KeyEvent event) {
 
         if (event.getCode() == KeyCode.UP) {
-            juego.getJugador().moverArriba(juego.getMapa());
+            this.jugador.moverNorte(juego.getMapa());
         } else if (event.getCode() == KeyCode.DOWN) {
-            juego.getJugador().moverAbajo(juego.getMapa());
+            this.jugador.moverSur(juego.getMapa());
         } else if (event.getCode() == KeyCode.LEFT) {
-            juego.getJugador().moverIzquierda(juego.getMapa());
+            this.jugador.moverOeste(juego.getMapa());
         } else if (event.getCode() == KeyCode.RIGHT) {
-            juego.getJugador().moverDerecha(juego.getMapa());
+            this.jugador.moverEste(juego.getMapa());
         } else if (event.getCode() == KeyCode.C) {
-            juego.getJugador().usarHerramientaContraPosicionable(juego.getMapa());
+            this.jugador.usarHerramientaContraPosicionable(this.mapaContainer);
         }
         refresh();
         event.consume();
@@ -107,8 +93,6 @@ public class VistaJuegoController implements Initializable {
 
     private void refresh(){
         mapaContainer.refresh();
-        /*mapaContainer.getChildren().retainAll(mapaContainer.getChildren().get(0));
-        this.posicionarElementosEnMapa();*/
     }
     
     @FXML
@@ -122,7 +106,7 @@ public class VistaJuegoController implements Initializable {
         
         if(action.get() == ButtonType.OK) {
         	Stage stage = (Stage) botonReiniciar.getScene().getWindow();
-            stage.setScene(ProveedorEscena.getEscenaReiniciada());
+            stage.setScene(ProveedorEscena.getInstancia().getEscenaReiniciada());
         	stage.show();
         }
     }
