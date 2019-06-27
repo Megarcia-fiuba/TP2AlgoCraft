@@ -26,4 +26,8 @@ public class Juego {
     public Mapa getMapa() {
         return mapa;
     }
+
+    public MesaDeConstruccion getMesa(){
+        return this.mesa;
+    }
 }

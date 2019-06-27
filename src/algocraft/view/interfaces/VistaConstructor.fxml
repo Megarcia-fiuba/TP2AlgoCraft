@@ -86,7 +86,8 @@
                 <FlowPane alignment="CENTER" hgap="30.0" prefHeight="34.0" prefWidth="790.0" BorderPane.alignment="CENTER">
                     <children>
                         <Button id="botonRegresar" fx:id="botonRegresar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonRegresar" text="Regresar" textAlignment="CENTER" textOverrun="CLIP" />
-                        <Button id="botonConstruir" fx:id="botonConstruir" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonRegresar" text="Construir" textAlignment="CENTER" textOverrun="CLIP">
+                        <Button id="botonConstruir" fx:id="botonConstruir" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonConstruir" text="Construir" textAlignment="CENTER" textOverrun="CLIP"/>
+                        <Button id="botonConstruir" fx:id="botonVaciar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleAccionBotonVaciar" text="Vaciar" textAlignment="CENTER" textOverrun="CLIP">
                      <FlowPane.margin>
                         <Insets />
                      </FlowPane.margin></Button>

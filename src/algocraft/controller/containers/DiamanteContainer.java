@@ -17,4 +17,19 @@ public class DiamanteContainer extends MaterialContainer {
     private void init(){
         this.initImages("algocraft/view/imagenes/diamante.jpg","algocraft/view/imagenes/diamanteRoto.png");
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        try{
+            MaterialContainer o=(MaterialContainer) obj;
+            return o.equals(this);
+        }catch(ClassCastException c){
+            return super.equals(obj);
+        }
+    }
+
+    @Override
+    public boolean equals(DiamanteContainer diamante) {
+        return true;
+    }
 }

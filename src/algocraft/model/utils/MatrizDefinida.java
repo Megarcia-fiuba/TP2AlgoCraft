@@ -2,8 +2,8 @@ package algocraft.model.utils;
 
 import algocraft.model.utils.Excepciones.FueraDeRangoException;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class MatrizDefinida<T> {
 
@@ -49,5 +49,9 @@ public class MatrizDefinida<T> {
 
     public void vaciar(){
         this.casilleros= new HashMap<Casillero,T>();
+    }
+
+    public List<T> obtenerTodos(){
+        return new ArrayList<T>(casilleros.values());
     }
 }

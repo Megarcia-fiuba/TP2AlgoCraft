@@ -8,6 +8,7 @@ import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
 import algocraft.model.juego.Juego;
 import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
+import algocraft.view.MapaView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class VistaJuegoController implements Initializable {
     @FXML
-    private MapaContainer mapaContainer;
+    private MapaView mapaView;
     @FXML
     private ComboBox comboHerramientas;
     @FXML
@@ -36,12 +37,16 @@ public class VistaJuegoController implements Initializable {
     private Button botonReiniciar;
 
     private static Juego juego;
-    private JugadorContainer jugadorContainer;
+
+    private static JugadorContainer jugadorContainer;
+
+    private static MesaContainer mesa;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inicializarJuego();
         actualizarInventario();
+        initMesa();
     }
 
     private void inicializarJuego() {
@@ -52,8 +57,11 @@ public class VistaJuegoController implements Initializable {
         this.jugadorContainer = new JugadorContainer(jugador, hachaMaderaContainer);
         juego = new Juego(mapa, jugador);
 
-        this.mapaContainer.inicializar(mapa);
-        this.mapaContainer.posicionarJugador(jugadorContainer);
+        this.mapaView.inicializar(mapa);
+        this.mapaView.posicionarJugador(jugadorContainer);
+    }
+    private void initMesa(){
+        this.mesa= new MesaContainer(this.juego.getMesa());
     }
 
     private void actualizarInventario(){
@@ -76,7 +84,7 @@ public class VistaJuegoController implements Initializable {
     }
 
     public void enfocarMapa(){
-        this.mapaContainer.requestFocus();
+        this.mapaView.requestFocus();
     }
 
     public static Juego getJuego() {
@@ -103,7 +111,7 @@ public class VistaJuegoController implements Initializable {
             this.jugadorContainer.moverEste(juego.getMapa());
         } else if (event.getCode() == KeyCode.C) {
             try{
-                this.jugadorContainer.usarHerramientaContraPosicionable(this.mapaContainer);
+                this.jugadorContainer.usarHerramientaContraPosicionable(this.mapaView);
             } catch(SinEquipoException e){
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Ups!");
@@ -117,7 +125,7 @@ public class VistaJuegoController implements Initializable {
     }
 
     private void refresh(){
-        mapaContainer.refresh();
+        mapaView.refresh();
     }
     
     @FXML
@@ -160,5 +168,14 @@ public class VistaJuegoController implements Initializable {
         		+ " seleccion 'Construir'";
         alert.setContentText(mensaje);
         alert.show();
+    }
+
+    public static MesaContainer getMesa() {
+        return mesa;
+    }
+
+
+    public static JugadorContainer getJugadorContainer() {
+        return jugadorContainer;
     }
 }

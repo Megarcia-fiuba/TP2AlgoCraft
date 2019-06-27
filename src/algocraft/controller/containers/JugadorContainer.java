@@ -3,6 +3,7 @@ package algocraft.controller.containers;
 import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
 import algocraft.model.juego.Posicion;
+import algocraft.view.MapaView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.ImageView;
@@ -72,8 +73,8 @@ public class JugadorContainer {
         this.jugador.moverIzquierda(mapa);
     }
 
-    public void usarHerramientaContraPosicionable(MapaContainer mapaContainer){
-        this.jugador.usarHerramientaContraPosicionable(mapaContainer.getMapa());
+    public void usarHerramientaContraPosicionable(MapaView mapaView){
+        this.jugador.usarHerramientaContraPosicionable(mapaView.getMapa());
     }
 
     public void ocuparPosicionEnMapa(Mapa mapa){

@@ -18,4 +18,18 @@ public class PiedraContainer extends MaterialContainer {
         this.initImages("algocraft/view/imagenes/piedra.png","algocraft/view/imagenes/piedraRota.png");
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        try{
+            MaterialContainer o=(MaterialContainer) obj;
+            return o.equals(this);
+        }catch(ClassCastException c){
+            return super.equals(obj);
+        }
+    }
+
+    @Override
+    public boolean equals(PiedraContainer piedra) {
+        return true;
+    }
 }

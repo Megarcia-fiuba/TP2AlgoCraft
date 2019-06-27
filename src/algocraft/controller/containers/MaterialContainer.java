@@ -4,6 +4,7 @@ import algocraft.controller.VistaJuegoController;
 import algocraft.model.juego.Mapa;
 import algocraft.model.juego.Posicion;
 import algocraft.model.materiales.Materializable;
+import algocraft.model.materiales.Piedra;
 import javafx.scene.image.ImageView;
 
 public abstract class MaterialContainer {
@@ -25,6 +26,10 @@ public abstract class MaterialContainer {
         return imagen;
     }
 
+    public Materializable getMaterial() {
+        return material;
+    }
+
     public ImageView getImageView(){
         return material.estaRoto()?getImagenRota():getImagenEntera();
     }
@@ -43,4 +48,9 @@ public abstract class MaterialContainer {
     public Posicion getPosicion(){
         return this.material.getPosicion();
     }
+
+    public boolean equals( MaderaContainer madera){return false;}
+    public boolean equals( MetalContainer metal){return false;}
+    public boolean equals( PiedraContainer piedra){return false;}
+    public boolean equals( DiamanteContainer diamante){return false;}
 }

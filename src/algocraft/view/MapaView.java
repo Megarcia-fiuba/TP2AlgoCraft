@@ -1,5 +1,6 @@
-package algocraft.controller.containers;
+package algocraft.view;
 
+import algocraft.controller.containers.*;
 import algocraft.model.juego.Mapa;
 import algocraft.model.juego.Posicion;
 import algocraft.model.materiales.Diamante;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MapaContainer extends GridPane {
+public class MapaView extends GridPane {
 
     private static final int CENTRO_MAPA = 5;
     private static final int TAMANIO_MAPA = 10;
@@ -21,7 +22,7 @@ public class MapaContainer extends GridPane {
     private Map<Posicion, MaterialContainer> materiales;
     private JugadorContainer jugador;
 
-    public MapaContainer(){
+    public MapaView(){
         super();
     }
 

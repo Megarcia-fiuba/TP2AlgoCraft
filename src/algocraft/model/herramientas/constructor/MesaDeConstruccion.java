@@ -7,6 +7,8 @@ import algocraft.model.juego.Posicion;
 import algocraft.model.materiales.Materializable;
 import algocraft.model.utils.MatrizDefinida;
 
+import java.util.List;
+
 public class MesaDeConstruccion {
 
     private MatrizDefinida<Materializable> contenido;
@@ -36,5 +38,11 @@ public class MesaDeConstruccion {
         }
         Materializable aMover= contenido.popValor(origen.getCoordenadaX(),origen.getCoordenadaY());
         contenido.putValor(destino.getCoordenadaX(),destino.getCoordenadaY(),aMover);
+    }
+
+    public List<Materializable> recuperarTodos(){
+        List<Materializable> materialesEnMesa= contenido.obtenerTodos();
+        contenido.vaciar();
+        return materialesEnMesa;
     }
 }
