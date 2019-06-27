@@ -1,23 +1,25 @@
 package algocraft.controller;
 
+import algocraft.controller.containers.*;
+import algocraft.controller.utils.HerramientasListCell;
+import algocraft.model.excepciones.SinEquipoException;
+import algocraft.model.herramientas.Hacha;
+import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
 import algocraft.model.juego.Juego;
+import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
-import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -28,42 +30,56 @@ import java.util.ResourceBundle;
 
 public class VistaJuegoController implements Initializable {
     @FXML
-    private GridPane grillaMapa;
-
-    private static Juego juego;
+    private MapaContainer mapaContainer;
     @FXML
-    private Button botonHerramientas;
+    private ComboBox comboHerramientas;
     @FXML
     private Button botonConstructor;
     @FXML
     private Button botonReiniciar;
 
+    private static Juego juego;
+    private JugadorContainer jugadorContainer;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inicializarJuego();
-        posicionarElementosEnMapa();
+        actualizarInventario();
     }
 
     private void inicializarJuego() {
-        this.juego = new Juego(new Mapa());
+        Mapa mapa = new Mapa();
+        Hacha hachaMadera = new Hacha(new DurabilidadMadera());
+        Jugador jugador = new Jugador(hachaMadera);
+        HerramientaContainer hachaMaderaContainer = new HachaMaderaContainer(hachaMadera);
+        this.jugadorContainer = new JugadorContainer(jugador, hachaMaderaContainer);
+        juego = new Juego(mapa, jugador);
+
+        this.mapaContainer.inicializar(mapa);
+        this.mapaContainer.posicionarJugador(jugadorContainer);
     }
 
-    private void posicionarElementosEnMapa() {
-        Mapa mapa = this.juego.getMapa();
+    private void actualizarInventario(){
+        comboHerramientas.getItems().clear();
+        comboHerramientas.getItems().addAll(this.jugadorContainer.getInventarioHerramientas());
+        comboHerramientas.setCellFactory(c -> new HerramientasListCell());
+        comboHerramientas.setButtonCell(new HerramientasListCell());
+        comboHerramientas.getSelectionModel().select(this.jugadorContainer.getHerramientaEnUso());
 
-        mapa.getPosicionesOcupadas().forEach((posicion, posicionable) -> {
-            ImageView icono = new ImageView(getClass().getResource(posicionable.getIconoPath()).toString());
-            icono.setFitHeight(50);
-            icono.setFitWidth(50);
-            grillaMapa.add(icono, posicion.getCoordenadaX(), posicion.getCoordenadaY());
-        });
     }
 
     @FXML
-    public void handleAccionBotonHerramientas(ActionEvent evento) throws IOException {
-        Stage stage = (Stage) botonHerramientas.getScene().getWindow();
-        stage.setScene(ProveedorEscena.getEscenaHerramienta());
-        stage.show();
+    public void handleAccionComboHerramientas(ActionEvent evento) {
+        HerramientaContainer herramientaSeleccionada = (HerramientaContainer) comboHerramientas.getSelectionModel().getSelectedItem();
+        if(herramientaSeleccionada != null && !herramientaSeleccionada.equals(this.jugadorContainer.getHerramientaEnUso())){
+            this.jugadorContainer.cambiarHerramienta((HerramientaContainer) comboHerramientas.getSelectionModel().getSelectedItem());
+            actualizarInventario();
+        }
+        enfocarMapa();
+    }
+
+    public void enfocarMapa(){
+        this.mapaContainer.requestFocus();
     }
 
     public static Juego getJuego() {
@@ -72,27 +88,48 @@ public class VistaJuegoController implements Initializable {
 
     public void handleAccionBotonConstructorHerramientas(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) botonConstructor.getScene().getWindow();
-        stage.setScene(ProveedorEscena.getEscenaConstructor());
+        stage.setScene(ProveedorEscena.getInstancia().getEscenaConstructor());
         stage.show();
     }
 
     @FXML
     public void handleOnKeyPress(KeyEvent event) {
+        MediaPlayer reproductor = new MediaPlayer(new Media(getClass().getClassLoader().getResource("algocraft/view/music/Beep_Short_01_Sound_Effect_Mp3_102.mp3").toString()));
+        MediaPlayer reproductorCorte = new MediaPlayer(new Media(getClass().getClassLoader().getResource("algocraft/view/music/008722013_prev.mp3").toString()));
+
+        enfocarMapa();
 
         if (event.getCode() == KeyCode.UP) {
-            juego.getJugador().moverArriba(juego.getMapa());
+            reproductor.play();
+            this.jugadorContainer.moverNorte(juego.getMapa());
         } else if (event.getCode() == KeyCode.DOWN) {
-            juego.getJugador().moverAbajo(juego.getMapa());
+            reproductor.play();
+            this.jugadorContainer.moverSur(juego.getMapa());
         } else if (event.getCode() == KeyCode.LEFT) {
-            juego.getJugador().moverIzquierda(juego.getMapa());
+            reproductor.play();
+            this.jugadorContainer.moverOeste(juego.getMapa());
+            reproductor.play();
         } else if (event.getCode() == KeyCode.RIGHT) {
-            juego.getJugador().moverDerecha(juego.getMapa());
+            reproductor.play();
+            this.jugadorContainer.moverEste(juego.getMapa());
         } else if (event.getCode() == KeyCode.C) {
-            juego.getJugador().usarHerramientaContraPosicionable(juego.getMapa());
+            try{
+                this.jugadorContainer.usarHerramientaContraPosicionable(this.mapaContainer);
+                reproductorCorte.play();
+            } catch(SinEquipoException e){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText("Ups!");
+                alert.setContentText("No hay herramienta en uso!");
+                alert.showAndWait();
+            }
         }
-        grillaMapa.getChildren().retainAll(grillaMapa.getChildren().get(0));
-        this.posicionarElementosEnMapa();
+
+        refresh();
         event.consume();
+    }
+
+    private void refresh(){
+        mapaContainer.refresh();
     }
     
     @FXML
@@ -106,7 +143,7 @@ public class VistaJuegoController implements Initializable {
         
         if(action.get() == ButtonType.OK) {
         	Stage stage = (Stage) botonReiniciar.getScene().getWindow();
-            stage.setScene(ProveedorEscena.getEscenaReiniciada());
+            stage.setScene(ProveedorEscena.getInstancia().getEscenaReiniciada());
         	stage.show();
         }
     }
@@ -130,7 +167,7 @@ public class VistaJuegoController implements Initializable {
     	Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Acerca de...");
         alert.setHeaderText("Reglas de Juego:");
-        String mensaje = "Mueva al jugador usando las flechas del teclado\nPrecione la letra C para golpear un material\nSeleccione"
+        String mensaje = "Mueva al jugadorContainer usando las flechas del teclado\nPrecione la letra C para golpear un material\nSeleccione"
         		+ " 'Herramientas' para visuarizar y seleccionar la herramienta deseada\nPara construir una herramienta"
         		+ " seleccion 'Construir'";
         alert.setContentText(mensaje);

@@ -1,10 +1,12 @@
 package algocraft.model.juego;
 
+import algocraft.model.excepciones.HerramientaRotaException;
+import algocraft.model.excepciones.PosicionOcupadaException;
+import algocraft.model.excepciones.SinEquipoException;
 import algocraft.model.herramientas.Hacha;
 import algocraft.model.herramientas.Herramienta;
 import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
-import algocraft.model.materiales.Materializable;
-import javafx.scene.image.ImageView;
+import algocraft.model.materiales.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,20 +16,15 @@ public class Jugador extends Posicionable {
     private Herramienta herramientaEnUso;
     private List<Herramienta> herramientas;
     private List<Materializable> materialesRecolectados;
-    private String iconoPath = "../view/imagenes/jugador.png";
-    private String iconoPathNorte = "../view/imagenes/jugadorNorte.png";
-    private String iconoPathSur = "../view/imagenes/jugadorSur.png";
-    private String iconoPathEste = "../view/imagenes/jugadorEste.png";
-    private String iconoPathOeste = "../view/imagenes/jugadorOeste.png";
     private Orientacion orientacion;
 
     
-    public Jugador() {
+    public Jugador(Herramienta herramienta) {
         materialesRecolectados = new ArrayList<>();
         posicion = new Posicion(0,0);
         orientacion= new Orientacion();
         herramientas = new ArrayList<>();
-        herramientaEnUso = new Hacha(new DurabilidadMadera());
+        herramientaEnUso = herramienta;
         herramientas.add(herramientaEnUso);
     }
 
@@ -37,20 +34,6 @@ public class Jugador extends Posicionable {
 
     public List<Materializable> getMaterialesRecolectados() { return materialesRecolectados; }
 
-    @Override
-    public String getIconoPath() {
-        if (this.orientacion.getDirecctionY()==0 && this.orientacion.getDireccionX()==1){
-            return this.iconoPathEste;
-        }else if (this.orientacion.getDirecctionY()==0 && this.orientacion.getDireccionX()==-1){
-            return this.iconoPathOeste;
-        }else if (this.orientacion.getDirecctionY()==1 && this.orientacion.getDireccionX()==0){
-            return this.iconoPathSur;
-        }else if (this.orientacion.getDirecctionY()==-1 && this.orientacion.getDireccionX()==0){
-            return this.iconoPathNorte;
-        }
-
-        return this.iconoPathSur; }
-
     public void usarHacha(Materializable material) {
 		if(material.estaRoto()) {
 			materialesRecolectados.add(material);
@@ -59,10 +42,25 @@ public class Jugador extends Posicionable {
 		}
 	}
 
+	public void usarHerramienta(Posicionable elemento){
+        herramientaEnUso.usar(elemento);
+    }
+
     public void moverseEnMapa(Mapa mapa, Posicion posicion) {
-        mapa.ocuparPosicion(posicion, this);
-        mapa.desocuparPosicion(this.posicion);
-        this.posicion = posicion;
+        try {
+            mapa.ocuparPosicion(posicion, this);
+            mapa.desocuparPosicion(this.posicion);
+            this.posicion = posicion;
+        }catch(PosicionOcupadaException p){
+            Posicionable elemEnMapa = mapa.obtenerElementoEnPosicion(posicion);
+            elemEnMapa.chocar(mapa,this);
+        }
+    }
+
+    @Override
+    public void chocar(Mapa mapa, Materializable material) {
+        this.materialesRecolectados.add(material);
+        moverseEnMapa(mapa,material.getPosicion());
     }
 
     public void iniciarEnMapa(Mapa mapa) {
@@ -90,6 +88,25 @@ public class Jugador extends Posicionable {
     }
 
     public void usarHerramientaContraPosicionable(Mapa mapa){
-        this.herramientaEnUso.usar((Materializable) mapa.obtenerElementoEnPosicion(this.posicion.mirandoA(this.orientacion)));
+        if (this.herramientaEnUso == null) {
+            throw new SinEquipoException();
+        }
+        try {
+            Posicionable elementoEnPosicion = mapa.obtenerElementoEnPosicion(this.posicion.mirandoA(this.orientacion));
+            if(elementoEnPosicion != null){
+                usarHerramienta(elementoEnPosicion);
+            }
+        } catch (HerramientaRotaException e) {
+            this.herramientas.remove(this.herramientaEnUso);
+            this.herramientaEnUso = null;
+        }
+    }
+
+    public void cambiarHerramienta(Herramienta herramienta){
+        this.herramientaEnUso=herramienta;
+    }
+
+    public void agregarHerramienta(Herramienta herramienta){
+        this.herramientas.add(herramienta);
     }
 }

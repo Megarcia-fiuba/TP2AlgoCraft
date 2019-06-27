@@ -1,10 +1,9 @@
 package algocraft.model.herramientas;
 
-import algocraft.model.materiales.Madera;
-import algocraft.model.materiales.Materializable;
+import algocraft.model.excepciones.HerramientaRotaException;
+import algocraft.model.juego.Posicionable;
 import algocraft.model.materiales.Metal;
 import algocraft.model.herramientas.durabilidad.Durabilidad;
-import algocraft.model.utils.MatrizDefinida;
 
 public class Pico extends HerramientaConMaterial{
 
@@ -15,14 +14,10 @@ public class Pico extends HerramientaConMaterial{
     }
 
     @Override
-    public void usar(Materializable materializable) {
+    public void usar(Posicionable materializable) {
+        if(this.estaRota()){ throw new HerramientaRotaException();}
         durabilidad.desgastar(this);
         materializable.recibirGolpe(this);
-    }
-
-    @Override
-    public String getIconoPath() {
-        return durabilidad.getIconoPath(this);
     }
 
     public int romperMaterial(Metal metal) {

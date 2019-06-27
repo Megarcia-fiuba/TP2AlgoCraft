@@ -4,8 +4,6 @@ import algocraft.model.herramientas.PicoFino;
 
 public class Diamante extends Materializable {
 
-    private String iconoPath = "../view/imagenes/diamante.png";
-
     public Diamante(){
         durabilidad = 100;
     }
@@ -31,8 +29,4 @@ public class Diamante extends Materializable {
         return this.mismoMaterial((Materializable)obj);
     }
 
-    @Override
-    public String getIconoPath() {
-        return this.iconoPath;
-    }
 }

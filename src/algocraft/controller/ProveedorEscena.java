@@ -9,22 +9,31 @@ import java.io.IOException;
 public class ProveedorEscena{
     private static Scene escenaJuego = null;
 
-    public static Scene getEscenaJuego() throws IOException {
+    private static final ProveedorEscena INSTANCIA= new ProveedorEscena();
+
+    private ProveedorEscena(){
+
+    }
+    public static ProveedorEscena getInstancia(){
+        return INSTANCIA;
+    }
+
+    public Scene getEscenaJuego() throws IOException {
         if(escenaJuego == null){
-            escenaJuego = new Scene(FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaJuego.fxml").toURL()));
+            System.out.println(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaJuego.fxml"));
+            escenaJuego= new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaJuego.fxml")));
         }
         return escenaJuego;
     }
-    public static Scene getEscenaHerramienta() throws IOException {
-        return new Scene(FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaHerramientas.fxml").toURL()));
-    }
 
-    public static Scene getEscenaConstructor() throws IOException{
-        return  new Scene(FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaConstructor.fxml").toURL()));
+
+    public Scene getEscenaConstructor() throws IOException{
+        return new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaConstructor.fxml")));
     }
     
 
-    public static Scene getEscenaReiniciada() throws IOException {
-        return new Scene(FXMLLoader.load(new File("src/algocraft/view/interfaces/VistaJuego.fxml").toURL()));
+    public Scene getEscenaReiniciada() throws IOException {
+        escenaJuego=null;
+        return getEscenaJuego();
     }
 }

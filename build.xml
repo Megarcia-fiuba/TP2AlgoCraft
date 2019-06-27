@@ -152,7 +152,20 @@
 	</target>
 
 	<target name="empaquetar" depends="compilar.paquete">
-		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes" />
+		<mkdir dir="${build}/dist/META-INF" />
+		<manifest file="${build}/dist/META-INF/MANIFEST.MF">
+			<attribute name="Main-Class" value="algocraft.view.Aplicacion"/>
+		</manifest>
+		<copy  todir="${build}/classes/algocraft/view/imagenes" >
+			<fileset dir="src/algocraft/view/imagenes" includes="*/**"/>
+		</copy>
+		<copy  todir="${build}/classes/algocraft/view/music" >
+			<fileset dir="src/algocraft/view/music" includes="*/**"/>
+		</copy>
+		<copy  todir="${build}/classes/algocraft/view/interfaces" >
+			<fileset dir="src/algocraft/view/interfaces" includes="*/**"/>
+		</copy>
+		<jar manifest="${build}/dist/META-INF/MANIFEST.MF" destfile="${build}/dist/algo3.jar" basedir="${build}/classes" />
 	</target>
 
 	<target name="integracion-continua" depends="run-pmd,coverage-report,alternate-coverage-report" description="Ejecuta todas las tareas de integracion y genera los correspondientes reportes"/>
@@ -200,16 +213,16 @@
 
 
 		<target name="empaquetar.con.imagenes" depends="compilar.paquete">
-			<copydir src="src/gui/imagess"
-				dest="${build}/classes/gui/imagess"
+			<copydir src="src/algocraft/view/imagenes"
+				dest="${build}/classes/algocraft/view/imagenes"
 				includes="**/*.png"/>
 		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
 	</target>
 
 	<target name="ejecutar.aplicacion" depends="empaquetar">
-		<java classname="fiuba.algo3.ejemplo1.Foo" fork="true">
+		<java classname="algocraft.view.Aplicacion" fork="true">
 			<classpath refid="classpath" />
-			<classpath location="${build}/dist/algo3.jar" />
+			<classpath location="${build}/classes" />
 		</java>
 	</target>
 

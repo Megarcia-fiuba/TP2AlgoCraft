@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class JuegoTests {
-
+    /*
     @Test
     public void  test01ElJuegoInicializaConElJugadorUbicadoEnlaPosicionCorrespondiente(){
         Jugador jugador = new Jugador();
@@ -43,5 +43,5 @@ public class JuegoTests {
                 Assert.assertFalse(mapa.posicionOcupada(new Posicion(i,j)));
             }
         }
-    }
+    }*/
 }

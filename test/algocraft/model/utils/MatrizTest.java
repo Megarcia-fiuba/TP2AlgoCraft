@@ -1,7 +1,14 @@
 package algocraft.model.utils;
 
+import algocraft.model.herramientas.Hacha;
+import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
+import algocraft.model.materiales.*;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MatrizTest {
 
@@ -58,5 +65,6 @@ public class MatrizTest {
 
         Assert.assertFalse(matrizA.equalShape(matrizB));
     }
+
 
 }
