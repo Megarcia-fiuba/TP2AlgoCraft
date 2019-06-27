@@ -39,12 +39,16 @@ public class VistaJuegoController implements Initializable {
     private Button botonReiniciar;
 
     private static Juego juego;
-    private JugadorContainer jugadorContainer;
+
+    private static JugadorContainer jugadorContainer;
+
+    private static MesaContainer mesa;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         inicializarJuego();
         actualizarInventario();
+        initMesa();
     }
 
     private void inicializarJuego() {
@@ -57,6 +61,9 @@ public class VistaJuegoController implements Initializable {
 
         this.mapaView.inicializar(mapa);
         this.mapaView.posicionarJugador(jugadorContainer);
+    }
+    private void initMesa(){
+        this.mesa= new MesaContainer(this.juego.getMesa());
     }
 
     private void actualizarInventario(){
@@ -172,5 +179,14 @@ public class VistaJuegoController implements Initializable {
         		+ " seleccion 'Construir'";
         alert.setContentText(mensaje);
         alert.show();
+    }
+
+    public static MesaContainer getMesa() {
+        return mesa;
+    }
+
+
+    public static JugadorContainer getJugadorContainer() {
+        return jugadorContainer;
     }
 }

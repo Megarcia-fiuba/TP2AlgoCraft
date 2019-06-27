@@ -20,7 +20,7 @@ public class ProveedorEscena{
 
     public Scene getEscenaJuego() throws IOException {
         if(escenaJuego == null){
-            System.out.println(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaJuego.fxml"));
+            //System.out.println(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaJuego.fxml"));
             escenaJuego= new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaJuego.fxml")));
         }
         return escenaJuego;
@@ -28,6 +28,7 @@ public class ProveedorEscena{
 
 
     public Scene getEscenaConstructor() throws IOException{
+        System.out.println(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaConstructor.fxml"));
         return new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaConstructor.fxml")));
     }
     
