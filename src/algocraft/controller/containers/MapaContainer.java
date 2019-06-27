@@ -7,7 +7,9 @@ import algocraft.model.materiales.Metal;
 import algocraft.model.materiales.Piedra;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MapaContainer extends GridPane {
@@ -34,13 +36,24 @@ public class MapaContainer extends GridPane {
 
     public void refresh() {
         this.getChildren().retainAll(this.getChildren().get(0));
+        refreshPosicionesMateriales();
+        refreshPosicionJugador();
+        System.out.println("posicion jugador: (" + this.jugador.getPosicion().getCoordenadaX() + "," + this.jugador.getPosicion().getCoordenadaY() + ")");
+    }
+
+    private void refreshPosicionesMateriales(){
+        List<Posicion> posicionesDesocupadas = new ArrayList<>();
         this.materiales.forEach((posicion, material) -> {
             if(this.mapa.getPosicionesOcupadas().containsKey(posicion)){
                 this.add(material.getImageView(), posicion.getCoordenadaX(), posicion.getCoordenadaY());
             } else {
-                this.materiales.remove(posicion);
+                posicionesDesocupadas.add(posicion);
             }
         });
+        posicionesDesocupadas.forEach(p -> this.materiales.remove(p));
+    }
+
+    private void refreshPosicionJugador(){
         this.add(this.jugador.getImageView(), this.jugador.getPosicion().getCoordenadaX(), this.jugador.getPosicion().getCoordenadaY());
     }
 
