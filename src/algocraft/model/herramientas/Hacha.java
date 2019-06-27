@@ -20,9 +20,4 @@ public class Hacha extends HerramientaConMaterial {
         durabilidad.desgastar(this);
         materializable.recibirGolpe(this);
     }
-
-    @Override
-    public String getIconoPath() {
-        return durabilidad.getIconoPath(this);
-    }
 }

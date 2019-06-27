@@ -24,8 +24,4 @@ public abstract class Durabilidad{
     public boolean romperMaterial(Metal metal) {
     	return false;
     }
-
-    public abstract String getIconoPath(Hacha hacha);
-
-    public abstract String getIconoPath(Pico pico);
 }

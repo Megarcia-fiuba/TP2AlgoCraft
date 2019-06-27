@@ -19,6 +19,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -99,19 +101,28 @@ public class VistaJuegoController implements Initializable {
 
     @FXML
     public void handleOnKeyPress(KeyEvent event) {
+        MediaPlayer reproductor = new MediaPlayer(new Media(getClass().getClassLoader().getResource("algocraft/view/music/Beep_Short_01_Sound_Effect_Mp3_102.mp3").toString()));
+        MediaPlayer reproductorCorte = new MediaPlayer(new Media(getClass().getClassLoader().getResource("algocraft/view/music/008722013_prev.mp3").toString()));
+
         enfocarMapa();
 
         if (event.getCode() == KeyCode.UP) {
+            reproductor.play();
             this.jugadorContainer.moverNorte(juego.getMapa());
         } else if (event.getCode() == KeyCode.DOWN) {
+            reproductor.play();
             this.jugadorContainer.moverSur(juego.getMapa());
         } else if (event.getCode() == KeyCode.LEFT) {
+            reproductor.play();
             this.jugadorContainer.moverOeste(juego.getMapa());
+            reproductor.play();
         } else if (event.getCode() == KeyCode.RIGHT) {
+            reproductor.play();
             this.jugadorContainer.moverEste(juego.getMapa());
         } else if (event.getCode() == KeyCode.C) {
             try{
                 this.jugadorContainer.usarHerramientaContraPosicionable(this.mapaView);
+                reproductorCorte.play();
             } catch(SinEquipoException e){
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText("Ups!");

@@ -15,7 +15,5 @@ public abstract class Herramienta {
 
     public abstract void usar(Posicionable materializable);
 
-    public abstract String getIconoPath();
-
     public abstract boolean estaRota();
 }

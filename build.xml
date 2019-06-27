@@ -159,6 +159,9 @@
 		<copy  todir="${build}/classes/algocraft/view/imagenes" >
 			<fileset dir="src/algocraft/view/imagenes" includes="*/**"/>
 		</copy>
+		<copy  todir="${build}/classes/algocraft/view/music" >
+			<fileset dir="src/algocraft/view/music" includes="*/**"/>
+		</copy>
 		<copy  todir="${build}/classes/algocraft/view/interfaces" >
 			<fileset dir="src/algocraft/view/interfaces" includes="*/**"/>
 		</copy>
