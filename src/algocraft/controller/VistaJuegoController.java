@@ -4,16 +4,10 @@ import algocraft.controller.containers.*;
 import algocraft.controller.utils.HerramientasListCell;
 import algocraft.model.excepciones.SinEquipoException;
 import algocraft.model.herramientas.Hacha;
-import algocraft.model.herramientas.Pico;
-import algocraft.model.herramientas.PicoFino;
 import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
-import algocraft.model.herramientas.durabilidad.DurabilidadMetal;
-import algocraft.model.herramientas.durabilidad.DurabilidadPiedra;
 import algocraft.model.juego.Juego;
 import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -68,17 +62,21 @@ public class VistaJuegoController implements Initializable {
         comboHerramientas.setCellFactory(c -> new HerramientasListCell());
         comboHerramientas.setButtonCell(new HerramientasListCell());
         comboHerramientas.getSelectionModel().select(this.jugadorContainer.getHerramientaEnUso());
+
     }
 
     @FXML
     public void handleAccionComboHerramientas(ActionEvent evento) {
         HerramientaContainer herramientaSeleccionada = (HerramientaContainer) comboHerramientas.getSelectionModel().getSelectedItem();
-
         if(herramientaSeleccionada != null && !herramientaSeleccionada.equals(this.jugadorContainer.getHerramientaEnUso())){
             this.jugadorContainer.cambiarHerramienta((HerramientaContainer) comboHerramientas.getSelectionModel().getSelectedItem());
             actualizarInventario();
-            this.mapaContainer.requestFocus();
         }
+        enfocarMapa();
+    }
+
+    public void enfocarMapa(){
+        this.mapaContainer.requestFocus();
     }
 
     public static Juego getJuego() {
@@ -93,6 +91,7 @@ public class VistaJuegoController implements Initializable {
 
     @FXML
     public void handleOnKeyPress(KeyEvent event) {
+        enfocarMapa();
 
         if (event.getCode() == KeyCode.UP) {
             this.jugadorContainer.moverNorte(juego.getMapa());
@@ -111,8 +110,8 @@ public class VistaJuegoController implements Initializable {
                 alert.setContentText("No hay herramienta en uso!");
                 alert.showAndWait();
             }
-
         }
+
         refresh();
         event.consume();
     }
