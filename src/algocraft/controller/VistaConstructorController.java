@@ -126,16 +126,18 @@ public class VistaConstructorController implements Initializable {
     }
 
     public void handleAccionBotonConstruir(){
-        try {
-            HerramientaContainer herramienta = HerramientaContainerFactory.construir(reflejo, mesa.construir());
-            VistaJuegoController.getJugadorContainer().agregarHerramientaContainer(herramienta);
-        }catch (FormaInvalidaException e){
+        HerramientaContainer herramienta = HerramientaContainerFactory.construir(reflejo, mesa.construir());
+        VistaJuegoController.getJugadorContainer().agregarHerramientaContainer(herramienta);
+        vaciarMesa();
 
-        }
     }
 
     public void handleAccionBotonVaciar(){
         materiales.addAll(mesa.recuperarTodos());
+        vaciarMesa();
+    }
+
+    private void vaciarMesa(){
         grillaConstructor.getChildren().retainAll(grillaConstructor.getChildren().get(0));
         initMesa();
     }

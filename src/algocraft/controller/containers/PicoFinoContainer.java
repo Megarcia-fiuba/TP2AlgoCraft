@@ -1,10 +1,17 @@
 package algocraft.controller.containers;
 
+import algocraft.model.herramientas.Herramienta;
 import algocraft.model.herramientas.PicoFino;
 
 public class PicoFinoContainer extends HerramientaContainer {
 
     public PicoFinoContainer(PicoFino picoFino){
+        this.herramienta = picoFino;
+        this.nombreHerramienta = "Pico Fino";
+        this.init();
+    }
+
+    public PicoFinoContainer(Herramienta picoFino){
         this.herramienta = picoFino;
         this.nombreHerramienta = "Pico Fino";
         this.init();

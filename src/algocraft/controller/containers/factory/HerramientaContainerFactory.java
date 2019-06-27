@@ -12,7 +12,14 @@ import java.util.List;
 public class HerramientaContainerFactory {
 
     public static HerramientaContainer construir(MatrizDefinida<Materializable> materiales, Herramienta herramienta){
-        List<HerramientaContainerConstructor> containerConstructors= Arrays.asList();
+        List<HerramientaContainerConstructor> containerConstructors= Arrays.asList(new HachaMaderaContainerConstructor(),
+                new HachaMetalContainerConstructor(),new HachaPiedraContainerConstructor(),new PicoMaderaContainerConstructor(),
+                new PicoPiedraContainerConstructor(), new PicoMetalContainerConstructor(),new PicoFinoContainerConstructor());
+        for(HerramientaContainerConstructor h: containerConstructors){
+            if(h.esEstaHerramienta(materiales)){
+                return h.construir(herramienta);
+            }
+        }
         return null;
     }
 }
