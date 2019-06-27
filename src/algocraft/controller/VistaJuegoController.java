@@ -94,8 +94,8 @@ public class VistaJuegoController implements Initializable {
 
     @FXML
     public void handleOnKeyPress(KeyEvent event) {
-        MediaPlayer reproductor = new MediaPlayer(new Media(new File("Beep_Short_01_Sound_Effect_Mp3_102.mp3").toURI().toString()));
-        MediaPlayer reproductorCorte = new MediaPlayer(new Media(new File("008722013_prev.mp3").toURI().toString()));
+        MediaPlayer reproductor = new MediaPlayer(new Media(getClass().getClassLoader().getResource("algocraft/view/music/Beep_Short_01_Sound_Effect_Mp3_102.mp3").toString()));
+        MediaPlayer reproductorCorte = new MediaPlayer(new Media(getClass().getClassLoader().getResource("algocraft/view/music/008722013_prev.mp3").toString()));
 
         enfocarMapa();
 

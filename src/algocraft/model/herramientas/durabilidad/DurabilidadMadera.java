@@ -42,13 +42,4 @@ public class DurabilidadMadera extends Durabilidad{
         valor -= 2;
     }
 
-    @Override
-    public String getIconoPath(Hacha hacha) {
-        return "../view/imagenes/hachaMadera.jpg";
-    }
-
-    @Override
-    public String getIconoPath(Pico pico) {
-        return "../view/imagenes/picoMadera.png";
-    }
 }

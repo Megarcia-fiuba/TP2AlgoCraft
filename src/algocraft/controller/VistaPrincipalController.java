@@ -20,9 +20,11 @@ import java.util.ResourceBundle;
 public class VistaPrincipalController implements Initializable {
     @FXML
     private Button botonComenzar;
+    private MediaPlayer reproductor;
 
     @FXML
     public void handleAccionBotonComenzar(ActionEvent evento) throws IOException {
+        reproductor.stop();
         Stage stage = (Stage) botonComenzar.getScene().getWindow();
         stage.setScene(ProveedorEscena.getInstancia().getEscenaJuego());
         stage.show();
@@ -30,7 +32,7 @@ public class VistaPrincipalController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        MediaPlayer reproductor = new MediaPlayer(new Media(new File("assasin-3-assasin.mp3").toURI().toString()));
+        reproductor = new MediaPlayer(new Media(getClass().getClassLoader().getResource("algocraft/view/music/assasin-3-assasin.mp3").toString()));
         reproductor.play();
     }
 }

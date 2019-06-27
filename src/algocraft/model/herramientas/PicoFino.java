@@ -31,16 +31,6 @@ public class PicoFino extends Herramienta {
 	    materializable.recibirGolpe(this);
     }
 
-    @Override
-    public String getIconoPath() {
-	    return "../view/imagenes/picoFino.png";
-    }
-
-    
-    public void desgastar(Materializable material){
-
-    }
-
     public void desgastar(Diamante diamante){
         if(durabilidad - durabilidad * 0.1 < 1){
             durabilidad = 0;

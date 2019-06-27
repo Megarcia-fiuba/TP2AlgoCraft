@@ -29,8 +29,6 @@ public class Aplicacion extends Application {
     }
 
     private Scene crearVentanaPrincipal(Stage stage) throws IOException {
-        MediaPlayer reproductor = new MediaPlayer(new Media(new File("assasin-3-assasin.mp3").toURI().toString()));
-        reproductor.play();
         Parent root = FXMLLoader.load(getClass().getResource("interfaces/VistaPrincipal.fxml"));
         return new Scene(root);
     }

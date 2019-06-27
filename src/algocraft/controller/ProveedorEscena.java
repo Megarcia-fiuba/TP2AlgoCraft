@@ -26,9 +26,6 @@ public class ProveedorEscena{
         return escenaJuego;
     }
 
-    /*public Scene getEscenaHerramienta() throws IOException {
-        return new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaHerramientas.fxml")));
-    }*/
 
     public Scene getEscenaConstructor() throws IOException{
         return new Scene(FXMLLoader.load(getClass().getClassLoader().getResource("algocraft/view/interfaces/VistaConstructor.fxml")));
