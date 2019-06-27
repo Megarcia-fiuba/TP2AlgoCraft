@@ -1,9 +1,19 @@
 package algocraft.controller;
 
-import algocraft.controller.containers.JugadorContainer;
-import algocraft.controller.containers.MapaContainer;
+import algocraft.controller.containers.*;
+import algocraft.controller.utils.HerramientasListCell;
+import algocraft.model.excepciones.SinEquipoException;
+import algocraft.model.herramientas.Hacha;
+import algocraft.model.herramientas.Pico;
+import algocraft.model.herramientas.PicoFino;
+import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
+import algocraft.model.herramientas.durabilidad.DurabilidadMetal;
+import algocraft.model.herramientas.durabilidad.DurabilidadPiedra;
 import algocraft.model.juego.Juego;
+import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -25,14 +35,14 @@ public class VistaJuegoController implements Initializable {
     @FXML
     private MapaContainer mapaContainer;
     @FXML
-    private Button botonHerramientas;
+    private ComboBox comboHerramientas;
     @FXML
     private Button botonConstructor;
     @FXML
     private Button botonReiniciar;
 
     private static Juego juego;
-    private JugadorContainer jugador;
+    private JugadorContainer jugadorContainer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,25 +52,33 @@ public class VistaJuegoController implements Initializable {
 
     private void inicializarJuego() {
         Mapa mapa = new Mapa();
-        juego = new Juego(mapa);
-        this.jugador = new JugadorContainer(juego.getJugador());
+        Hacha hachaMadera = new Hacha(new DurabilidadMadera());
+        Jugador jugador = new Jugador(hachaMadera);
+        HerramientaContainer hachaMaderaContainer = new HachaMaderaContainer(hachaMadera);
+        this.jugadorContainer = new JugadorContainer(jugador, hachaMaderaContainer);
+        juego = new Juego(mapa, jugador);
 
         this.mapaContainer.inicializar(mapa);
-        this.mapaContainer.posicionarJugador(jugador);
+        this.mapaContainer.posicionarJugador(jugadorContainer);
     }
 
     private void actualizarInventario(){
-        ImageView herramientaActual=new ImageView(getClass().getResource(juego.getJugador().getHerramientaEnUso().getIconoPath()).toString());
-        herramientaActual.setFitHeight(60);
-        herramientaActual.setFitWidth(60);
-        botonHerramientas.setGraphic(herramientaActual);
+        comboHerramientas.getItems().clear();
+        comboHerramientas.getItems().addAll(this.jugadorContainer.getInventarioHerramientas());
+        comboHerramientas.setCellFactory(c -> new HerramientasListCell());
+        comboHerramientas.setButtonCell(new HerramientasListCell());
+        comboHerramientas.getSelectionModel().select(this.jugadorContainer.getHerramientaEnUso());
     }
 
     @FXML
-    public void handleAccionBotonHerramientas(ActionEvent evento) throws IOException {
-        Stage stage = (Stage) botonHerramientas.getScene().getWindow();
-        stage.setScene(ProveedorEscena.getInstancia().getEscenaHerramienta());
-        stage.show();
+    public void handleAccionComboHerramientas(ActionEvent evento) {
+        HerramientaContainer herramientaSeleccionada = (HerramientaContainer) comboHerramientas.getSelectionModel().getSelectedItem();
+
+        if(herramientaSeleccionada != null && !herramientaSeleccionada.equals(this.jugadorContainer.getHerramientaEnUso())){
+            this.jugadorContainer.cambiarHerramienta((HerramientaContainer) comboHerramientas.getSelectionModel().getSelectedItem());
+            actualizarInventario();
+            this.mapaContainer.requestFocus();
+        }
     }
 
     public static Juego getJuego() {
@@ -77,15 +95,23 @@ public class VistaJuegoController implements Initializable {
     public void handleOnKeyPress(KeyEvent event) {
 
         if (event.getCode() == KeyCode.UP) {
-            this.jugador.moverNorte(juego.getMapa());
+            this.jugadorContainer.moverNorte(juego.getMapa());
         } else if (event.getCode() == KeyCode.DOWN) {
-            this.jugador.moverSur(juego.getMapa());
+            this.jugadorContainer.moverSur(juego.getMapa());
         } else if (event.getCode() == KeyCode.LEFT) {
-            this.jugador.moverOeste(juego.getMapa());
+            this.jugadorContainer.moverOeste(juego.getMapa());
         } else if (event.getCode() == KeyCode.RIGHT) {
-            this.jugador.moverEste(juego.getMapa());
+            this.jugadorContainer.moverEste(juego.getMapa());
         } else if (event.getCode() == KeyCode.C) {
-            this.jugador.usarHerramientaContraPosicionable(this.mapaContainer);
+            try{
+                this.jugadorContainer.usarHerramientaContraPosicionable(this.mapaContainer);
+            } catch(SinEquipoException e){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText("Ups!");
+                alert.setContentText("No hay herramienta en uso!");
+                alert.showAndWait();
+            }
+
         }
         refresh();
         event.consume();
@@ -130,7 +156,7 @@ public class VistaJuegoController implements Initializable {
     	Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Acerca de...");
         alert.setHeaderText("Reglas de Juego:");
-        String mensaje = "Mueva al jugador usando las flechas del teclado\nPrecione la letra C para golpear un material\nSeleccione"
+        String mensaje = "Mueva al jugadorContainer usando las flechas del teclado\nPrecione la letra C para golpear un material\nSeleccione"
         		+ " 'Herramientas' para visuarizar y seleccionar la herramienta deseada\nPara construir una herramienta"
         		+ " seleccion 'Construir'";
         alert.setContentText(mensaje);

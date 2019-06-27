@@ -38,7 +38,6 @@ public class MapaContainer extends GridPane {
         this.getChildren().retainAll(this.getChildren().get(0));
         refreshPosicionesMateriales();
         refreshPosicionJugador();
-        System.out.println("posicion jugador: (" + this.jugador.getPosicion().getCoordenadaX() + "," + this.jugador.getPosicion().getCoordenadaY() + ")");
     }
 
     private void refreshPosicionesMateriales(){

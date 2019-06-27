@@ -13,8 +13,8 @@ public class Juego {
     private Mapa mapa;
     private MesaDeConstruccion mesa;
 
-    public Juego(Mapa mapa) {
-        this.jugador = new Jugador();
+    public Juego(Mapa mapa, Jugador jugador) {
+        this.jugador = jugador;
         this.mesa = new MesaDeConstruccion();
         this.mapa = mapa;
     }

@@ -19,12 +19,12 @@ public class Jugador extends Posicionable {
     private Orientacion orientacion;
 
     
-    public Jugador() {
+    public Jugador(Herramienta herramienta) {
         materialesRecolectados = new ArrayList<>();
         posicion = new Posicion(0,0);
         orientacion= new Orientacion();
         herramientas = new ArrayList<>();
-        herramientaEnUso = new Hacha(new DurabilidadMadera());
+        herramientaEnUso = herramienta;
         herramientas.add(herramientaEnUso);
     }
 
@@ -52,13 +52,13 @@ public class Jugador extends Posicionable {
             mapa.desocuparPosicion(this.posicion);
             this.posicion = posicion;
         }catch(PosicionOcupadaException p){
-            Posicionable elemEnMapa=mapa.obtenerElementoEnPosicion(posicion);
+            Posicionable elemEnMapa = mapa.obtenerElementoEnPosicion(posicion);
             elemEnMapa.chocar(mapa,this);
         }
     }
 
     @Override
-    public void chocar(Mapa mapa,Materializable material) {
+    public void chocar(Mapa mapa, Materializable material) {
         this.materialesRecolectados.add(material);
         moverseEnMapa(mapa,material.getPosicion());
     }
@@ -92,7 +92,10 @@ public class Jugador extends Posicionable {
             throw new SinEquipoException();
         }
         try {
-            usarHerramienta( mapa.obtenerElementoEnPosicion(this.posicion.mirandoA(this.orientacion)));
+            Posicionable elementoEnPosicion = mapa.obtenerElementoEnPosicion(this.posicion.mirandoA(this.orientacion));
+            if(elementoEnPosicion != null){
+                usarHerramienta(elementoEnPosicion);
+            }
         } catch (HerramientaRotaException e) {
             this.herramientas.remove(this.herramientaEnUso);
             this.herramientaEnUso = null;
@@ -101,5 +104,9 @@ public class Jugador extends Posicionable {
 
     public void cambiarHerramienta(Herramienta herramienta){
         this.herramientaEnUso=herramienta;
+    }
+
+    public void agregarHerramienta(Herramienta herramienta){
+        this.herramientas.add(herramienta);
     }
 }

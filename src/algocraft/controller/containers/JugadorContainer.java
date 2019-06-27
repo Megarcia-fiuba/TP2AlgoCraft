@@ -3,6 +3,8 @@ package algocraft.controller.containers;
 import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
 import algocraft.model.juego.Posicion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.ImageView;
 
 import java.util.HashMap;
@@ -11,14 +13,18 @@ import java.util.Map;
 public class JugadorContainer {
 
     private Jugador jugador;
+    private HerramientaContainer herramientaEnUso;
+    private ObservableList<HerramientaContainer> inventarioHerramientas;
 
     private Map<String, ImageView> imagenes;
 
     private String orientacionActual;
 
-    public JugadorContainer(Jugador jugador) {
+    public JugadorContainer(Jugador jugador, HerramientaContainer herramienta) {
         this.jugador = jugador;
         this.orientacionActual = "Sur";
+        this.herramientaEnUso = herramienta;
+        this.inventarioHerramientas = FXCollections.observableArrayList(herramienta);
         this.initJugadorImagenes();
     }
 
@@ -41,6 +47,10 @@ public class JugadorContainer {
     public ImageView getImageView(){
         return imagenes.get(orientacionActual);
     }
+
+    public HerramientaContainer getHerramientaEnUso() { return herramientaEnUso; }
+
+    public ObservableList<HerramientaContainer> getInventarioHerramientas() { return inventarioHerramientas; }
 
     public void moverNorte(Mapa mapa){
         this.orientacionActual = "Norte";
@@ -72,5 +82,15 @@ public class JugadorContainer {
 
     public Posicion getPosicion(){
         return this.jugador.getPosicion();
+    }
+
+    public void agregarHerramientaContainer(HerramientaContainer herramienta){
+        this.jugador.agregarHerramienta(herramienta.getHerramienta());
+        this.inventarioHerramientas.add(herramienta);
+    }
+
+    public void cambiarHerramienta(HerramientaContainer herramientaContainer){
+        this.jugador.cambiarHerramienta(herramientaContainer.getHerramienta());
+        this.herramientaEnUso = herramientaContainer;
     }
 }

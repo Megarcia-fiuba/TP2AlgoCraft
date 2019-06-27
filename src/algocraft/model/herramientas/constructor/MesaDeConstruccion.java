@@ -16,7 +16,7 @@ public class MesaDeConstruccion {
     }
 
     public Herramienta construir(){
-        Herramienta herramientaCreada= FactoryHerramienta.construirHerramienta(contenido);
+        Herramienta herramientaCreada = FactoryHerramienta.construirHerramienta(contenido);
         contenido.vaciar();
         return herramientaCreada;
     }
