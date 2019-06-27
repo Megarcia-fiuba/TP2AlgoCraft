@@ -8,6 +8,7 @@ import algocraft.model.herramientas.durabilidad.DurabilidadMadera;
 import algocraft.model.juego.Juego;
 import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
+import algocraft.view.MapaView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,7 +23,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
 
 public class VistaJuegoController implements Initializable {
     @FXML
-    private MapaContainer mapaContainer;
+    private MapaView mapaView;
     @FXML
     private ComboBox comboHerramientas;
     @FXML
@@ -55,8 +55,8 @@ public class VistaJuegoController implements Initializable {
         this.jugadorContainer = new JugadorContainer(jugador, hachaMaderaContainer);
         juego = new Juego(mapa, jugador);
 
-        this.mapaContainer.inicializar(mapa);
-        this.mapaContainer.posicionarJugador(jugadorContainer);
+        this.mapaView.inicializar(mapa);
+        this.mapaView.posicionarJugador(jugadorContainer);
     }
 
     private void actualizarInventario(){
@@ -79,7 +79,7 @@ public class VistaJuegoController implements Initializable {
     }
 
     public void enfocarMapa(){
-        this.mapaContainer.requestFocus();
+        this.mapaView.requestFocus();
     }
 
     public static Juego getJuego() {
@@ -114,7 +114,7 @@ public class VistaJuegoController implements Initializable {
             this.jugadorContainer.moverEste(juego.getMapa());
         } else if (event.getCode() == KeyCode.C) {
             try{
-                this.jugadorContainer.usarHerramientaContraPosicionable(this.mapaContainer);
+                this.jugadorContainer.usarHerramientaContraPosicionable(this.mapaView);
                 reproductorCorte.play();
             } catch(SinEquipoException e){
                 Alert alert = new Alert(AlertType.INFORMATION);
@@ -129,7 +129,7 @@ public class VistaJuegoController implements Initializable {
     }
 
     private void refresh(){
-        mapaContainer.refresh();
+        mapaView.refresh();
     }
     
     @FXML

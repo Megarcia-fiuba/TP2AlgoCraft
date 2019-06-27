@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import algocraft.controller.containers.MapaContainer?>
+<?import algocraft.view.MapaView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -19,7 +19,7 @@
   <children>
     <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="800.0">
       <center>
-        <MapaContainer fx:id="mapaContainer" alignment="CENTER" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+        <MapaView fx:id="mapaView" alignment="CENTER" gridLinesVisible="true" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
           <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -44,7 +44,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
           </rowConstraints>
-        </MapaContainer>
+        </MapaView>
       </center>
       <left>
         <VBox alignment="CENTER" prefHeight="381.0" prefWidth="152.0" spacing="30.0" BorderPane.alignment="BOTTOM_LEFT">
