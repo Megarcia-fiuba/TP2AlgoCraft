@@ -10,6 +10,7 @@ import algocraft.model.juego.Jugador;
 import algocraft.model.juego.Mapa;
 import algocraft.view.MapaView;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -19,6 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -188,5 +190,10 @@ public class VistaJuegoController implements Initializable {
 
     public static JugadorContainer getJugadorContainer() {
         return jugadorContainer;
+    }
+    @FXML
+    public void handleRefresh(Event event) {
+        System.out.println("refrescando");
+        actualizarInventario();
     }
 }

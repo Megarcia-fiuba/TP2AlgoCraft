@@ -76,7 +76,7 @@
               </MenuBar>
                   <HBox>
                      <children>
-                  <ComboBox fx:id="comboHerramientas" onAction="#handleAccionComboHerramientas" focusTraversable="false" prefHeight="27.0" prefWidth="186.0" promptText="Herramienta" visibleRowCount="7">
+                  <ComboBox fx:id="comboHerramientas" onAction="#handleAccionComboHerramientas" onShowing="#handleRefresh" focusTraversable="false" prefHeight="27.0" prefWidth="186.0" promptText="Herramienta" visibleRowCount="7">
                            <HBox.margin>
                               <Insets left="4.0" />
                            </HBox.margin></ComboBox>
